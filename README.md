@@ -15,14 +15,14 @@ This main branch includes:
     Complete simulation setup parameter files related to SPECFEM3D Cartesian
     (Par_file, CMTSOLUTION, STATIONS, STFext etc.); #check the folder parameters/#
 
-    Meshing and model-building utilities (many thanks to 
-    Dr. Rafael Abreu for the help in the mesh modelling); #check the folder meshing/# 
+    Meshing and model-building utilities (many thanks to Dr. Rafael Abreu for 
+    the help in the mesh modelling); #check the folder meshing/# 
 
     3D and tomographic velocity model scripts 
     (mostly GMT related codes); #check the folder models/#  
 
-    Post-processing and plotting scripts (mostly
-    JupyterNotebook, gnuplot and python); #check the folder pstprcss/ and for the output check fgs/#
+    Post-processing and plotting scripts (mostly JupyterNotebook, gnuplot and python);
+    #check the folder pstprcss/ and for the output check fgs/#
 
     Documentation and notes on simulation parameters and workflow
     (all the articles that have been read during the thesis writing). #check the folder refs/# 
