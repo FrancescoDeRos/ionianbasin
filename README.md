@@ -7,16 +7,16 @@ This main branch includes:
     as well as figures .png & jpegs) (work in progress...)
 
     Thesis presentation (.odp with TexMaths extension, be sure to 
-    have that extension installed otherwise some figures won't properly render; work in progress...)   
+    have that extension installed otherwise some figures won't render; work in progress...)   
 
     Description of all PCs used throughout the thesis work (configuration flags selected 
-    during the software setup, CPU, RAM usage, time for each run etc.):   #check the folder specs/#
+    during the software setup, CPU, RAM usage, time for each run etc.): #check folder specs/#
 
     Complete simulation setup parameter files related to SPECFEM3D Cartesian
-    (Par_file, CMTSOLUTION, STATIONS, STFext etc.); #check the folder parameters/#
+    (Par_file, CMTSOLUTION, STATIONS, STFext etc.); #check folder parameters/#
 
     Meshing and model-building utilities (many thanks to Dr. Rafael Abreu for 
-    the help in the mesh modelling); #check the folder meshing/# 
+    the help in the mesh modelling); #check folder meshing/# 
 
     3D and tomographic velocity model scripts 
     (mostly GMT related codes); #check the folder models/#  
