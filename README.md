@@ -1,9 +1,3 @@
-***
-### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
-### Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
-### Time and Location - Cosenza, Calabria 23092025.
-***
-
 # ionianbasin
 This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
 
@@ -34,6 +28,12 @@ This main branch includes:
     (all the articles that have been read during the thesis writing). #check the folder refs/# 
 
 The aim is to maintain a reproducible and transparent archive of the numerical tests conducted for regional waveform modeling studies in the area that has been studied. I hope whichever user interested in these kind of simulations will find this repository useful for its studies.
+
+***
+### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
+### Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
+### Time and Location - Cosenza, Calabria 23092025.
+***
 
 ---------------------
 Simulations were run with the aid of Newton cluster, Rende(CS) (http://newton-1.hpcc.unical.it) and with the SPECFEM3D software (https://specfem.org/).
@@ -124,7 +124,6 @@ Description of the files:
 * CMTSOLUTION_*: Parameter files defining the Moment Tensor sources necessary to simulate the seismic signal. Default source time function is a smoothed Heaviside. External ones have been defined and implemented.
 ---------------------
 ### image
-![alt text](https://github.com/FrancescoDeRos/ionianbasin/blob/main/events_runs.png?raw=true)
 <img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
 *mettila al di fuori di ogni directory
 
