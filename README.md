@@ -123,7 +123,6 @@ Description of the files:
 * stf_cosine*.txt : STF of different half duration implemented in later runs in Mw > 5.0 Eqs
 * CMTSOLUTION_*: Parameter files defining the Moment Tensor sources necessary to simulate the seismic signal. Default source time function is a smoothed Heaviside. External ones have been defined and implemented.
 ---------------------
-### image
+### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
 <img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
-*mettila al di fuori di ogni directory
 
