@@ -114,10 +114,6 @@ Description of the markdown chapters in the notebook
 ---------------------
 ### SPECFEM3D related
 Description of the files:
-* Mesh_Par_File : Parameter file for the generation of the cartesian mesh.
-* interfaces.dat : File defining the layering of the SPECFEM3D geometry.
-* interface_top.dat : File defining the topography of the top surface.
-* SPECFEM_input_parameters.txt : Various parameters used in SPECFEM3D's main parameter file, Par_File.
 * stf_iclarc.txt : Source time function of Gaussian type.
 * stf_imp.txt : Source time function of impulsive type, single non zero value at 1000th step.
 * stf_cosine*.txt : STF of different half duration implemented in later runs in Mw > 5.0 Eqs
