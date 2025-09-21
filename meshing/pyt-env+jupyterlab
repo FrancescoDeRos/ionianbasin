@@ -1,0 +1,1225 @@
+#QUICK LOOKUP
+python3 -m venv venv && source venv/bin/activate && jupyter lab
+jupyter lab --notebook-dir=$HOME
+jupyter lab --notebook-dir=/.
+dt <= h_min/ sqrt(3) * VP_MAX(max velocity in model)
+#copia file con tutti i permessi nei binari, eseguibile dovunque, 
+sudo cp -r /path/.sh /usr/bin/
+ls -l  *semd | wc
+ls -l timestamp* | wc
+CTRL+Z , bg 1 mette in background il processo
+get *.semd .
+put <locale> <remoto>
+get <remoto> <locale>
+get dir/ . -R
+griglia3D.mod3D.dat
+cd /home/fderose/dati/specfem3d/EXAMPLES/3strati2012/OUTPUT_FILES
+lcd /home/francesco/dati/specfem3d/EXAMPLES/3strati2012/
+get *.semd 
+(  -  ) * (   ) * ( ) / 1000000000
+cd /home/fderose/dati/specfem3d/EXAMPLES
+#newton cluster general
+wn008, wn009, wn010, wn020, wn023 e wn027 non funzionanti.
+#PBS -l select=1:ncpus=20:mpiprocs=20:host=wn002+1:ncpus=20:mpiprocs=20:host=wn003+1:ncpus=20:mpiprocs=20:host=wn004+1:ncpus=20:mpiprocs=20:host=wn005
+#PBS -l select=1:ncpus=20:mpiprocs=20:host=wn028+1:ncpus=20:mpiprocs=20:host=wn029+1:ncpus=20:mpiprocs=20:host=wn030+1:ncpus=20:mpiprocs=20:host=wn031
+#PBS -l select=1:ncpus=20:mpiprocs=20:host=wn013+1:ncpus=20:mpiprocs=20:host=wn014+1:ncpus=20:mpiprocs=20:host=wn015+1:ncpus=20:mpiprocs=20:host=wn019
+#PBS -l select=1:ncpus=20:mpiprocs=20:host=wn014+1:ncpus=20:mpiprocs=20:host=wn015+1:ncpus=20:mpiprocs=20:host=wn019
+pbsnodes -av | grep -E "wn002|wn003|wn004|wn005" -A 5
+pbsnodes -av | grep -E "wn028|wn029|wn030|wn031" -A 5 #verifica che 4 nodi siano in stato free
+pbsnodes -av | grep -E "wn013|wn014|wn015|wn019" -A 5
+-----
+pbsnodes -av | grep -E "wn001|wn002|wn003|wn004|wn005|wn006|wn007|wn012|wn013|wn014|wn015|wn016|wn017|wn019|wn021|wn024|wn025|wn028|wn029|wn030|wn031|wn032|" -A 5
+------
+pbsnodes -av | grep -E "wn001|wn002|wn003|wn004|wn005|wn006|wn007|wn012|wn013|wn014|wn015|wn016|wn017|wn019|wn021|wn024|wn025|wn028|wn029|wn030|wn031|wn032" -A 5 | grep -B 5 "busy" 
+#dimmi i nodi occupati
+----
+qstat -a #vedi nodi liberi
+qstat -u $USER #check job ownings
+----
+set terminal postscript "Helvetica, 12" landscape color
+set output "section.png"
+set title "Vertical section at Y = 18110 m"
+set xlabel "X (m)"
+set ylabel "Z (km)"
+set grid
+
+plot "griglia3D.mod3D_m.dat" using ($2==18110.7646081 ? $1 : 1/0):(3/1000) title "Section at Y=18110 mesh grid points", "" using ($2==18110.7646081 ? $1 : 1/0):($7 > 800 ? $3 : 1/0) title "Shell (col7 > 800)"
+
+cd /home/fderose/dati/specfem3d/EXAMPLES
+#GRIGLIE GMT:
+-Rminlon/maxlon/minlat/maxlat   -I0.005/0.0005 for 500 m resolution
+gmt nearneighbor topocalabria.90mXYZ.dat -I0.01/0.01 -S0.05 -E0 -R15.95000/17.15000/38.75000/39.65000 -Gtopocal_fine.grd
+gmt grdimage topocal_fine.grd -JX6i -B -P -K > map.ps
+gmt grdimage topocal_fine.grd -JX6i -Bxa1f1+l"Longitude" -Bya1f1+l"Latitude" -P -K > map.ps
+#gmt grdcut topocal_fine.grd -R16.42/16.46/39.23/39.40 -Gtopocal_fine.grd
+gmt grd2xyz topocal_fine.grd > topocalfine.dat
+gmt mapproject topocalfine.dat -Ju33N/1:1 -F -C > topsilatriple.utm.dat
+splot 'topsilatriple.utm.dat' using 1:2:3 with points palette pointtype 7
+
+gmt nearneighbor topocalabria_no_negative.dat -I0.01/0.01 -S0.1 -E0 -R15.12000/17.30000/37.00000/40.0000 -Gtopocal_fine.grd
+
+#TOPOGRAFIA
+splot 'topo.txt' using 1:2:3 with points palette pointtype 7 pointsize 1
+
+#VIDEO
+#for pasting together multiple png files
+ffmpeg -framerate 10 -pattern_type glob -i '*.png' -c:a copy -shortest -c:v libx264 -r 1 -pix_fmt yuv420p out.mp4
+#in case of error:
+ffmpeg -framerate 10 -pattern_type glob -i '*.png' -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -r 10 -pix_fmt yuv420p out.mp4
+#REVERSE VIDEO
+ffmpeg -i *.mp4 -vf reverse fin.mp4
+#paste from last to first frame
+for i in $(seq 249 -1 0); do printf "file 'fr.%04d.png'\n" $i; done > frames.txt
+ffmpeg -framerate 10 -f concat -safe 0 -i frames.txt   -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2"   -c:v libx264 -r 10 -pix_fmt yuv420p out.mp4
+
+#VIDEO MODELLO TOMOGRAFICO:
+cd vrtcl_vp/
+ffmpeg -framerate 9 -pattern_type glob -i "vert_slice_vp_Y_*.png" -c:v libx264 -pix_fmt yuv420p ../output_vp.mp4
+cd ..
+cd vrtcl_vs/
+ffmpeg -framerate 9 -pattern_type glob -i "vert_slice_vs_Y_*.png" -c:v libx264 -pix_fmt yuv420p ../output_vs.mp4
+cd ..
+cd vrtcl_rho/
+ffmpeg -framerate 9 -pattern_type glob -i "vert_slice_rho_Y_*.png" -c:v libx264 -pix_fmt yuv420p ../output_rho.mp4
+cd ..
+#ATTACCA INSIEME TRE VIDEO ORIZZONTALMENTE
+ffmpeg -i output_rho.mp4 -i output_vp.mp4 -i output_vs.mp4 -filter_complex vstack=inputs=3 iclerc80.mp4
+echo "done"
+
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_vp_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_vp_new.mp4
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_vs_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_vs_new.mp4
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_rho_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_rho_new.mp4
+ffmpeg -i output_rho_new.mp4 -i output_vp_new.mp4 -i output_vs_new.mp4 -filter_complex hstack=inputs=3 out_new.mp4
+
+
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_vp_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_vp_old.mp4
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_vs_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_vs_old.mp4
+ffmpeg -framerate 12 -pattern_type glob -i "vert_slice_rho_Y_*.png" -c:v libx264 -pix_fmt yuv420p output_rho_old.mp4
+ffmpeg -i output_rho_old.mp4 -i output_vp_old.mp4 -i output_vs_old.mp4 -filter_complex hstack=inputs=3 out_old.mp4
+
+#ATTACCA INSIEME TRE VIDEO VERTICALMENTE
+ffmpeg -i output_rho.mp4 -i output_vs.mp4 -i output_vp.mp4 -filter_complex Vstack=inputs=3 out.mp4
+#TEST
+ffmpeg -i output_rho.mp4 -i output_vs.mp4 -i output_vp.mp4 -filter_complex \
+  "[0:v]pad=iw+10:ih+20:10:10:yellow[v1]; \
+   [1:v]pad=iw+20:ih+20:10:10:yellow[v2]; \
+   [v1][v2]hstack=inputs=2[v]" -map "[v]" cool.mp4
+
+-----------------------TEMPITEOOOOO----------------------------
+SAC:
+ls 20*sac | wc -l 
+ls CAL*sac | wc -l
+r CAL*sac
+r 20*sac
+lh DELTA CAL*sac
+lh DELTA 20*sac
+se diversi: 
+r CAL*.sac
+dec 5
+qdp off
+fileid location ul
+xlim -25 440
+/home/common/sintetici/fixcoord.run
+doevt.sh sui sintetici
+
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta t1 t2 columns 2
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta columns 2 CAL*sac
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta columns 2 2022*sac
+
+ls 20*.sac > listasac.txt
+/home/common/bin/deconv-eida -i listasac.txt -v
+/home/common/bin/transfer-cal -i listasac.txt -v
+
+ESEGUI convoluzione sintetici tabella stf da cambiare in convolvi.csh
+A1 2022 0.6
+A2 2012 0.6
+a3 2025 0.6
+a4 2014 0.6
+a5 2015 cos3.sac
+a6 2018 cos6.sac
+a7 2020 cos2.sac
+a8 2022 cos2.sac
+a9 2024 cos2.sac
+
+
+ls *Z.semdc.sac | wc -l 
+ls *Zd.sac | wc -l
+
+ls *X.semdc.sac | wc -l 
+ls *Ed.sac | wc -l
+
+ls *Y.semdc.sac | wc -l 
+ls *Nd.sac | wc -l
+
+
+
+SAC:
+guardare con sac ppk p 3
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta t1 t2 columns 2 
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta columns 2 20*d.sac
+///////////////////////////////////////////////////////
+salva originali
+cp 20*.sac *semd.sac o0/
+
+
+sudo chown francesco:francesco file
+SAC:
+check unità misura
+saclst kuser2 f 20*d.sac 
+
+r 20*d.sac
+int 
+ch kuser2 dec.m
+w over
+ATTENZIONE
+cp 20*sac CAL*sac o0/
+//////////////////////////////////////////////////////////////////
+
+cd /home/common/sintetici/
+eqloc -i 20220908.eqloc.tteo.in -t
+cp eqloc.tempiteorici.txt /home/common/gre_2018/
+sudo chown francesco:francesco listasac.txt listasac.txt tempitemp.324w46w.txt eqloc.tempiteorici.txt
+sudo chown francesco:francesco 
+$ csh ../tptshdr.gcap.csh
+SAC:
+r *.sac
+qdp off; fileid location ul; ticks off all
+guardare con sac ppk p 3
+fileid kcmpnm ul
+xlim -75 te
+qdp off
+
+sudo chown francesco:francesco lical lirea tempitemp.324w46w.txt listasac.txt listasacsta.txt
+
+in common cat */doevt* | grep GMT
+////////////////////////////////////////////////////////
+$csh /home/common/sintetici/comuni.csh
+cd comuni
+$csh /home/common/sintetici/ruotaXY.csh
+////////////////////onda P//////////////////////////////
+mkdir ondaP 
+
+cp 20*d.sac CAL*.sac ondaP/
+cd ondaP
+
+SAC:
+r *.sac
+ls 20*sac | wc -l 
+ls CAL*sac | wc -l
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta t1 t2 columns 2
+
+ls CAL*c.sac > lisi; ls 20*d.sac > lire; paste lire lisi > check; cat check
+r *.sac
+rmean
+rtrend
+taper
+bp n 3 p 1 c 0.07 0.221
+w over
+
+
+r *.sac
+cutim t1 -5 25
+w over
+ppk p 3
+ls -l *.sac
+
+ls 20*d.sac > lire;ls CAL*sac > lisi; cat lire | wc -l; cat lisi | wc -l
+sort -f -k1,1 lire > lire
+sort -f -k1,1 lisi > lisi
+
+########################################
+#############IMPORTANTE#################
+########################################
+evento=20240329;paste lire lisi > misfit.${evento}.txt;cat misfit.${evento}.txt
+/home/common/bin/misfit1 -i misfit.20240329.txt
+cat misfit.tempfile.txt
+mv misfit.tempfile.txt misfit.f.20240329.txt
+#aggiungi coordinate per il plot
+awk 'FNR==NR {
+        coords[$1] = $3 " " $4;  
+        next;  
+    }
+    {
+        if ($1 in coords && $3 in coords) {
+            print $0, coords[$1], coords[$3];
+        } else {
+            print $0;
+        }
+    }
+' /home/francesco/dati/gmt-6.5.0/ionian/statx.txt misfit.f.${evento}.txt > misfit.fin.txt;cat misfit.fin.txt
+#file da leggere dal .py rigorosamente "misfit.fin.txt"
+cd ~/dati/gmt-6.5.0/ionian/; pyt
+python qmis.py -M "misfit_norm_amp" -F /home/common/g.200.3st.24.imp/comuni/ondaP/ -E 20240329 -C "Normalized misfit - P phase"
+python qccr.py -M "cross_corr" -F /home/common/g.200.3st.24.imp/comuni/ondaP/ -E 20240329 -C "Crosscorrelation - P phase"
+
+
+cd ~/Immagini/
+#routine togli spazi in ogni file nella dir in cui esegui
+DIR="${1:-.}"
+find "$DIR" -depth -name "* *" -print0 | while IFS= read -r -d '' FILE; do
+	NEW_FILE=$(echo "$FILE" | tr -d ' ')
+	mv "$FILE" "$NEW_FILE" && echo "Renamed: $FILE -> $NEW_FILE"
+done
+rm *.cpt
+#definisci parametri paste together pdfs
+
+//////////////////onda S////////////////////////////
+mkdir ondaS
+cp 20*sac CAL*sac ondaS/
+cd ondaS
+r *.sac
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta t1 t2 columns 2
+ls 20*sac | wc -l ; ls CAL*sac | wc -l
+ls 20*d.sac > lire;ls CAL*sac > lisi
+cat lire | wc -l; cat lisi | wc -l
+paste lire lisi > check; cat check
+SAC:
+r *.sac
+rmean
+rtrend
+taper
+bp n 3 p 1 c 0.02 0.1 
+w over
+
+r *.sac
+cutim t2 -5 30 
+w over
+ppk p 3
+ls -l *.sac 
+
+#########################################
+######IMPORTANTE#########################
+#########################################
+evento=20240329
+ls 20*d.sac > lire;ls CAL*sac > lisi
+paste lire lisi > misfit.${evento}.txt
+cat misfit.${evento}.txt
+cat lire | wc -l; cat lisi | wc -l
+ls 20*d.sac | wc -l ; ls CAL*sac | wc -l
+/home/common/bin/misfit1 -i misfit.20240329.txt
+cat misfit.tempfile.txt
+
+mv misfit.tempfile.txt misfit.f.${evento}.txt
+
+awk 'FNR==NR {
+        coords[$1] = $3 " " $4;  
+        next;  
+    }
+    {
+        if ($1 in coords && $3 in coords) {
+            print $0, coords[$1], coords[$3];
+        } else {
+            print $0;
+        }
+    }
+' /home/francesco/dati/gmt-6.5.0/ionian/statx.txt misfit.f.${evento}.txt > misfit.fin.txt; cat misfit.fin.txt
+
+gnuplot:
+$plot "misfit.tempfile.txt" u 5 pt 7 ps 2
+
+20240329 20220908 20181025 20151117 20250416 20120704 20140405 20221012
+
+cd ~/dati/gmt-6.5.0/ionian/
+
+python qmis.py -M "misfit_norm_amp" -F /home/common/g.200.3st.24.imp/comuni/ondaS/ -E 20240329 -C "Normalized misfit - S phase"
+python qccr.py -M "cross_corr" -F /home/common/g.200.3st.24.imp/comuni/ondaS/ -E 20240329 -C "Crosscorrelation - S phase"
+cd ~/Immagini/
+rm *.cpt
+
+
+#RIMUOVERE LE CPT PRIMA DI ESEGUIRE GLI ALTRI DUE-----
+python qmis.py -M "misfit_norm_amp" -F /home/common/gre_2020/comuni/ondaS/ -E 20200321 -C "Normalized misfit - S phase" 
+python qccr.py -M "cross_corr" -F /home/common/gre_2020/comuni/ondaS/ -E 20200321 -C "Crosscorrelation - S phase"
+cd ~/Immagini/
+rm *.cpt
+#routine togli spazi in ogni file nella dir in cui esegui
+DIR="${1:-.}"
+find "$DIR" -depth -name "* *" -print0 | while IFS= read -r -d '' FILE; do
+	NEW_FILE=$(echo "$FILE" | tr -d ' ')
+	mv "$FILE" "$NEW_FILE" && echo "Renamed: $FILE -> $NEW_FILE"
+done
+rm *.cpt
+#definisci parametri paste together pdfs
+evento=20151117
+evento=20200321
+evento=20220908
+evento=20240329
+evento=20181025
+evento=20120704
+evento=20250416
+mv *.pdf ${evento}/
+cd ${evento}/
+
+python qmis.py -M "misfit_norm_amp" -F /home/common/gre.3st.20/comuni/ondaS/ -E 20200321 -C "Normalized misfit - S phase" 
+python qccr.py -M "cross_corr" -F /home/common/gre.3st.20/comuni/ondaS/ -E 20200321 -C "Crosscorrelation - S phase"
+#--------nm final---------------
+#NORTH:
+pdfjam Normalizedmisfit-Pphase_${evento}_North.pdf Crosscorrelation-Pphase_${evento}_North.pdf --nup 2x1 --landscape --outfile Ntop_${evento}.pdf
+pdfjam Normalizedmisfit-Sphase_${evento}_North.pdf Crosscorrelation-Sphase_${evento}_North.pdf --nup 2x1 --landscape --outfile Nbottom_${evento}.pdf
+pdfjam Ntop_${evento}.pdf Nbottom_${evento}.pdf --nup 1x2 --landscape --outfile N_${evento}.pdf
+pdfcrop --bbox "200 0 640 600" N_${evento}.pdf N_${evento}.pdf
+#EAST:
+pdfjam Normalizedmisfit-Pphase_${evento}_East.pdf Crosscorrelation-Pphase_${evento}_East.pdf --nup 2x1 --landscape --outfile Etop_${evento}.pdf
+pdfjam Normalizedmisfit-Sphase_${evento}_East.pdf Crosscorrelation-Sphase_${evento}_East.pdf --nup 2x1 --landscape --outfile Ebottom_${evento}.pdf
+pdfjam Etop_${evento}.pdf Ebottom_${evento}.pdf --nup 1x2 --landscape --outfile E_${evento}.pdf
+pdfcrop --bbox "200 0 640 600" E_${evento}.pdf E_${evento}.pdf
+#UPDOWN:
+pdfjam Normalizedmisfit-Pphase_${evento}_Vertical.pdf Crosscorrelation-Pphase_${evento}_Vertical.pdf --nup 2x1 --landscape --outfile Ztop_${evento}.pdf
+pdfjam Normalizedmisfit-Sphase_${evento}_Vertical.pdf Crosscorrelation-Sphase_${evento}_Vertical.pdf --nup 2x1 --landscape --outfile Zbottom_${evento}.pdf
+pdfjam Ztop_${evento}.pdf Zbottom_${evento}.pdf --nup 1x2 --landscape --outfile Z_${evento}.pdf
+pdfcrop --bbox "200 0 640 600" Z_${evento}.pdf Z_${evento}.pdf
+echo "fine. : )"
+
+FINE PROCEDURA
+#DIFFERENZE MISFIT
+python qdiff.py -M "deltachi" -F ./differences.txt -E 20240329 -C "Difference between models - P phase"
+
+
+python qdiff.py -M "deltachi" -F ./differences.txt -E 20240329 -C "Difference between models - S phase"
+
+python qdcc.py -M "deltaCC" -F ./differences.txt -E 20240329 -C "Difference between models - P phase"
+cd ~/Immagini/
+rm *.cpt
+python qdcc.py -M "deltaCC" -F ./differences.txt -E 20240329 -C "Difference between models - S phase"
+cd ~/Immagini/
+rm *.cpt
+
+DIR="${1:-.}"
+find "$DIR" -depth -name "* *" -print0 | while IFS= read -r -d '' FILE; do
+	NEW_FILE=$(echo "$FILE" | tr -d ' ')
+	mv "$FILE" "$NEW_FILE" && echo "Renamed: $FILE -> $NEW_FILE"
+done
+rm *.cpt
+
+pdfjam Differencebetweenmodels-Pphase_${evento}_North.pdf Differencebetweenmodels-Sphase_${evento}_North.pdf --nup 2x1 --landscape --outfile N_diff_${evento}.pdf
+
+pdfjam Differencebetweenmodels-Pphase_${evento}_East.pdf Differencebetweenmodels-Sphase_${evento}_East.pdf --nup 2x1 --landscape --outfile E_diff_${evento}.pdf
+
+pdfjam Differencebetweenmodels-Pphase_${evento}_Vertical.pdf Differencebetweenmodels-Sphase_${evento}_Vertical.pdf --nup 2x1 --landscape --outfile Z_diff_${evento}.pdf
+
+
+--------------------------PENZIERI---------------------
+////////////////////////////////////////////////////////
+/home/common/locali/2012/20120704111209/eqloc.tempiteorici.txt
+/home/common/catlidohdur0/eqloc.tempiteorici.txt
+/home/common/gre_2015/eqloc.tempiteorici.txt
+/home/common/gre_2018/eqloc.tempiteorici.txt
+/home/common/gre_2020/eqloc.tempiteorici.txt
+/home/common/gre_2022/eqloc.tempiteorici.txt
+/home/common/grecia_iclarc/eqloc.tempiteorici.txt
+/home/common/gre.3st.15/eqloc.tempiteorici.txt
+/home/common/g.200.3d.24/eqloc.tempiteorici.txt
+/home/common/c.3st.200.14.imp/eqloc.tempiteorici.txt
+/home/common/gre.3st.24/eqloc.tempiteorici.txt
+/home/common/gre.3st.18/eqloc.tempiteorici.txt
+/home/common/gre.3st.22/eqloc.tempiteorici.txt
+/home/common/gre.3st.20/eqloc.tempiteorici.txt
+/home/common/notoposila/eqloc.tempiteorici.txt
+/home/common/locali/2012/20120704111209/gcap/eqloc.tempiteorici.txt
+////////////////////////////////////////////////////////
+eqloc -i 20220908.eqloc.tteo.in -t  FATTO
+eqloc -i 20181025.eqloc.tteo.in -t FATTO
+
+
+eqloc -i 20221012.eqloc.tteo.in -t
+eqloc -i 20120704.eqloc.tteo.in -t
+eqloc -i 20250416.eqloc.tteo.in -t
+eqloc -i 20140405.eqloc.tteo.in -t
+eqloc -i 20151117.eqloc.tteo.in -t
+
+eqloc -i 20200321.eqloc.tteo.in -t
+eqloc -i 20220908.eqloc.tteo.in -t
+eqloc -i 20240329.eqloc.tteo.in -t
+
+/home/common/sintetici/statx.txt   # nome file coordinate (sta lat lon quota) 
+/home/common/locali/modello-calabria-eqloc.txt        # nome file modello di velocita'
+////////////////////////////////////////////////////////
+/home/common/catlidohdur0/doevt.20221012224455.sh
+/home/common/3d2025/comuni/doevt.2025.sh
+/home/common/3d2012/comuni/doevt.2012.sh
+/home/common/c.3st.200.14.imp/doevt.20140405102446.sh
+/home/common/grecia_iclarc/doevt.grecia2024.sh
+./home/common/gre.3st.15/doevt.20151117071008.sh
+./home/common/gre_2018/doevt.grecia2018.sh
+./home/common/gre_2022/doevt.20220908073624.sh
+./home/common/gre_2020/doevt.grecia2020.sh ok
+--------------------------------------------------------
+
+--------------------------------------------------------
+sudo apt-get install texlive-extra-utils
+confronto sintetici reali:
+
+hp c 0.2 n 2 p 1
+bp c 0.1 0.4 n 2 p 1
+a)ls *Z.semdc.sac | wc -l
+b)ls *Zd.sac | wc -l
+dc 11-64<-----risultato di a) l'11 significa 10 sismogrammi a figura
+dc 11-61<-----risultato di b) l'11 solito
+
+--------------------------------------------------------
+
+qstat -f | grep "exec_host"
+
+#TOPOGRAFIA PARAVIEW
+gmt nearneighbor /home/francesco/topocal/topocalabria.90mXYZ.dat -I0.01/0.01 -S0.05 -E0 \
+-R15.00000/18.00000/37.00000/40.00000 -G/home/francesco/topocal/topocal_fine.grd
+gmt grdconvert /home/francesco/topocal/topocal_fine.grd=gd:GTiff topocal_fine.tif
+
+#sorta 3 colonne
+sort -k1,1n -k2,2n -k3,3n test.xyz > k.xyz
+
+awk '{print $1, $2}' coste_calabria.csv | proj +proj=utm +zone=34 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" | paste - coste_calabria.csv > coste.tmp
+
+#skippa header
+awk 'NR>4 { print $1, $2, $3}' 114_144_88_IONIO2012.xyz > l.xyz
+awk '{ print $1, $2, $3}' topocalabria.90mXYZ.dat > j.xyz
+awk 'NR>12000
+
+saclst kuser2 f 20221012224419.ROI.HHZd.sac
+
+++++++++++++++++++++CONVERTI COORDINATE SORGENTE CMTSOLUTION+++++++++++++++++++++++++++
+
+
+export LC_NUMERIC=C
+
+read -p "Inserisci latitudine: " lat
+read -p "Inserisci longitudine: " lon
+
+echo "$lon $lat" | proj +proj=utm +zone=34 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f"
+
+
+set title "eventi grecia"
+set xlabel "X"
+set ylabel "Y"
+plot "mesh_gre.dat" using 1:2 with lines lc rgb "black" title "Model", \
+     "-" using 1:2 with points pt 7 ps 2 lc rgb "red" title "eqs"
+211386	43836	20070325
+267768	-103259	20090216
+202961	31409	20140203
+212854	87168	20151117
+231505	-48857	20181025
+217107	154975	20200321
+189002	-3794	20220908
+293268	-69627	20240329
+e
+
+splot 'test3.dat' using 1:2:3 with points palette pointtype 7
+
+#shell vs mesh
+plot 'fin.m.dat' u 1:2, "" u 1:($7>500 ? $2:1/0)
+awk '{$7>500 print $1, $2, $3}' m.cal.dat > m.cal.nog.dat
+awk '{$3>=0 print $1, $2, $3}' fin.m.nog.dat > m.cal.nog.dat
+
+
+==========================MESH CALABRIA==========================
+#!/bin/bash
+export LC_NUMERIC=C
+#coordinate ancora in gradi
+#CHECK PER STABILITA' NEL MODELLO DI VELOCITA' E DENSITA'(IN BASE A DOMINIO ELASTICO/ACUSTICO)
+awk '{if ($4 <= 4147.50) print $1, $2, $3,  "4147", $5, $6, $7, $8; else print} ' griglia3D.mod3D_m.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4, "2370", $6, $7, $8; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, "2500", $7, $8; else print}' test2.dat > fin.mod.dat
+awk '{if ($3 >= 1400) print $1, $2, "1400", $4, $5, $6, $7, $8; else print} ' fin.mod.dat > fin.m.dat
+awk '{if ($3>=0) print $1, $2, $3}' fin.m.dat > m.cal.dat
+
+TOMO: xmin,xmax: 473202.643614, 750137.024461, ymin,ymax: 4061593.23736, 4464817.72922, zmin,zmax: -112500, 1400.0
+
+
+export LC_NUMERIC=C paste <(awk '{print $1, $2}' fin.m.dat) | proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" < fin.m.dat | LC_NUMERIC=C awk '{print $1, $2, $3, $4, $5, $6, $7, $8}' > m.c.dat 
+
+awk '{if ($3 >= 1400) print $1, $2, "1400"; else print} ' test3.dat > m.cal.dat #MESH
+
+export LC_NUMERIC=C paste <(awk '{print $1, $2}' fin.m.dat) | proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" < fin.m.dat | LC_NUMERIC=C awk '{print $1, $2, $3, $4, $5, $6, $7, $8}' > fin.dat #MODELLO
+#coordinate ora in utm
+rm test.dat test2.dat test3.dat fin.mod.dat fin.m.dat m.c.dat
+==============================================================================
+awk '{if ($3>=0) print $1, $2, $3}' fin.m.dat > test3.dat
+awk '{if ($3 >= 1400) print $1, $2, "1400"; else print} ' test3.dat > m.cal.dat #MESH
+
+rm test.dat test2.dat fin.mod.dat test3.dat
+echo "rho"
+awk 'NR==1 {max=$6} $6 > max {max =$6} END {print max}' fin.m.dat
+awk 'NR==1 {min=$6} $6 < min {min =$6} END {print min}' fin.m.dat
+echo "vs"
+awk 'NR==1 {max=$5} $5 > max {max =$5} END {print max}' fin.m.dat
+awk 'NR==1 {min=$5} $5 < min {min =$5} END {print min}' fin.m.dat
+echo "vp"
+awk 'NR==1 {max=$4} $4 > max {max =$4} END {print max}' fin.m.dat
+awk 'NR==1 {min=$4} $4 < min {min =$4} END {print min}' fin.m.dat
+2370 ; 8400
+==============================================================================
+awk '{if ($4 <= 4147.50) print $1, $2, $3,  "4147", $5, $6; else print} ' griglia3D.mod3D_m.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4, "2370", $6; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, "2500"; else print}' test2.dat > fin.mod.dat
+awk '{if ($3 >= 1400) print $1, $2, "1400", $4, $5, $6; else print} ' fin.mod.dat > fin.m.dat
+awk '{if ($3>=0) print $1, $2, $3}' fin.m.dat > m.cal.dat
+
+==========================MESH CALABRIA==========================
+#!/bin/bash
+export LC_NUMERIC=C
+#coordinate ancora in gradi
+#CHECK PER STABILITA' NEL MODELLO DI VELOCITA' E DENSITA'(IN BASE A DOMINIO ELASTICO/ACUSTICO)
+awk '{if ($4 <= 4147.50) print $1, $2, $3,  "4147", $5, $6, $7, $8; else print} ' griglia3D.mod3D_m.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4,  " 2370.0 ", $6, $7, $8 ; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, " 2500 ", $7, $8; else print}' test2.dat > test3.dat
+
+awk '{if ($3 >= 1400) print $1, $2, "1400 ", $4, $5, $6, $7, $8; else print} ' test3.dat > fin.m.dat
+awk '$3>0 {print $1, $2, $3}' fin.m.dat > m.cal.dat
+rm test.dat test2.dat test3.dat 
+awk '{print $1, $2}' m.cal.dat | proj +proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m -f "%.1f" > utm.tmp
+paste utm.tmp <(awk '{print $3, $4, $5, $6, $7, $8}' m.cal.dat) > m.c.dat # mesh
+paste utm.tmp <(awk '{print $3, $4, $5, $6, $7, $8}' fin.m.dat) > fin.dat # modello
+
+splot 'm.cal.dat' using 1:2:3 with points palette pointtype 7 pointsize 1
+plot 'fin.m.dat' u 1:3
+plot 'fin.m.dat' u 3:4
+plot 'fin.m.dat' u 3:5
+plot 'fin.m.dat' u 3:6
+plot 'fin.m.dat' u 3:7
+plot 'fin.m.dat' u 3:8
+#coordinate ora in utm
+rm utm.tmp m.cal.dat fin.m.dat test.dat
+==============================================================================
+tail griglia3D.mod3D.dat | awk '{print $1, $2, -112500, $4, $5, $6, $7, $8}' > r.temp
+cat r.temp >> griglia3D.mod3D.dat
+
+awk '$3>0 {print $1, $2, $3}' utm.xyz > u.xyz; rm utm.xyz
+gdal_translate -a_srs EPSG:32633 /home/francesco/topocal/topocal_fine.grd i.tif
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#------MODELLO 3d + MESH ------#
+input: modello di velocità
+output: due file .dat per creare la mesh e per l'input del programma .py che crea il file .xyz
+
+Si parte dal modello di velocità .dat. Bisogna generare la mesh e tagliare a 1400 metri la topografia. Seleziono da griglia.00akm.dat
+Creo prima il modello in .dat che verrà letto con GEST.py per generare il .xyz che verrà letto e interpolato sulla mesh generata a sua volta da mesh.dat.
+mesh.dat viene generata selezionando tutte le quote al di sopra di -10. Viene poi letta nel notebook e crea la mesh fino alla profondità (CONGRUENTE CON IL MODELLO DI VELOCITA').
+
+awk '{if ($1 >= 15.9500 && $1 <= 17.1500 && $2 >= 38.7000 && $2 <= 39.65) print $1, $2, $3; else print} ' griglia3D.mod3D.dat > mesh_sila.dat
+#SELEZIONA L'AREA DELLA MESH/MODELLO
+#CHECK PER STABILITA' NEL MODELLO DI VELOCITA' E DENSITA'(IN BASE A DOMINIO ELASTICO/ACUSTICO)
+awk '{if ($4 <= 4147.50) print $1, $2, $3,  " 4147 ", $5, $6; else print} ' iclarc.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4,  " 2370.0 ", $6; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, " 2500 "; else print}' test2.dat > test3.dat
+#CLIPPA TOPOGRAFIA a 1400 m
+awk '{if ($3 >= 1400) print $1, $2, "1400 ", $4, $5, $6; else print} ' test3.dat > final_iclarc3d.dat
+#CONVERTI IN UTM LA LAT E LONG DEL MODELLO
+export LC_NUMERIC=C paste <(awk '{print $1, $2}' final_iclarc3d.dat) | proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" < final_iclarc3d.dat | LC_NUMERIC=C awk '{print $1, $2 , $3 , $4, $5, $6}' > finale_mod.dat
+
+sila notopo:
+Min Lon: 581504.914365
+Max Lon: 686835.225442
+Min Lat: 4289462.80135
+Max Lat: 4391120.83093
+-----------------------
+Min Lon: 15.95
+Max Lon: 17.15
+Min Lat: 38.74
+Max Lat: 39.65
+awk '($1 >= 15.95 && $1 <= 17.15) && ($2 >= 38.74 && $2 <= 39.65)' inputfile.dat > selected_region.dat
+
+finale_mod.dat would be the file used for the interpolation INSIDE GEST.PY
+#SELEZIONA LO STRATO AL DI SOPRA DI -10M PER CREARE IL LAYER DELLA TOPOGRAFIA
+awk '$3>-10 {print $1, $2, $3}' finale_mod.dat > mesh.dat
+
+#CHECK PER VERIFICARE LA CONSISTENZA DEL MODELLO E DELLO STRATO DI TOPOGRAFIA DA CUI GENERIAMO LA MESH (LE DIMENSIONI DEL PARALLELEPIPEDO DEVONO COMBACIARE!)
+awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
+     {
+       if ($1 < minlon) minlon = $1;
+       if ($1 > maxlon) maxlon = $1;
+       if ($2 < minlat) minlat = $2;
+       if ($2 > maxlat) maxlat = $2;
+     }
+     END {
+       print "Min Lon:", minlon;
+       print "Max Lon:", maxlon;
+       print "Min Lat:", minlat;
+       print "Max Lat:", maxlat;
+     }' fin.dat
+
+awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
+     {
+       if ($1 < minlon) minlon = $1;
+       if ($1 > maxlon) maxlon = $1;
+       if ($2 < minlat) minlat = $2;
+       if ($2 > maxlat) maxlat = $2;
+     }
+     END {
+       print "Min Lon:", minlon;
+       print "Max Lon:", maxlon;
+       print "Min Lat:", minlat;
+       print "Max Lat:", maxlat;
+     }' m.c.dat
+# if they match create mesh, if they don't the interpolation in gest.py failed.
+#CREA LA MESH CON IL NOTEBOOK
+
+#STATIONS CONVERTI IN UTM (STAT, NET, lat, long, elev, burial=0)
+export LC_NUMERIC=C
+awk '{print $3, $2}' stazioni.francesco.txt | \
+proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.3f" | \
+paste - <(awk '{print $1, $4}' stazioni.francesco.txt) | \
+awk '{print "CAL", $3, $1, $2, $4}' > stations
+
+awk '{tmp=$4; $1=$4; $1=tmp; print}' stations > astations
+awk '{tmp=$1; $1=$2; $2=tmp; print}' astations > STATION
+
+#ONE CAN IMPLEMENT ITS OWN STF, DEPENDING ON HOW THE SOURCE MECHANISM MUST BE MODELLED.
+STF:
+dt = 0.0025                 # time step size in seconds
+filename = 'stf_box.txt'     # input STF file (one column)
+filename = 'stf_hybrid.txt'
+plot filename using ($0*dt):1 with lines title 'STF' lw 2 lc rgb 'blue'
+
+
+triple layer:topotriplelayer.utm.dat
+#start finish of line
+sed -n '10950000,10950100p' tomography_model.xyz 
+
+wc -l tomography_model.xyz
+
+#FORMAT
+ORIG_X  ORIG_Y ORIG_Z END_X END_Y END_Z
+SPACING_X SPACING_Y SPACING_Z
+NX NY NZ
+VP_MIN VP_MAX VS_MIN VS_MAX RHO_MIN RHO_MAX
+-----------------------
+#HEADER COMPUT INFOS
+-----------------------
+awk 'NR==1 {x_min=$1; x_max=$1; y_min=$2; y_max=$2; z_min=$3; z_max=$3}
+     {if($1 < x_min) x_min=$1; if($1 > x_max) x_max=$1;
+      if($2 < y_min) y_min=$2; if($2 > y_max) y_max=$2;
+      if($3 < z_min) z_min=$3; if($3 > z_max) z_max=$3}
+     END {printf "%.2f %.2f %.2f %.2f %.2f %.2f\n", x_min, y_min, z_min, x_max, y_max, z_max}' finale_mod.dat
+500000,00 4094872,00 -10000,00 766962,00 4434289,00 998,00
+
+# SPACING_X
+awk '{print $1}' finale_mod.dat | sort -n | uniq | awk 'NR==1{prev=$1; next} {d=$1-prev; if(NR==2 || d<dx) dx=d; prev=$1} END{printf "%.6f\n", dx}'
+# SPACING_Y
+awk '{print $2}' finale_mod.dat | sort -n | uniq | awk 'NR==1{prev=$1; next} {d=$1-prev; if(NR==2 || d<dy) dy=d; prev=$1} END{printf "%.6f\n", dy}'
+# SPACING_Z
+awk '{print $3}' finale_mod.dat | sort -n | uniq | awk 'NR==1{prev=$1; next} {d=$1-prev; if(NR==2 || d<dz) dz=d; prev=$1} END{printf "%.6f\n", dz}'
+#NX NY NZ
+awk '{print $1}' finale_mod.dat | sort -n | uniq | wc -l  # NX
+awk '{print $2}' finale_mod.dat | sort -n | uniq | wc -l  # NY
+awk '{print $3}' finale_mod.dat | sort -n | uniq | wc -l  # NZ
+
+#INCOLLA I DUE FILE: NO TOPO + TOPO
+source="tomo_topo.xyz"
+output="3dmodelnotopog.xyz"
+awk -F'  +' '{print $1, $2, $3, $4, $5, $6}' "$source" >> "$output"
+
+sed -n '3000000,3000050p' griglia3D.mod3D_m.dat
+
+set title "vertical section at Y = 18110"
+set xlabel "X"
+set ylabel "Z"
+set grid
+set size ratio -1
+plot "griglia3D.mod3D_m.dat" u ($2==18110.7646081 ? $1 : 1/0):3 "gray" title "Section at Y=18110", "" u ($2==18110.7646081 ? $1 : 1/0):($7 > 800 ? $3 : 1/0) title "Shell (col7 > 800)"
+
+plot "griglia3D.mod3D_m.dat" using ($2==18110.7646081 ? $1 : 1/0):3 w p title "Section at Y=18110", "" using ($2==18110.7646081 ? $1 : 1/0):($7 > 800 ? $3 : 1/0) w p title "Shell (col7 > 800)"
+
+plot "griglia3D.mod3D_m.dat" using 1:3 w p title "All Points", "" using ($7 > 800 ? $1 : 1/0):($7 > 800 ? $3 : 1/0) w p title "Shell (col7 > 800)"
+
+
+ORIG_X  ORIG_Y ORIG_Z END_X END_Y END_Z
+SPACING_X SPACING_Y SPACING_Z
+NX NY NZ
+VP_MIN VP_MAX VS_MIN VS_MAX RHO_MIN RHO_MAX
+
+
+modtemp2.utm.fixed.dat:
+vp_min: 1500.000 vp_max: 8400.000
+vs_min: 0.000 vs_max: 4665.000
+rho_min: 1050.000 rho_max: 3475.000
+topografia:
+vp_min: 3800.00 vp_max: 3800.00 
+vs_min: 6581.79 vs_max: 6581.79 
+rho_min: 2500.00 rho_max: 2500.00
+
+
+#SOURCETIME FUNCTION
+style1="lines lt 4 lw 2"
+set xrange [-5:40]
+set size ratio 0.5
+set xlabel 'Time (s)
+set xlabel 'Amplitude'
+plot 'plot_source_time_function.txt' title "value" with @style1 
+# ZOOM IN PLOT
+set output 'stfunct.eps'
+set title 'CMT point-like souce time function'
+set size ratio 0.5
+set linestyle 4 lt 6 lw 1
+set xlabel 'Time (s)'
+set ylabel 'Amplitude'
+set xrange [-4.2:10]
+set yrange [-0.56:1.2]
+set xtics 5
+set ytics 1
+set multiplot
+set origin 0.0,0.0
+set size 1.0,1.0
+plot 'plot_source_time_function.txt' title "value" with lines lt 4 lw 2
+
+set origin 0.28,0.39
+set size 0.75,0.395
+set xrange [-0.95:1.55]
+set yrange [-0.95 : 0.999]
+set ytics 0.25
+set xtics 0.5
+unset title 
+unset xlabel
+unset ylabel
+#replot
+plot 'plot_source_time_function.txt' title "zoom in" with l ls 4
+unset multiplot
+
+
+sorgenti: 20120704 111209.93 37.47470 16.79880 38.400 4.50
+Magnitude	4.8
+Region	IONIAN SEA
+Date time	2012-07-04 11:12:12.8 UTC
+Location	37.691 ; 16.871
+Depth	40 km
+Distance	116 km ESE of Reggio Calabria, Italy / pop: 169,000 / local time: 13:12:12.8 2012-07-04
+82 km SE of Siderno, Italy / pop: 15,600 / local time: 13:12:12.8 2012-07-04
+
+
+20250416 012608 37.58600 16.17000 39.000 4.70
+Magnitude	4.7
+Region	IONIAN SEA
+Date time	2025-04-16 01:26:08.7 UTC
+Location	37.586 ; 16.170
+Depth	39 km
+Distance	73 km SE of Reggio Calabria, Italy / pop: 169,000 / local time: 03:26:08.7 2025-04-16
+47 km SE of San Carlo-Condofuri Marina, Italy / pop: 4,100 / local time: 03:26:08.7 2025-04-16
+
+
+Terremoto di Catanzaro Lido:
+Magnitude	4.3
+Region	SOUTHERN ITALY
+Date time	2022-10-12 22:44:55.0 UTC
+Location	38.836 ; 16.653
+Depth	35 km
+Distance	118 km NE of Reggio Calabria, Italy / pop: 169,000 / local time: 00:44:55.0 2022-10-13
+7 km SE of Catanzaro, Italy / pop: 78,900 / local time: 00:44:55.0 2022-10-13
+https://www.emsc-csem.org/Earthquake_information/earthquake.php?id=1178343
+
+Terremoto pietrapaola:
+Magnitude	5.1
+Region	SOUTHERN ITALY
+Date time	2024-08-01 19:43:20.4 UTC
+Location	39.482 ; 16.784
+Depth	21 km
+Distance	116 km S of Taranto, Italy / pop: 181,000 / local time: 21:43:20.4 2024-08-01
+13 km SSE of Mirto, Italy / pop: 8,600 / local time: 21:43:20.4 2024-08-01
+
+#CONVERSIONE IN MASSA IN SAC
+ls CAL*semd | awk '{print "semd2sac -i "$1}' > converti
+chmod +x converti
+./converti
+
+awk '{if ($4 <= 4147.50) print $1, $2, $3, "4147.0", $5, $6, $7, $8; else print} ' griglia3D.mod3D_m.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4, "2370.0", $6, $7, $8; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, "2500.0", $7, $8; else print}' test2.dat > f_mod.dat
+rm test.dat test2.dat  
+awk '{if ($3 >= 1400) print $1, $2, "1400", $4, $5, $6, $7, $8; else print} ' f_mod.dat > fin.m.dat
+awk '$3>=0 {print $1, $2, $3, $4, $5, $6, $7, $8}' f_mod.dat > mesh.dat
+
+
+!/bin/bash
+export LC_NUMERIC=C
+awk '{print $1, $2}' griglia3D.mod3D.dat | \
+proj +proj=utm +zone=34 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" | \
+paste - griglia3D.mod3D.dat > projected_all_34N.tmp
+awk '{print $1, $2, $5, $6, $7, $8}' projected_all_34N.tmp > finale_mod.dat
+awk '{if ($4 <= 4147.50) print $1, $2, $3, " 4147 ", $5, $6; else print} ' finale_mod.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4, " 2370.0 ", $6; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, " 2500 "; else print}' test2.dat > f_mod.dat
+rm projected_all_34N.tmp test.dat test2.dat finale_mod.dat
+===========================================================
+20240329  071249  37.3250  21.3100   35.00   5.9  
+20220908  073624.59  37.9459  20.1511   10.00   5.6  
+20200321  004953.127000  39.3697  20.5203   13.50   5.9
+20190205  022610.55  39.0744  20.6433   13.90   5.2   -
+20181025  225451  37.530  20.620  10  6.8
+#----------------------------------------#
+20151117  071008  38.760  20.450  10  6.5
+20140203  030845  38.260  20.320   2  6.0
+20140126  135543  38.190  20.410  18  6.1
+20090216  231636.16  37.0300  21.0100   10.00   5.7
+===========================================================
+211386	43836	20070325	135759	16	6
+267768	-103259	20090216	231636	10	6
+211036	23846	20140126	135543	18	6
+202961	31409	20140203	30845	2	6
+212854	87168	20151117	71008	10	6
+231505	-48857	20181025	225451	10	7
+217107	154975	20200321	4953	14	6
+189002	-3794	20220908	73625	10	6
+293268	-69627	20240329	71249	35	6
+
+PDEW2024  3 29  7 12 48.30  37.3200   21.2800  29.4 0.0 5.8 SOUTHERN GREECE                         
+event name:     202403290712A  
+time shift:      0.0000
+half duration:   3.03000
+latitude:       -69627
+longitude:      293268
+depth:          28.8400
+Mrr:       3.290000e+23
+Mtt:      -5.980000e+24
+Mpp:       5.650000e+24
+Mrt:       1.500000e+24
+Mrp:      -1.910000e+24
+Mtp:      -4.030000e+24
+PDEW2022  9  8  7 36 23.20  37.8900   20.1000  10.5 0.0 5.5 IONIAN SEA                              
+event name:     202209080736A  
+time shift:      4.6300
+half duration:   1.4000
+latitude:       -3794
+longitude:      189002
+depth:          15.0000
+Mrr:       9.160000e+22
+Mtt:       2.080000e+24
+Mpp:      -2.170000e+24
+Mrt:       3.310000e+22
+Mrp:      -1.140000e+24
+Mtp:      -8.400000e+22
+PDEW2020  3 21  0 49 51.40  39.3600   20.6400  10.0 0.0 5.7 GREECE-ALBANIA BORDER RE                
+event name:     202003210049A  
+time shift:      0.0000
+half duration:   3.3000
+latitude:       154975
+longitude:      217107
+depth:          13.5700
+Mrr:       4.230000E+24
+Mtt:      -1.730000E+24
+Mpp:      -2.500000E+24
+Mrt:       2.430000E+24
+Mrp:      -4.530000E+22
+Mtp:       2.230000E+24
+PDEW2018 10 25 22 54 52.60  37.5200   20.5600  14.0 0.0 6.8 IONIAN SEA         
+event name:     201810252254A  
+time shift:      0.0000
+half duration:   5.2000
+latitude:       -48857
+longitude:      231505
+depth:          16.0000
+Mrr:       3.860000e+25
+Mtt:       2.750000e+25
+Mpp:      -6.610000e+25
+Mrt:       1.760000e+26
+Mrp:      -9.630000e+25
+Mtp:       1.090000e+26
+PDEW2015 11 17  7 10  7.30  38.6700   20.6000  11.0 0.0 6.5 GREECE                                  
+event name:     201511170710A  
+time shift:      0.0000
+half duration:   4.3000
+latitude:       87168
+longitude:      212854
+depth:          15.0000
+Mrr:       9.970000e+23
+Mtt:       4.510000e+25
+Mpp:      -4.610000e+25
+Mrt:       2.910000e+25
+Mrp:      -1.120000e+25
+Mtp:       4.540000e+25
+PDEW 2014 04 05 10 24 46.10  38.820 17.180  64.0  0.0  4.8 SOUTHERN ITALY
+event name:     20140405_0000014
+time shift:         0.0000
+half duration:      0.60000
+latitude:             31409
+longitude:            202961
+depth:                64.0000
+Mrr:             1.470000E+23
+Mtt:            -0.920000E+23
+Mpp:            -0.550000E+23
+Mrt:             0.4003000E+23
+Mrp:            -0.590000E+23
+Mtp:            -1.140000E+23
+
+
+PDEW 2014 04 05 10 24 46.10  38.820 17.180  64.0  0.0  4.8 SOUTHERN ITALY
+event name:     20140405_0000014
+time shift:         0.0000
+half duration:      0.60000
+latitude:             4299059.73
+longitude:            689257.25
+depth:                64.0000
+Mrr:             1.470000E+23
+Mtt:            -0.920000E+23
+Mpp:            -0.550000E+23
+Mrt:             0.4003000E+23
+Mrp:            -0.590000E+23
+Mtp:            -1.140000E+23
+
+
+==================================================================
+PDEW 2025 04 16 10 26 08.74  37.0000 16.0000  51.0  0.0  4.7 IONIAN SEA
+event name:     20250416_0000012
+time shift:         0.0000
+half duration:      0.60000
+latitude:             4160525.8492
+longitude:            603299.5195
+depth:                51.0000
+Mrr:             5.331000E+22
+Mtt:            -2.948000E+22
+Mpp:            -2.383000E+22
+Mrt:            -1.103000E+22
+Mrp:            -1.534000E+22
+Mtp:            -5.417000E+22
+
+PDEW 2012 07 04 11 12 09.93   37.47470  16.79880  38.4  0.0  4.5 IONIAN SEA
+event name:     20120704_0000012
+time shift:         0.0000
+half duration:      0.50000
+latitude:             4149053.8572
+longitude:            659056.5459
+depth:                30.000
+Mrr:             0.212000E+22
+Mtt:             0.822000E+22
+Mpp:             0.371000E+22
+Mrt:             0.136000E+22
+Mrp:            -0.306000E+22
+Mtp:            -0.348000E+22
+===============================UTM STATIONS=========================================
+PIPPO CAL 4300430.49 643460.26 0 0
+ACIS CAL 4357339.717 605699.409 210 0
+AGAN CAL 4239761.883 606738.603 170 0
+CARP CAL 4334006.210 613488.515 685 0
+CET2 CAL 4375891.352 582044.179 675 0
+CHCE CAL 4282656.224 623001.958 550 0
+CIRK CAL 4361909.537 677526.844 300 0
+CMPN CAL 4363613.666 657580.697 535 0
+CNDF CAL 4206521.097 575252.855 357 0
+CO22 CAL 4372255.031 612220.702 430 0
+CUP2 CAL 4360470.814 633337.125 1241 0
+CUTR CAL 4321244.963 679517.472 170 0
+FALC CAL 4347524.565 593123.041 560 0
+FERC CAL 4256648.699 598431.042 460 0
+GERV CAL 4350321.531 606146.564 310 0
+GIMI CAL 4314331.840 633199.314 400 0
+GIOM CAL 4249239.194 596935.397 550 0
+GIOT CAL 4252017.073 581956.622 80 0
+LADO CAL 4350158.654 670727.035 488 0
+LARA CAL 4348103.803 607209.447 470 0
+LATT CAL 4366531.494 605826.646 200 0
+LC22 CAL 4421156.011 583551.364 550 0
+MANE CAL 4340024.122 615488.883 825 0
+MC32 CAL 4355918.101 622958.983 1380 0
+MCDA CAL 4320784.681 659309.483 305 0
+MMN1 CAL 4415673.598 584570.006 957 0
+MMN CAL 4416110.094 584692.580 878 0
+MMN9 CAL 4416282.723 589795.461 1088 0
+MOKA CAL 4415707.029 598391.562 815 0
+MUGA CAL 4264057.018 615272.774 970 0
+OPPI CAL 4235982.191 588357.628 770 0
+RICA CAL 4275406.972 574875.084 240 0
+ROI CAL 4381406.727 634784.315 605 0
+SCAI CAL 4266189.953 632283.561 450 0
+SCAN CAL 4333922.399 671804.727 280 0
+SERA CAL 4327163.782 597335.785 370 0
+SIMB CAL 4273963.475 615068.400 810 0
+SMIN CAL 4314493.284 606399.378 540 0
+SPDC CAL 4264820.196 598687.477 300 0
+SPNT CAL 4335293.425 631899.205 1280 0
+SPS2 CAL 4350266.004 615369.507 704 0
+UC01 CAL 4292824.203 610328.764 327 0
+VBL2 CAL 4280820.790 596407.223 530 0
+ALB1 CAL 4320628.202 638276.529 748 0
+ATN CAL 4223611.912 540712.763 1130 0
+BRICA CAL 4286634.091 589453.643 47 0
+BULG CAL 4436516.116 532195.018 815 0
+CAR1 CAL 4345596.494 604523.635 680 0
+CEL CAL 4235074.271 578204.560 702 0
+CELI CAL 4362552.077 629908.773 1290 0
+CUC CAL 4427387.512 569617.544 637 0
+GIZZ CAL 4315231.952 604614.243 713 0
+GMB1 CAL 4225248.381 571641.678 1198 0
+GRI CAL 4297996.222 623272.019 510 0
+GRIS CAL 4399303.816 573095.764 551 0
+JOPP CAL 4273516.085 577108.962 500 0
+MPAZ CAL 4201089.272 588442.950 496 0
+MPNC CAL 4222128.490 530913.223 479 0
+MSCL CAL 4231851.404 569141.328 893 0
+MSRU CAL 4235218.085 544467.121 408 0
+MTTG CAL 4206390.068 561448.892 484 0
+NICCA CAL 4268029.123 581778.534 240 0
+ORI CAL 4434421.030 623716.352 375 0
+PIPA CAL 4372189.091 656158.993 479 0
+PLAC CAL 4256658.477 625507.412 602 0
+SALB CAL 4414994.545 615093.059 1200 0
+SDT2 CAL 4408181.898 572908.465 248 0
+SELL CAL 4316150.376 641000.441 633 0
+SERS CAL 4322117.047 646149.339 1221 0
+SICLA CAL 4234494.009 562512.618 10 0
+SOI CAL 4214464.730 592468.600 305 0
+TDS CAL 4390887.666 614743.186 244 0
+TIP CAL 4338157.566 651873.916 789 0
+SCTE CAL 4441557.048 795703.149 150 0
+BIDON CAL 4422745.191 624375.947 958 0
+CNESE CAL 4416566.077 592699.337 1547 0
+FRASC CAL 4410554.115 608346.592 559 0
+LAICA CAL 4422494.130 583293.206 350 0
+SHEVA CAL 4407909.857 599946.381 605 0
+TNOVA CAL 4425710.625 607688.372 1127 0
+ZIDIL CAL 4404340.533 607864.092 451 0
+T1811 CAL 4381425.717 652181.969 226 0
+T1812 CAL 4371635.852 629127.902 1131 0
+T1813 CAL 4353161.008 650969.308 1211 0
+T1886 CAL 4350486.941 670404.021 524 0
+===============================LAMBERT STATIONS=========================================
+EPIC CAL LAT(2)COL LONG(1col) 0 0
+ACIS CAL 152292 -152776 210 0
+AGAN CAL 34749 -155581 170 0
+CARP CAL 128715 -145757 685 0
+CET2 CAL 171612 -175811 675 0
+CHCE CAL 77086 -137930 550 0
+CIRK CAL 154493 -80843 300 0
+CMPN CAL 156855 -100718 535 0
+CNDF CAL 2550 -188129 357 0
+CO22 CAL 166985 -145768 430 0
+CUP2 CAL 154513 -125050 1241 0
+CUTR CAL 113796 -80193 170 0
+FALC CAL 142894 -165668 560 0
+FERC CAL 51896 -163333 460 0
+GERV CAL 145263 -152559 310 0
+GIMI CAL 108407 -126703 400 0
+GIOM CAL 44540 -165069 550 0
+GIOT CAL 47804 -179949 80 0
+LADO CAL 142976 -88025 488 0
+LARA CAL 143011 -151570 470 0
+LATT CAL 161475 -152347 200 0
+LC22 CAL 216812 -172816 550 0
+MANE CAL 134664 -143560 825 0
+MC32 CAL 150304 -135572 1380 0
+MCDA CAL 113999 -100400 305 0
+MMN1 CAL 211297 -171978 957 0
+MMN CAL 211730 -171841 878 0
+MMN9 CAL 211734 -166734 1088 0
+MOKA CAL 210875 -158160 815 0
+MUGA CAL 58751 -146261 970 0
+OPPI CAL 31569 -174074 770 0
+RICA CAL 71412 -186265 240 0
+ROI CAL 175389 -122914 605 0
+SCAI CAL 60328 -129192 450 0
+SCAN CAL 126716 -87483 280 0
+SERA CAL 122406 -162125 370 0
+SIMB CAL 68658 -146142 810 0
+SMIN CAL 109446 -153481 540 0
+SPDC CAL 60054 -162811 300 0
+SPNT CAL 129398 -127315 1280 0
+SPS2 CAL 144904 -143343 704 0
+UC01 CAL 87661 -150263 327 0
+VBL2 CAL 76120 -164568 530 0
+ALB1 CAL 114533 -121423 748 0
+ATN CAL 20756 -222097 1130 0
+BRICA CAL 82157 -171328 47 0
+BULG CAL 233856 -223659 815 0
+CAR1 CAL 140593 -154337 680 0
+CEL CAL 30992 -184251 702 0
+CELI CAL 156705 -128408 1290 0
+CUC CAL 223500 -186542 637 0
+GIZZ CAL 110243 -155241 713 0
+GMB1 CAL 21385 -191130 1198 0
+GRI CAL 92407 -137159 510 0
+GRIS CAL 195310 -183988 551 0
+JOPP CAL 69449 -184094 500 0
+MPAZ CAL -3308 -175122 496 0
+MPNC CAL 19592 -231940 479 0
+MSCL CAL 28066 -193414 893 0
+MSRU CAL 32234 -217966 408 0
+MTTG CAL 2868 -201931 484 0
+NICCA CAL 63813 -179605 240 0
+ORI CAL 228746 -132224 375 0
+PIPA CAL 165471 -101856 479 0
+PLAC CAL 51024 -136274 602 0
+SALB CAL 209612 -141487 1200 0
+SDT2 CAL 204191 -183883 248 0
+SELL CAL 109969 -118848 633 0
+SERS CAL 115762 -113507 1221 0
+SICLA CAL 30923 -199953 10 0
+SOI CAL 9930 -170665 305 0
+TDS CAL 185526 -142633 244 0
+TIP CAL 131604 -107259 789 0
+SCTE CAL 230115 39881 150 0
+BIDON CAL 217053 -131952 958 0
+CNESE CAL 211922 -163822 1547 0
+FRASC CAL 205396 -148378 559 0
+LAICA CAL 218158 -173030 350 0
+SHEVA CAL 203029 -156863 605 0
+TNOVA CAL 220569 -148536 1127 0
+ZIDIL CAL 199200 -149065 451 0
+T1811 CAL 174834 -105526 226 0
+T1812 CAL 165810 -128889 1131 0
+T1813 CAL 146627 -107670 1211 0
+T1886 CAL 143314 -88337 524 0
+
+#------MODELLO 3d + MESH ------#
+input: modello di velocità
+output: due file .dat per creare la mesh e per l'input del programma .py che crea il file .xyz
+
+Si parte dal modello di velocità .dat. Bisogna generare la mesh e tagliare a 1400 metri la topografia. Seleziono da griglia.00akm.dat
+Creo prima il modello in .dat che verrà letto con GEST.py per generare il .xyz che verrà letto e interpolato sulla mesh generata a sua volta da mesh.dat.
+mesh.dat viene generata selezionando tutte le quote al di sopra di -10. Viene poi letta nel notebook e crea la mesh fino alla profondità (CONGRUENTE CON IL MODELLO DI VELOCITA').
+
+#SELEZIONA L'AREA DELLA MESH/MODELLO
+awk '$1 >= 15.200 && $1 <= 17.800 && $2 >= 37.000 && $2 <= 40.000' griglia3D.mod3Da.dat > iclarc.dat
+#parti da qui
+#CHECK PER STABILITA' NEL MODELLO DI VELOCITA' E DENSITA'(IN BASE A DOMINIO ELASTICO/ACUSTICO)
+awk '{if ($4 <= 4147.50) print $1, $2, $3,  " 4147 ", $5, $6; else print} ' griglia3D.mod3Da.dat > test.dat
+awk '{if ($5 <= 2370) print $1, $2, $3, $4,  " 2370.0 ", $6; else print} ' test.dat > test2.dat
+awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, " 2500 "; else print}' test2.dat > test3.dat
+#CLIPPA TOPOGRAFIA a 1400 m
+awk '{if ($3 >= 1400) print $1, $2, "1400 ", $4, $5, $6; else print} ' test3.dat > final_iclarc3d.dat
+#CONVERTI IN UTM LA LAT E LONG DEL MODELLO
+export LC_NUMERIC=C paste <(awk '{print $1, $2}' final_iclarc3d.dat) | proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" < final_iclarc3d.dat | LC_NUMERIC=C awk '{print $1, $2 , $3 , $4, $5, $6}' > finale_mod.dat
+
+finale_mod.dat would be the file used for the interpolation INSIDE GEST.PY
+#SELEZIONA LO STRATO AL DI SOPRA DI -10M PER CREARE IL LAYER DELLA TOPOGRAFIA
+awk '$3>0 {print $1, $2, $3}' finale_mod.dat > mesh.dat
+
+#CHECK PER VERIFICARE LA CONSISTENZA DEL MODELLO E DELLO STRATO DI TOPOGRAFIA DA CUI GENERIAMO LA MESH (LE DIMENSIONI DEL PARALLELEPIPEDO DEVONO COMBACIARE!)
+awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
+     {
+       if ($1 < minlon) minlon = $1;
+       if ($1 > maxlon) maxlon = $1;
+       if ($2 < minlat) minlat = $2;
+       if ($2 > maxlat) maxlat = $2;
+     }
+     END {
+       print "Min Lon:", minlon;
+       print "Max Lon:", maxlon;
+       print "Min Lat:", minlat;
+       print "Max Lat:", maxlat;
+     }' finale_mod.dat
+awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
+     {
+       if ($1 < minlon) minlon = $1;
+       if ($1 > maxlon) maxlon = $1;
+       if ($2 < minlat) minlat = $2;
+       if ($2 > maxlat) maxlat = $2;
+     }
+     END {
+       print "Min Lon:", minlon;
+       print "Max Lon:", maxlon;
+       print "Min Lat:", minlat;
+       print "Max Lat:", maxlat;
+     }' mesh.dat
+# if they match create mesh, if they don't the interpolation in gest.py failed.
+#CREA LA MESH CON IL NOTEBOOK
+#CREA IL FILE .XYZ CON GEST.PY
+#TRASPORTA IN MESH-DEFAULT E IN DATA QUELLO OTTENUTO
+
+#STATIONS CONVERTI IN UTM (STAT, NET, lat, long, elev, burial=0)
+export LC_NUMERIC=C
+awk '{print $3, $2}' stazioni.francesco.txt | \
+proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.3f" | \
+paste - <(awk '{print $1, $4}' stazioni.francesco.txt) | \
+awk '{print "CAL", $3, $1, $2, $4}' > stations
+
+awk '{tmp=$3; $3=$4; $4=tmp; print}' stations > astations
+awk '{tmp=$1; $1=$2; $2=tmp; print}' astations > STATION
+
+
+awk 'NR > 1 && $2 ~ /^[0-9.]/ {print $2, $3}' dcittà.txt > proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.3f" > proviamo
