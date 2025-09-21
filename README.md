@@ -1,6 +1,10 @@
 # ionianbasin
 This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
 
+---------------------
+### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
+<img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
+
 This main branch includes:
         
     Thesis (.tex, .pdf and all other outputs from Texmaker 
@@ -118,7 +122,5 @@ Description of the files:
 * stf_imp.txt : Source time function of impulsive type, single non zero value at 1000th step.
 * stf_cosine*.txt : STF of different half duration implemented in later runs in Mw > 5.0 Eqs
 * CMTSOLUTION_*: Parameter files defining the Moment Tensor sources necessary to simulate the seismic signal. Default source time function is a smoothed Heaviside. External ones have been defined and implemented.
----------------------
-### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
-<img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
+
 
