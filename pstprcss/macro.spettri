@@ -1,0 +1,30 @@
+r file1 file2 file3 file4
+echo on processed
+setbb vmax (max &1,depmax& &2,depmax& &3,depmax& &4,depmax&)
+
+setbb vmin (min &1,depmin& &2,depmin& &3,depmin& &4,depmin&)
+
+div ( max (abs %vmax%) (abs %vmin%) )  	# 嵌套
+ 
+
+
+
+
+setbb (max &1, depmax&)
+div (max (abs %vmax%))
+
+#!/bin/sh
+for i in CAL*.sac.am
+do
+sac << qsac > /dev/null
+echo on processed
+r $i
+lsf *.am
+setbb vmax &1, depmax&
+setbb vmin &1,depmin&
+setbb scale (max (abs %vmax% ) ( abs %vmin% ) )
+div %scale%
+w over
+quit
+qsac
+done

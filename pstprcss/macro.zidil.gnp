@@ -1,0 +1,152 @@
+set terminal postscript "Helvetica, 14" landscape color
+set output "STATION_NAME.ps"
+
+reset 
+set style data line
+unset key
+set size 1,0.5
+set origin 0,0.5
+set xlabel "Time (s)"
+set label "synthetic seismograms,  *" font "Helvetica, 18" at graph 0.6,0.85
+set label "Vertical" at 0,0.08
+set label "NS" at 0,0.02
+set label "EW" at 0,-0.06
+plot "CAL.*.CXZ.semd" u 1:($2+0.007) lw 2, "CAL.*.CXY.semd" u 1:($2+0) lw 2, "CAL.*.CXX.semd" u 1:($2-0.007) lw 2
+
+
+latitude:             4299059.73
+longitude:            689257.25
+
+delete lines 1-X:
+awk 'NR < X+1' input > output
+
+
+cd /home/fderose/dati/specfem3d/EXAMPLES/c.3st.g.200.14.imp
+qsub a.pbs
+cd /home/fderose/dati/specfem3d/EXAMPLES/c.3st.200.14.imp
+qsub a.pbs
+-----------------------------
+cd /home/fderose/dati/specfem3d/EXAMPLES/c.3d.g.200.14.imp
+qsub a.pbs
+cd /home/fderose/dati/specfem3d/EXAMPLES/c.3d.200.14.imp
+qsub a.pbs
+
+cd /home/fderose/dati/specfem3d/EXAMPLES/g.200.3st.24.imp
+qsub a.pbs
+
+tail -f OUTPUT_FILES/output_solver.txt
+
+
+#MACRO
+r *.sac
+rmean
+rtrend
+taper
+qdp off
+ticks iff right
+ticks off top
+ticks on left
+ticks on bottom
+title 'Synthetics seismograms - Sim - EQ - Date'
+xlabel 'Time (s)'
+ylabel 'Amplitude'
+fileid location ul type list kstcmp stla stlo
+bp
+p1 perplot 3
+
+
+#!/bin/bash
+echo "running example: `date`"
+echo "running example start: `date`" > tot.time.txt
+start_time=$(date +%s)
+currentdir=`pwd`
+
+# sets up directory structure in current example directory
+echo "---------------------------"
+echo "   setting up example..."
+echo "---------------------------"
+# cleans output files
+mkdir -p OUTPUT_FILES
+rm -rf OUTPUT_FILES/*
+
+# stores setup
+cp DATA/Par_file OUTPUT_FILES/
+cp DATA/CMTSOLUTION OUTPUT_FILES/
+cp DATA/STATIONS OUTPUT_FILES/
+
+# get the number of processors, ignoring comments in the Par_file
+NPROC=`grep ^NPROC DATA/Par_file | grep -v -E '^[[:space:]]*#' | cut -d = -f 2`
+
+BASEMPIDIR=`grep ^LOCAL_PATH DATA/Par_file | cut -d = -f 2 `
+mkdir -p $BASEMPIDIR
+
+# decomposes mesh using the pre-saved mesh files in MESH-default
+echo "---------------------------"
+echo "  decomposing mesh..."
+echo "---------------------------"
+./bin/xdecompose_mesh $NPROC ./MESH $BASEMPIDIR
+
+
+# runs database generation
+if [ "$NPROC" -eq 1 ]; then
+  # This is a serial simulation
+  echo "---------------------------"
+  echo "  running database generation..."
+  echo "---------------------------"
+  ./bin/xgenerate_databases
+else
+  # This is a MPI simulation
+  echo "-----------------------------------------------------"
+  echo "  running database generation on $NPROC processors..."
+  echo "-----------------------------------------------------"
+  mpirun -np $NPROC ./bin/xgenerate_databases
+fi
+
+
+# runs simulation
+if [ "$NPROC" -eq 1 ]; then
+  # This is a serial simulation
+  echo "---------------------"
+  echo "  running solver..."
+  echo "---------------------"
+  ./bin/xspecfem3D
+else
+  # This is a MPI simulation
+  echo "----------------------------------------"
+  echo "  running solver on $NPROC processors..."
+  echo "----------------------------------------"
+  mpirun -np $NPROC ./bin/xspecfem3D
+fi
+
+
+echo "---------------------------------------"
+echo "see results in directory: OUTPUT_FILES/"
+echo "---------------------------------------"
+echo "done"
+end_time=$(date +%s)
+elapse=$(( end_time - start_time))
+echo `date`
+echo "simulation ended on: `date`" > tot.time.txt
+
+days=$(( elapse / 86400 ))
+hours=$(( (elapse % 86400 ) / 3600 ))
+minutes=$(( (elapse % 3600 ) / 60 ))
+printf "total comp time: %d days, %02d hours %02d minutes \n" "$days" "$hours" "$minutes" > tot.time.txt
+echo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

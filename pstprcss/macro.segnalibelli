@@ -1,0 +1,89 @@
+---per segnal selezionati ultimi anni, confronto qualitativo
+ls 20*.sac > listasac.txt 
+/home/common/bin/deconv-eida -i listasac.txt -v 
+/home/common/bin/transfer-cal -i listasac.txt -v
+lh kstcmp stla stlo stel stdp evla evlo evdp delta mag columns 2
+
+
+
+#2020
+beginframe
+xvport 0.08 0.98
+picks off
+color off
+fileid type list kstnm kcmpnm 
+r *CUP2.*Nd.sac *ACIS.*Ed.sac *LATT.*Zd.sac *CO22.*Zd.sac
+rmean
+rtrend 
+taper
+qdp off
+sort dist
+bp c 0.2 1 n 3 p 1
+xdiv nice power off
+xlabel 'Time (s)'
+ylabel 'Amplitude'
+xlim -5 55
+p1
+endframe
+
+#202411
+beginframe
+xvport 0.08 0.98
+picks off
+color off
+fileid type list kstnm kcmpnm 
+r *FALC.*Nd.sac *MANE.*Ed.sac *CARP.*Zd.sac *SPNT.*Zd.sac
+rmean
+rtrend 
+taper
+qdp off
+sort dist
+bp c 0.2 1 n 3 p 1
+xdiv nice power off
+xlabel 'Time (s)'
+ylabel 'Amplitude'
+xlim -5 55
+p1
+endframe
+
+#202405
+beginframe
+xvport 0.08 0.98
+picks off
+color off
+fileid type list kstnm kcmpnm 
+r *LADO.*Nd.sac *ROI.*Ed.sac *CIRK.*Zd.sac *CMPN.*Zd.sac
+rmean
+rtrend 
+taper
+qdp off
+sort dist
+bp c 0.2 1 n 3 p 1
+xdiv nice power off
+xlabel 'Time (s)'
+ylabel 'Amplitude'
+xlim -5 55
+p1
+endframe
+
+#2022
+beginframe
+xvport 0.08 0.98
+picks off
+color off
+fileid type list kstnm kcmpnm 
+r *ACIS.HHNd.sac *ACIS.HHEd.sac *ACIS.HHZd.sac
+rmean
+rtrend 
+taper
+qdp off
+sort dist
+bp c 0.2 1 n 3 p 1
+xdiv nice power off
+xlabel 'Time (s)'
+ylabel 'Amplitude'
+xlim -5 55
+p1
+endframe
+
+

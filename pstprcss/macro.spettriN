@@ -1,0 +1,42 @@
+
+beginframe
+qdp off
+ticks off all
+picks off
+fileid off
+xvport 0.08 0.48
+picks off
+color off
+xlim 0 0.9
+fileid type list kstnm kcmpnm 
+fileid location ul
+r 20*HHNd*am
+color off
+xlog
+ylog
+xlim 0.01 50
+ylim 1e-8 1e-2
+plabel 1 "Synthetic signals triple layer N 20240329 Mw 5.8 " position 0.65 0.9
+smooth halfwidth 15
+dec 5
+smooth h 5
+p2
+xlabel off
+ylabel off
+plabel 1 off
+xvport 0.56 0.96
+color 1
+r CAL*CXY*am
+plabel 1 "Observed signals 20240329 N comp " position 0.15 0.9 
+
+xlabel "Frequency [Hz] "
+ylabel "Fourier amplitude "
+xlog
+ylog
+ylim 1e-9 1e-2
+xlim 0.01 50
+smooth halfwidth 15
+dec 5
+smooth h 2
+p2 
+endframe

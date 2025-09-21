@@ -1,0 +1,73 @@
+ESEGUI convoluzione sintetici tabella stf da cambiare in convolvi.csh
+A1 2022 0.6
+A2 2012 0.6
+a3 2025 0.6
+a4 2014 0.6
+a5 2015 cos3.sac
+a6 2018 cos6.sac
+a7 2020 cos2.sac
+a8 2022 cos2.sac
+a9 2024 cos2.sac
+-
+beginframe
+xvport 0.07 0.97
+yvport 0.56 0.98
+fileid type list kstnm kcmpnm 
+fileid location ul
+color off
+xlim 30 240
+ylim -0.5 0.5
+xdiv nice increment 30
+xlabel off
+ylabel "Ground displacement [mm]"
+picks off
+plabel 1 "EQ 2024 Greece, 3D model " position 0.2 0.8
+r CAL.*.*Z.*c.sac
+mul 1000 
+p1
+plabel 1 off
+
+yvport 0.08 0.50
+color 1
+r ../gre.3st.24/CAL.CUTR*sac 
+mul 1000
+ylim -1.5 1.5
+plabel 1 "EQ 2024 Greece, 3 layer model " position 0.2 0.35
+xlabel "Time [s] "
+p1 
+
+endframe
+
+#logica confronto reali sintetici
+beginframe
+xvport 0.08 0.48
+picks off
+color off
+xlim off
+ylim all
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Zd.sac 
+sort dist
+dc 11-42
+int
+bp c 0.1 0.3 n 2 p 1
+cutim 40 100
+mul 1000000
+plabel 1 "Observed signals " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *.CXZ*sac
+sort dist
+dc 11-45
+bp
+cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals " position 0.65 0.9
+p1 
+endframe 

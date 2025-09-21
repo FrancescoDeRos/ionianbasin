@@ -1,0 +1,699 @@
+#modifica pre plot
+../comuni.csh 
+cd comuni
+../../fixcoord.run
+ls */doevt*
+accessori/convolvi.csh
+convolvi.csh
+../../sintetici/doevt.2012.sh
+/home/common/sintetici/fixcoord.run
+#plot
+ls *HHZd.sac | wc -l 
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta
+
+beginframe
+ticks off all
+qdp off
+xvport 0.08 0.48
+picks off
+color off
+xlim off
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *HHZd.sac 
+sort dist
+dc 6-17
+bp c 0.02 0.3 n 3 p 1
+xlim 0 30
+mul 1000000
+plabel 1 "Observed signals EQ20221012224455.0 Mw 4.3 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+ls *Z.semdc.sac | wc -l
+xvport 0.56 0.96
+color 1
+r *Z.semdc.sac
+sort dist
+dc 6-17
+bp
+mul 1000000
+plabel 1 "Synthetic signals triple layer EQ20221012224455.0 Mw 4.3 " position 0.65 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+saveimg 3strat-bccatlidovs20221012_topogra.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ls *HHNd.sac | wc -l 
+lh kstnm stla stlo stel stdp evla evlo evel evdp delta
+
+beginframe
+ticks off all
+qdp off
+xvport 0.08 0.48
+picks off
+color off
+xlim off
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *HHNd.sac 
+sort dist
+dc 8-16
+bp c 0.04 0.3 n 3 p 1
+xlim 0 30
+mul 1000000
+plabel 1 "Observed signals EQ20221012224455.0 Mw 4.3 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+ls *Y.semdc.sac | wc -l
+xvport 0.56 0.96
+color 1
+r *N.semdc.sac
+sort dist
+dc 8-18
+bp
+
+plabel 1 "Synthetic signals triple layer FLAT EQ20221012224455.0 " position 0.59 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+mul 1000000
+saveimg notoposilavsreali.pdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color 1
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Y.semd.sac 
+sort dist
+dc 8-62
+bp c 0.07 0.3 n 3 p 1
+
+#cutim 40 100
+xlim 0 60
+mul 1000000
+plabel 1 "Synthetic signals ICLARC EQ20250416012608.7 Mw 4.7 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r ../3st2025/*Y.semdc.sac
+sort dist
+dc 8-64
+bp 
+xlim 0 60
+#cutim 40 100
+#mul 1000000
+plabel 1 "Synthetic signals triple layer EQ20250416012608.7 " position 0.59 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+saveimg 3d2025vs3st2025.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color 1
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Z.semd.sac 
+sort dist
+dc 5-62
+bp c 0.07 0.3 n 3 p 1
+
+#cutim 40 100
+xlim 0 60
+mul 1000000
+plabel 1 "Synthetic signals ICLARC EQ20250416012608.7 Mw 4.7 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r ../3st2025/*Z.semdc.sac
+sort dist
+dc 5-64
+bp 
+xlim 0 60
+#cutim 40 100
+#mul 1000000
+plabel 1 "Synthetic signals triple layer EQ20250416012608.7 " position 0.59 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+saveimg 3d2025vs3st2025.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color off
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Nd.sac 
+sort dist
+dc 6-59
+bp c 0.07 0.3 n 3 p 1
+
+#cutim 40 100
+xlim 0 60
+mul 1000000
+plabel 1 "Observed signals EQ20250416012608.7 Mw 4.7 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *CXY*.sac
+sort dist
+dc 6-62
+bp 
+xlim 0 60
+#cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals ICLARC EQ20250416012608.7 " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+saveimg 3d2025vs3st2025.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color off
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Zd.sac 
+sort dist
+dc 6-6
+bp c 0.07 0.3 n 3 p 1
+
+#cutim 40 100
+xlim 0 80
+mul 1000000
+plabel 1 "Observed signals EQ20120704111209.8 Mw 4.5 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *CXZ*.sac
+sort dist
+dc 6-6
+bp 
+xlim 0 80
+#cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals ICLARC EQ20120704111209.8 " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+saveimg realivs3d2012.Z.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color 1
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *CXY*.sac 
+sort dist
+dc 6-6
+bp c 0.07 0.3 n 3 p 1
+
+#cutim 40 100
+xlim 0 80
+mul 1000000
+plabel 1 "Synthetic signals ICLARC EQ20120704111209.8 Mw 4.5 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r ../3st2012/*CXY.semdc.sac
+sort dist
+dc 6-20
+bp 
+xlim 0 80
+#cutim 40 100
+#mul 1000000
+plabel 1 "Synthetic signals triple layer EQ20120704111209.8 " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+saveimg 3d2012vs3st2012.Z.pdf
+saveimg 3d2012vs3st2012.N.pdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color off
+xlim 30 210
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Zd.sac 
+sort dist
+dc 6-28
+bp c 0.1 0.3 n 3 p 1
+
+#cutim 40 100
+mul 1000000
+plabel 1 "Observed signals EQ20181025 Mw 6.8 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *CXZ.semd.sac
+sort dist
+dc 6-28
+bp 
+xlim 30 160
+#cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals ICLERC80km EQ20181025 " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color off
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Zd.sac 
+sort dist
+dc 7-15
+bp c 0.07 0.3 n 3 p 1
+xlim 0 80
+mul 1000000
+plabel 1 "Observed signals  EQ20140405 Mw 4.8" position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *Z.semdc.sac
+sort dist
+dc 7-16
+bp 
+xlim 0 80
+mul 1000000
+plabel 1 "Synthetic signals ICLARC 200km " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.48
+picks off
+color 1
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Z.semdc.sac 
+sort dist
+dc 8-83
+bp c 0.07 0.3 n 3 p 1
+xlim 0 80
+mul 1000000
+plabel 1 "Synthetic signals triple layer with shell 200km Mw 4.8 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r ../c.3st.200.14.imp/*Z.semdc.sac
+sort dist
+dc 8-83
+bp 
+xlim 0 80
+mul 1000000
+plabel 1 "Synthetic signals triple layer no shell EQ20140405  " position 0.61 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1 
+endframe
+
+
+
+
+
+
+
+
+
+
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.98
+picks off
+color black
+xlim 0 60
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *.CUTR.*Y.semdc.sac   
+sort dist
+bp c 0.07 0.3 n 3 p 1
+line list 1 3 3 increment on
+xlim 30 210
+mul 1000000
+plabel 1 "Synthetic signals ICLERC200km EQ20240329  " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p2
+
+color 1
+r ../../g.200.3st.24.imp/comuni/*.CUTR.*Y.semdc.sac  
+p2
+plabel 1 off
+p2
+
+
+
+
+
+
+
+
+SPETTRI:
+
+beginframe
+qdp off
+ticks off all
+picks off
+xvport 0.08 0.68
+picks off
+color black
+fileid type list kstnm kcmpnm 
+fileid location ul
+r 20*CUTR.*Nd.sac
+fft
+wsp am
+xlabel off
+ylabel off
+plabel 1 off
+color 1
+r *.CUTR.*Y.semdc.sac
+fft 
+wsp am
+r *semdc*am 
+psp loglin
+color off
+r 20*Nd*am
+xlim 0 3
+psp loglin
+endframe 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+beginframe
+xvport 0.08 0.48
+picks off
+qdp off
+color off
+xlim off
+ylim all
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Nd.sac 
+sort dist
+dc 5-28
+bp c 0.1 0.3 n 2 p 1
+cutim 30 210
+mul 1000000
+plabel 1 "Observed signals EQ20181025 Mw 6.8 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *.CXY*sac
+sort dist
+dc 5-28
+bp
+cutim 30 210
+mul 1000000
+plabel 1 "Synthetic signals ICLERC80km " position 0.65 0.9
+p1 
+endframe 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################################
+#########################################################################
+#########################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+beginframe
+ticks off all
+xvport 0.08 0.48
+picks off
+color 1
+xlim off
+ylim off
+fileid type list kstnm  
+fileid location ul
+r /home/common/3d2012/comuni/*Y.semd.sac 
+sort dist
+dc 11-22
+
+bp c 0.1 0.3 n 2 p 1
+#cutim 40 100
+xlim 0 100
+mul 1000000
+plabel 1 "Synthetic signals 3-layer Event 2012 " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color off
+r /home/common/3d2012/comuni/*Ed.sac
+sort dist
+dc 11-22
+bp
+#cutim 40 100
+mul 1000000
+plabel 1 "Observed signals Event 20120704 " position 0.65 0.9
+p1 
+endframe
+saveimg 3d.reali.2012.pdf
+
+
+beginframe
+ticks off all
+xvport 0.08 0.48
+picks off
+color off
+xlim off
+ylim off
+fileid type list kstnm kcmpnm 
+fileid location ul
+r /home/common/3st2012/*Z.semd.sac 
+sort dist
+dc 11-85
+int
+bp c 0.1 0.3 n 2 p 1
+#cutim 40 100
+xlim 0 100
+mul 1000000
+plabel 1 "Synthetic signals 3-layer Event 2012" position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+
+
+xvport 0.56 0.96
+color 1
+r /home/common/notoposila/comuni/*.CXZ.semdc.sac
+sort dist
+dc 11-22
+bp
+#cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals FLAT " position 0.65 0.9
+p1 
+endframe
+saveimg topo.sila.pdf
