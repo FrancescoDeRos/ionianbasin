@@ -1,0 +1,4 @@
+ls *.sac > lista
+fixcoord -i lista -c /home/mario/unical/stazioni/Stazioni.unical.tabella.txt
+rm lista
+

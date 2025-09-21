@@ -1,0 +1,9 @@
+read 20220908073624.UC01.HHNd.sac
+ch lovrok TRUE
+rmean 
+rtrend 
+rmean 
+transfer from polezero subtype /home/mario/response/PZ-ingv/SAC_PZs_IV_VULT_HHZ__2023.194.11.30.00.0000_2599.365.23.59.59.99999  freqlimits 0.002 0.02  40.0  48.0 
+dif 
+ch kuser2 dec.m/s 
+write change .sac d.sac 

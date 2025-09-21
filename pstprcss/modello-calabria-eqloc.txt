@@ -1,0 +1,18 @@
+Z       Vp      Vs
+-1      4.0    2.286   #Vp = 4.0  km/s per    -1 km < Z <  0.67 km
+0.67    4.42   2.552   #Vp = 4.42 km/s per  0.67 km < Z <  2.67 km
+2.67    4.69   2.708   #Vp = 4.69 km/s per  2.67 km < Z <  4.67 km 
+4.67    5.23   3.020   #Vp = 5.23 km/s per  4.67 km < Z <  6.67 km 
+6.67    6.0    3.464   #Vp = 6.0  km/s per  6.67 km < Z < 12.34 km
+12.34   6.12   3.533   #Vp = 6.12 km/s per 12.34 km < Z < 18.34 km
+18.34   6.38   3.684   #Vp = 6.38 km/s per 18.34 km < Z < 30.0  km
+30.0    7.69   4.440   #Vp = 7.69 km/s per 30.0  km < Z < 36.67 km
+36.67   7.7    4.446   #Vp = 7.7  km/s per 36.67 km < Z < 43.34 km 
+43.34   7.73   4.463   #Vp = 7.73 km/s per 43.34 km < Z < 60    km
+60      8.1    4.62    #Vp = 8.1  km/s per 60    km < Z < 160   km
+160     8.2    4.60    #Vp = 8.2  km/s per 160   km < Z < 210   km
+210     8.3    4.60    #Vp = 8.3  km/s per 210   km < Z < 310   km
+310     8.65   4.65    #Vp = 8.65 km/s per 310   km < Z < 410   km
+410     9.3    5.10    #Vp = 9.3  km/s per 410   km < Z < 530   km
+530     9.75   5.3     #Vp = 9.75 km/s per 530   km < Z < 660   km
+660    10.7    6.0     #Vp = 10.7 km/s per 660   km < Z < ???   

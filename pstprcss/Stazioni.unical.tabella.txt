@@ -1,0 +1,474 @@
+STA   Lat  Lon   Alt  Conv-acqu_(uV/c)  G-sism_V/m/s  eida  STA4  rete  comp  Località Acq. Sensore
+ACIS  39.35905  16.22687   210  1.90700   170  0  ACIS	IY  EH  Unical Cubo 12B REF-72 MarkL4C-3D  192.168.1.101 
+ACIS  39.35905  16.22687   210  1.19      400  0  ACIS	IY  EH  Unical Cubo 12B SL06 SS08
+ACIS  39.35905  16.22687   210  1.19      0.5  0  ACIS	IY  HN  Unical Cubo 12B SL06 SS08
+ACIS  39.35905  16.22687   210  2.38      800  0  ACIS	IY  HH  Unical Cubo 12B SL06 SS08 
+AGAN  38.29960  16.22070   170  2.38      800  0  AGAN  IY  HH  Agnana Calabra Atlas CMG40 
+LAB5  39.35905  16.22687   227  2.38      800  0  LAB5	IY  HH  Unical Cubo 12B SL06 SS08 
+CARF  39.34241  17.01247    75  1.271566  400  0  CARF	IY  EH  Carfizzi GAIA Solgeo 1s
+CARP  39.14786  16.31333   685  1.90700   800  0  CARP	IY  HH  Carpanzano REF-72 CMG40T 30s
+CET2  39.52876  15.95462   675  1.271566 1500  0  CET2	IY  HH  Cetraro GAIA Trillium40s
+CHC2  38.68171  16.41062   583  1.271566  400  0  CHC2	IY  EH  Chiaravalle Centr. GAIA SS10 [fino a 20220331 0.158946  0.5 GAIA Accelerometro Sara]
+CHCE  38.68397  16.41418   550  2.38      800  1  CHCE	IY  HH  Chiaravalle Centr. Lunitek SS08 [1.90700 800 REF-72 Guralp fino a 20220628.4]
+CIRK  39.38843  17.06139   300  2.38      800  1  CIRK	IY  HH  Cirò Lunitek SS08 [fino a 20220704 1.90700 400 REF-72 Lennartz 1s] 
+CMPN  39.40765  16.83030   535  1.19    10000  0  CMPN  IY  HT  SL06  AG701-2A 
+CMPN  39.40765  16.83030   535  2.38      800  1  CMPN	IY  HH  Campana [prima REF-72 Trillium 120s 1.907 750 (dal 17-05-2017, prima KS2000)]
+CNDF  38.00324  15.85715   357  2.38      800  1  CNDF	IY  HH  Condofuri SL06 SS08 [fino a 2021121411 0.7947287 400 GAIA Lennartz 5s]
+CNNA  39.01637  17.16445   130  1.90700   400  0  CNNA	IY  EH  Capo_Colonna  REF-72 Lennartz 1s 
+CO22  39.49259  16.30505   430  2.38      800  0  CO22	IY  HH  Cocozzello SL06-C6 SS08 [1.589457 2000 GAIA KS2000edu fino a 20210223]
+CSC2  39.28630  16.25780   361  3.178915  400  0  CSC2	IY  EH  Castello Cosenza GAIA Lennartz 1s
+CSTI  39.35300  16.29049   430  2.38      800  0  CSTI	IY  HH  Castiglione Cosentino Atlas SS08 
+0  0 CUP2 39.38343 16.54819 1241 1.271566 750  0  CUP2	IY  HH  Cupone GAIA Trillium 120s
+CUP2  39.38343  16.54819  1241  0.794728  400  0  CUP2	IV  EH  Cupone GAIA SS05 dal 20210301 [Solgeo da 20160315 a 20210301] 
+CUTR  39.02183  17.07369   170  2.38      800  0  CUTR	IY  HH  Cutro [1.907  400 REF-72 Lennartz-Lite] 
+FALC  39.27207  16.07956   560  2.38      800  0  FALC	IY  HH  Falconara Albanese Lunitek SS08 [fino a 20220215 1.271566 800 GAIA CMG40T 30s]
+FERC  38.45271  16.12807   460  2.38      800  1  FERC	IV  HH  Galatro SL06 SS08 [fino a 20210909: 0.158946  0.5  IY  HN  Galatro GAIA Accelerometro Sara] 
+FX12  38.0895   15.7176    253  2.38      800  1  FX12	1J  HH  Cataforio SL06 SS08 - Reggio Calabria 
+FX14  37.9286   15.9070      6  2.38      800  1  FX14	1J  HH  Bova Marina SL06 SS08
+GERV  39.29577  16.23095   310  1.19      400  0  GERV	IY  EH  Anna-Gervasi SL06 SS05 [0.953674??] 
+GIMI  38.96784  16.53751   400  2.38      800  0  GIMI	IY  HH  Gimigliano SL06 SS08 [38.97278 16.53828 590 fino a 20200205, 1.90700  400 REF-72 Solgeo fino a 20210224]
+GIOM  38.38611  16.10991   550  2.38      800  0  GIOM	IY  HH  San Giorgio Morgeto 
+GIOT  38.41264  15.93875    80  0.794728  400  0  GIOT  IY  EH  Gioia Tauro GAIA LE5s  
+K2TS  39.27566  16.24292   470  0.01      0.5  0  K2TS	IY  EH  Laurignano Cosenza K2 Accelerometro Sara
+LADO  39.28398  16.97949   488  0.794728  400  1  LADO	IY  EH  S.Nicola_dell_Alto GAIA Lennartz 5s
+LARA  39.27566  16.24292   470  2.38      800  0  LARA	IY  HH  Laurignano Cosenza SL06-C6  SS08 
+0  0 LATT 39.44184 16.22980 200 1.271566 2000  0  LATT	IV  HH  Lattarico GAIA CMG40T-60s 
+LATT  39.44184  16.22980   200  2.38      800  0  LATT	IY  HH  Lattarico SL06-C6  SS08
+LC22  39.9364   15.9779    550  1.90700   400  0  LC22	IY  EH  Laino Castello REF-72 SARA SS10 1s [Lennartz 1s fino a 20210202]
+MANE  39.20181  16.33750   825  1.271566  400  0  MANE	IY  EH  Mangone GAIA SARA SS05 [Solgeo Veloget fino a 20201014]
+MC32  39.34396  16.42689  1380  1.271566  750  0  MC32	IY  HH  Moccone GAIA Trillium 20sC 
+MC51  40.07615  16.38818   380  1.90700   400  0  MC51	IY  EH  San Giorgio Lucano REF-72 SARA SS10 1s 
+MC53  40.1645   16.4355    300  1.90700   400  0  MC53	IY  EH  Valsinni REF-72 SARA SS10 1s 
+MCDA  39.02160  16.84027   305  2.38      800  1  MCDA	IY  HH  Marcedusa SL06-C3 SS08 [1.90700 400 REF-72 Lennartz 1s fino a 20201030]
+MMN1  39.88691  15.98911   957  2.38      800  0  MMN1	IY  HH  Mormanno SL06-C3 SS08 [1.90700 800 REF-72 CMG40T 30s fino a 20201104]
+MMN   39.89083  15.99060   878  1.271566 1500  1  MMN	IY  HH  Mormanno GAIA Trillium 40s
+MMN9  39.89186  16.05030  1088  1.271566  750  0  MMN9	IY  HH  Campotenese GAIA Trillium 20sC
+MOKA  39.88572  16.15074   815  1.271566  750  0  MOKA	IY  HH  Colloreto-Morano GAIA Trillium 120sC 
+MMNB  39.88572  16.15074   815  1.271566  750  0  MMNB	IY  HH  Colloreto-Morano GAIA Trillium 120sC [fino a 20191018: 39.88583 16.15414  820]
+MUGA  38.51744  16.32226   970  1.90700   400  0  MUGA	IY  EH  Mongiana REF-72 SS05 2s 
+MNGA  38.51744  16.32226   970  1.90700   400  0  MNGA	IY  EH  Mongiana REF-72 SS05 2s [Solgeo Veloget fino a 20210128]
+MUGA  38.51744  16.32226   970  2.38      400  0  MUGA	IY  EH  Mongiana Atlas SS05 2s [1.90700   400  REF-72 SS05 2s fino a 20230706] 
+OPPI  38.26754  16.01005   770  1.271566  800  1  OPPI	IY  HH  Oppido Mamertina GAIA SS08 [Guralp 30s fino a 20201125, 38.26308 16.02468  982 fino a 20171025:] 
+PNTN  38.97255  16.58206   860  0.953674  400  0  PNTN	IY  EH  Pentone SL06 SS05 (1.90700  400  Gimigliano REF-72 Solgeo Veloget)
+RICA  38.62403  15.86015   240  2.38      800  0  RICA	IY  HH  Ricadi Lunitek SS08 
+ROG2  39.17858  16.32615   681  1.90700   800  0  ROG2	IY  HH  Rogliano REF-72 CMG40T 30s
+ROI   39.57178  16.56922   605  2.38      800  1  ROI	IY  HH  Rossano Lunitek SS08 [0.794728 400 GAIA Lennartz 1s fino a 20220727.1] 
+SCAI  38.53429  16.51773   450  1.90700   750  0  SCAI	IY  HH  S_Caterina_Ionio Reftek Trillium 20s
+SCAN  39.13755  16.98785   280  1.271566  400  0  SCAN	IY  EH  GAIA Lennartz 1s 
+SCOI  39.28927  16.25644   260  0.794728 2000  0  SCOI	IY  HH  Cosenza GAIA KS2000Edu 80s
+SERA  39.08817  16.12546   370  2.38      800  0  SERA	IY  HH  Serra d'Aiello  Lunitek SS08
+SIMB  38.60672  16.32155   810  2.38      400  0  SIMB	IY  EH  Simbario Lunitek SS05 [1.90700  400 Reftek SS10 fino a 20220330] [Solgeo Veloget 1Hz fino a 20201202] 
+SMIN  38.97296  16.22826   540  0.397363  400  0  SMIN	IY  EH  San_Mina GAIA SS05 [Lennartz lite fino a 20201125, Lennartz 1s]
+SPDC  38.52631 16.13216    300  1.90700   750  1  SPDC	IY  HH  San Pietro di Carida'  REF-72 Trillium 20sC 
+SPNT  39.15686  16.52657  1280  1.271566  400  0  SPNT	IY  EH  Spineto GAIA SS05 [fino a 20220707 Lennartz 1s] 
+0  0  SPS2 39.29103 16.33881 620 3.178915 750  1  SPS2	IY  HH  Spezzano_Piccolo GAIA Trillium 20sC
+SPS2  39.29409  16.33787   704  3.178915  750  1  SPS2	IY  HH  Spezzano_Piccolo GAIA Trillium 20sC
+STAI  38.75716  16.56229   185    Staletti'   
+TRT1  39.91728  15.76759     8  1.271566  400  0  TRT1	IY  EH  Tortora GAIA Lennartz 1Hz 
+TRT2  39.9233   15.7623      6  1.271566  400  0  TRT2	IY  EH  Tortora GAIA Solgeo 1Hz
+UC01  38.77725  16.27013   327  1.90700   800  0  UC01	IY  HH  Francavilla_Angitola REF-72  CMG40T 30s
+VBL2  38.67073  16.10822   530  1.271566  400  0  VBL2	IY  EH  Castello_Vibo GAIA SS05 [Solgeo Veloget 1s fino a 20201202]
+ACER  40.78670  15.94270   690  1           1  1  ACER	IV  HH
+ALB1  39.02377  16.59737   748  2.50000   750  1  ALB1	XK  HH 
+AMUR  40.90710  16.60410   443  1           1  1  AMUR	IV  HH
+ATN   38.15948  15.46472  1130  1.589457 1000  1  ATN	IV  BH  ANTENNAMARE
+BRICA 38.72384  16.02905    47  1           1  1  BRCA  ??  EH  Briatico 
+BULG  40.0783   15.3776    815  1.0      1500  1  BULG	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+CAFE  41.02800  15.23660  1070  1           1  1  CAFE	IV  HH
+CAR1  39.2534   16.2114    680  1.271566 1500  1  CAR1	IV  HH  Carolei  GAIA2-FS 16 VPP Trillium 40s
+CARO  39.254    16.219     618  1           1  1  CARO	 
+CDRU  40.48960  15.30460  1057  1           1  1  CDRU	IV  HH
+CEL   38.2603   15.8939    702  2.34     1500  1  CEL	MN  HH  Celeste  Quanterra Q4120  STS2-120s
+CELI  39.4027   16.5088   1290  2.50     1200  1  CELI	IV  HH  Celico Trident FS 40 VPP Trillium 120 s
+CMPR  40.3181   15.303     732  1.0      1500  1  CMPR	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+COL3  40.68710  15.33040  1026  1           1  1  COL3	IV  HH
+COR2  39.57069  16.51532   616  1         170  1  COR2	IV  EH  Corigliano 
+CRAC  40.365    16.435     384  1           1  1  CRAC	IV  EH  CRACO
+CSA0  39.8406   15.9281    803  1           1  1  CSA0	    Orsomarso
+CSB   39.8153   16.1677    561  1           1  1  CSB	    San Basile
+CSC   40.0083   15.9762    658  1           1  1  CSC	    Castelluccio superiore
+CUC   39.9938   15.8155    637  1.90     1500  1  CUC	MN  BH  Castrocucco Quanterra Q4120  STS2-120s
+BAGN  38.29551  15.8181    280  1           1  0  BAGN	 Bagnara Calabra 
+CZI   39.21850  16.13280  1584  1           1  0  CZI	 M. Cucuzzo
+CZII  39.21850  16.13280  1584  1           1  0  CZII	 M. Cucuzzo
+ECTS  37.88200  15.12100   681  1           1  1  ECTS	
+EMSG  37.82080  14.94980  1435  1           1  1  EMSG	
+ESLN  37.69340  14.97440  1787  1           1  1  ESLN	
+GALF  37.71070  14.56650   740  1           1  1  GALF	
+GIZZ  38.97983  16.20777   713  1.27157  1500  1  GIZZ	XK  HH 
+GMB   38.16807  15.82888  1300  1.589457 1000  1  GMB	IV  BH  GAMBARIE
+GMB1  38.17230  15.81790  1198  1           1  1  GMB1	IV  HH  Gambarie 
+GRI   38.82213  16.42002   510  1.118     171  1  GRI	IV  EH  Girifalco GAIA1-FS 9Vpp Mark L-4C
+GRIS  39.74050  15.85310   551  0.794728  400  1  GRIS	IV  EH  Grisolia
+HAGA  37.28500  15.15500   126  1           1  1  HAGA	
+HLNI  37.34850  14.87200   146  1           1  1  HLNI	
+IACL  38.533    14.355     145  1.00000  1500  1  IACL	IV  HH  ALICUDI  TRILLIUM-40S  TRIDENT-FS-16-VPP-SG-1 
+IFIL  38.5642   14.5753    277  1.00000  1500  1  IFIL	IV  HH  FILICUDI TRILLIUM-40S  TRIDENT-FS-16-VPP-SG-1
+ILLI  38.4457   14.9483    283  2.50000  1500  1  ILLI	IV  HH  LIPARI  TRILLIUM-40S  TRIDENT-FS-40-VPP-SG-1
+IST3  38.79920  15.23040   255  2.50000  1500  1  IST3	IV  HH  STROMBOLI TRILLIUM-40S  TRIDENT-FS-40-VPP-SG-1
+ISTR  38.78660  15.19180   103  2.50000  1500  1  ISTR	IV  HH  STROMBOLI TRILLIUM-40S  TRIDENT-FS-40-VPP-SG-1
+IVPL  38.3763   14.9801    486  2.50000  1500  1  IVPL	IV  HH  VULCANO TRILLIUM-40S  TRIDENT-FS-40-VPP-SG-1
+JOPP  38.6068   15.8856    500  1        1500  1  JOPP	IV  HH  Joppolo Trident F 16 VPP Trillium 40 s
+KR22  39.08020  17.12490    43  1           1  0  KR22	 Crotone  Municipio
+LTRZ  40.60325  16.81910   381  1           1  1  LTRZ	IV  HH
+MATE  40.64907  16.70442   494  1.0      1111  1  MATE	GE  HH  MATERA (GE) 
+MCEL  40.3249   15.8019    960  1.0      1500  1  MCEL	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+MCPD  38.1199   14.731     199  1           1  1  MCPD	IV  HH 
+MCRV  40.78260  15.16840  1191  1           1  1  MCRV	IV  HH
+MCSR  38.0646   15.2301   1064  1           1  1  MCSR	IV  HH  CASTROREALE
+MGR   40.1376   15.55352   288  1.271566 1500  1  MGR	IV  HH  TRILLIUM-40S GAIA2-FS-16-VPP
+MILZ  38.2713   15.2313      0  1.27157  1500  1  MILZ	IV  HH  MILAZZO_FARO TRILLIUM-40S  GAIA2-FS-16-VPP
+MMN2  39.88892  15.98502   760  1           1  0  MMN2	  MMN2   
+MMN3  39.89272  15.99057   820  1           1  0  MMN3	  MMN3 Via Sturzo  
+MMN4  39.90090  15.99220   768  1           1  0  MMN4	  MMN4 Mormanno_c.da_Malineri  
+MMN5  39.88945  15.99479   888  1           1  0  MMN5	  MMN5   
+MMN6  39.89954  15.98418   713  1           1  0  MMN6	  MMN6 Mormanno_c.da_Malineri  
+MMN7  39.91538  16.00017   766  1           1  0  MMN7	  MMN7 Loc. Procitta  
+MMN8  39.93662  15.97677   545  1           1  0  MMN8	  MMN8 Laino Castello  
+MPAZ  37.9531   16.0067    496  1           1  1  MPAZ	IV  BH  PALIZZI
+MPNC  38.1465   15.3528    479  1.00000  1500  1  MPNC	IV  HH  SAN_PIER_NICETO TRILLIUM-40S  TRIDENT-FS-16-VPP-SG-1
+MRB1  41.12270  14.96815   688  1           1  1  MRB1	IV  HH
+MRLC  40.75640  15.48892   605  1           1  1  MRLC	IV  HH
+MRVN  41.06090  16.19580   610  1           1  1  MRVN	IV  HH
+MSCL  38.232    15.79      893  1           1  1  MSCL	IV  HH  SCILLA
+MSRU  38.2639   15.5083    408  2.50000  1500  1  MSRU	IV  HH  TRILLIUM-40S TRIDENT-FS-40-VPP-SG-1
+MTSN  40.2663   15.7515   1056  1.0      1500  1  MTSN	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+MTTG  38.0031   15.69992   484  1.271566 1500  1  MTTG	IV  HH  MOTTA_SAN_GIOVANNI
+MUCR  38.04300  14.87390  1042  1           1  1  MUCR	
+NICCA 38.55694  15.93858   240  1           1  1  NICA	??  EH  
+NOV   38.0278   15.1367    775  2.50000  1500  1  NOV	IV  HH  TRILLIUM-40S
+ORI   40.05096  16.450405  375  1.271566 1500  1  ORI	IV  HH  Oriolo GAIA Trillium 40
+PALZ  40.94410  15.96020   450  1           1  1  PALZ	IV  HH
+PAOL  41.03120  14.56749   715  1           1  1  PAOL	IV  HH
+PIPA  39.48514  16.8158    479  3.178915 1200  1  PIPA	IV  HH  Pietrapaola GAIA2-FS 40VPP Trillium 120 s
+PLAC  38.4494   16.4383    602  1        1500  1  PLAC	IV  HH  Placanica Trident F 16 VPP Trillium 40 s
+PTRP  40.52148  16.06124  1077  1           1  1  PTRP	IV  HH
+PZUN  40.64580  15.80700   820  1           1  1  PZUN	IV  HH
+SALB  39.8772   16.3459   1200  1.0      1500  1  SALB	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+SCHR  40.19924  16.0759    968  0.794729  400  1  SCHR	IV  HH  LE3D-5S GAIA2-FS-10-VPP
+SDT2  39.82050  15.85190   248  1           1  1  SDT2	    T0712 Santa_Domenica_Talao 29/11/2011 16/12/2011
+SELL  38.98300  16.62790   633  1           1  1  SELL	XK  HH  Sellia 
+SERS  39.0359   16.6886   1221  1        1500  1  SERS	IV  HH  Sersale Trident Trillium 40s
+SGTA  41.13500  15.36500   890  1           1  1  SGTA	IV  HH
+SICLA 38.2563   15.7145     10  0.794728  400  1  SICL	IV  EH  Scilla 
+SIRI  40.1821   15.8675   1063  1.0      1500  1  SIRI	IV  HH  TRILLIUM-40S TRIDENT-FS-16-VPP-SG-1
+SLCN  40.39     15.63277   986  1.271566 1500  1  SLCN	IV  HH  TRILLIUM-40S GAIA2-FS-16-VPP
+SNAL  40.92542  15.20908   874  1           1  1  SNAL	IV  HH
+SOI   38.07323  16.05424   305  0.794728  400  1  SOI	IV  EH  SAMO
+T0701 39.98620  16.11610   882  2.5    1.0197  1  T701	IV  TAURUS-FS-40-VPP-SG-1 EPISENSOR-FBA-ES-T-CL-2G-FS-40-VPP
+T0702 39.72090  16.08350   883  1.0       400  1  T702	IV  TAURUS-FS-16-VPP-SG-1 LE3D-1S
+T0711 39.93570  16.06180   751  1.58950   400  1  T711	IV  REFTEK-130 LE3D-5S
+T0712 39.82180  15.85179   342  1.58950   400  1  T712	IV  REFTEK-130 LE3D-5S
+T0713 40.00852  15.97598   667  1.58950   400  1  T713	IV  REFTEK-130 LE3D-5S
+T0714 39.94992  15.96809   303  1.58950   400  1  T714	IV  REFTEK-130 LE3D-5S
+T0715 39.89186  16.05030  1044  1.58950   400  1  T715	IV  REFTEK-130 LE3D-1S
+T0716 39.94870  16.02240   560  1.58950   400  1  T716	IV  REFTEK-130 LE3D-5S
+T0721 39.93691  15.97695   535  1.58950   400  1  T721	IV  REFTEK-130 LE3D-1S  T0721 Laino_Castello 26/10/2012
+T0722 39.92399  16.06080   831  1           1  1  T722	IV  Zircoli_Rotonda 26/10/2012 ------------
+T0723 39.89360  16.08646  1484  1           1  1  T723	IV  Campoten_Morano_Calabro 26/10/2012 ------------
+T0724 39.84875  15.87647   357  1           1  1  T724	IV  Tremoli_Papasidero 27/10/2012 ------------
+T0725 39.84526  16.26092   667  1           1  1  T725	IV  Frascineto 27/10/2012 
+TDS   39.6601   16.3376    244  3.178915  750  1  TDS	IV  HH  Terranova_Da_Sibari  GAIA2-FS 40VPP Trillium 120 s
+TIP   39.1794   16.7583    789  2.384118 1500  1  TIP	MN  HH  Timpagrande  QuanterraQ730 STS-2 120s (prima era uVc = 1.90)
+VULT  40.95490  15.61630  1101  1           1  1  VULT	IV  HH 
+ACATE 37.0240   14.5006    210  1           1  1  ACAT	IV  EH 
+AIO   37.9712   15.2330    751  1.0      1500  1  AIO	IV  HH  Nota: parametri calcolati da MLR
+AND3  40.9298   15.3331    905  1           1  1  AND3	IX  HH 
+APRC  41.7574   15.5431    672  1           1  1  APRC	IV  HH 
+BIOG  41.1999   15.1326    623  1           1  1  BIOG	IV  HH 
+CAPA  41.1583   15.8169    156  1           1  1  CAPA	IV  HH 
+CGL1  40.6484   17.5173    303  1           1  1  CGL1	CH  HH 
+CLT3  40.9030   15.4043    525  1           1  1  CLT3	IX  HH 
+CLTA  37.1580   13.9620    246  1           1  1  CLTA	IV  HH 
+CMDO  37.4639   13.8229    571  1           1  1  CMDO	IV  HH 
+CMSN  40.8382   14.1818     20  1           1  1  CMSN	IV  HH 
+CPTP  37.4075   14.1625    561  1           1  1  CPTP	IV  HH 
+ENIC  37.6314   15.0216    877  1           1  1  ENIC	IV  HH 
+EPIT  37.8113   15.0567   1657  2.4      1500  1  EPIT	IV  HH  Nota: parametri calcolati da MLR
+GIB   37.9901   14.0260   1020  1           1  1  GIB	IV  HH 
+IVGP  38.3968   14.9608    150  1           1  1  IVGP	IV  HH 
+LIO3  40.8969   15.1804    737  1           1  1  LIO3	IV  HH 
+MARCO 40.2972   15.8063    890  1           1  1  MARC	GE  HH 
+MASS  40.6330   17.1440    274  1           1  1  MASS	GU  HH 
+MESG  40.5894   17.8504     78  1.25     1500  1  MESG	IV  HH  Nota: parametri calcolati da MLR
+MIGL  40.60440  16.44100   440  1           1  1  MIGL	IV  HH
+MTMR  40.9184   15.0026    850  1           1  1  MTMR	IV  EH 
+NOCI  40.7888   17.0644    420  1.0      1500  1  NOCI	IV  HH  Nota: parametri calcolati da MLR
+OT03  41.7122   15.6497    655  1           1  1  OT03	OT  EH 
+OT04  41.7196   15.5807    279  1           1  1  OT04	OT  EH 
+OT06  41.6855   15.5944    584  1           1  1  OT06	OT  EH 
+OT07  41.6213   15.7194    154  1           1  1  OT07	OT  EH 
+OT11  41.5146   15.3353      0  1           1  1  OT11	OT  EH 
+OT12  41.6318   15.9078     30  1           1  1  OT12	OT  EH 
+OT14  41.8967   15.9069      0  1           1  1  OT14	OT  EH 
+OT15  41.1090   16.8797      0  1           1  1  OT15	OT  EH 
+PIGN  41.2000   14.1799    398  1           1  1  PIGN	IV  HH 
+SCTE  40.0724   18.4675    150  3.0      1500  1  SCTE	IV  HH  Nota: parametri calcolati da MLR
+SSB3  41.0785   15.2292    724  1           1  1  SSB3	IX  HH 
+SSY   37.1577   15.0737    600  2.3      1500  1  SSY	IV  HH  [2.5  1500 fino a 20230313] Nota: parametri calcolati da MLR
+TAR1  40.5259   17.2846    140  1.0      1500  1  TAR1	OT  HH  Nota: parametri calcolati da MLR
+VITU  41.1833   14.6302    848  1.25     1500  1  VITU	IV  HH  Nota: parametri calcolati da MLR
+ACI   39.35880  16.22670   260  1           1  0  ACI	Arcavacata di Rende
+ACII  39.35880  16.22670   260  1           1  0  ACII	Arcavacata di Rende
+AIEL  39.11666  16.15815   355  1           1  0  AIEL	Aiello Calabro
+ALDC  39.95908  16.38132  1041  1           1  0  ALDC	Alessandria del Carretto
+ALTO  39.68274  16.13013   408  1           1  0  ALTO	Altomonte
+ALTP  39.70     16.13      482  1           1  0  ALTP	Altomonte
+BARC  39.51636  16.51278  1015  1           1  0  BARC	Baraccone A
+CAMP  39.40778  16.83036   561  1           1  0  CAMP	Campana
+CAVE  40.44906  15.05313   221  1           1  0  CAVE	Capaccio Vecchio
+CIVI  39.82824  16.31501   430  1           1  0  CIVI	Civita
+CO2   39.49259  16.30505   430  1           1  0  CO2	Cocozzello
+CRB   41.07899  16.27217   490  1           1  0  CRB	Near Castel del Monte
+GALL  40.30237  16.13655   847  1           1  0  GALL	Gallicchio
+GERM  39.32028  16.66740  1272  1           1  0  GERM	Germano
+GROM  41.07274  15.05932   447  1           1  0  GROM	Grottaminarda
+ILCA  40.61755  16.87718   343  1           1  0  ILCA	Castellaneta
+MC2   39.34310  16.42497  1301  1           1  0  MC2	Moccone
+MC22  39.34310  16.42497  1301  1           1  0  MC22	Moccone
+MMNN  39.89085  15.99041   905  1           1  0  MMNN	Mormanno
+MONT  40.83692  15.01395   780  1           1  0  MONT	Montella
+NARD  40.15743  18.01661   104  1           1  0  NARD	Nardo'
+PADU  40.33337  15.67222   765  1           1  0  PADU	Padula
+PARE  39.15698  16.45218  1315  1           1  0  PARE	Parenti
+PIAG  40.34626  15.37719   703  1           1  0  PIAG	Piaggine
+PIAN  38.95759  16.39681   426  1           1  0  PIAN	Pianopoli
+PICE  40.62909  15.66850   827  1           1  0  PICE	Picerno
+POLA  40.51038  15.48791   570  1           1  0  POLA	Polla
+RCCL  40.29560  15.05512   688  1           1  0  RCCL	Rocca Cilento
+ROGL  39.18334  16.32389   704  1           1  0  ROGL	Rogliano
+SACO  40.84334  15.37066   698  1           1  0  SACO	Sant'Andrea di Conza
+SAVE  39.31181  16.78412   937  1           1  0  SAVE	Savelli
+SGIO  40.04108  15.45740   537  1           1  0  SGIO	San Giovanni a Piro
+SILV  39.29773  16.52368  1476  1           1  0  SILV	Silvana Mansio
+SIMO  39.51518  15.94449   139  1           1  0  SIMO	Cetraro
+SMOR  39.49165  16.87637  1281  1           1  0  SMOR	San Morello
+SOVE  39.05884  16.39632   833  1           1  0  SOVE	Soveria Mannelli
+SRRN  40.18214  18.35137   144  1           1  0  SRRN	Serrano
+STEC  38.94258  16.92573    69  1           1  0  STEC	Steccato di Cutro
+SX17  40.73608  15.84765   821  1           1  0  SX17	Pietragalla
+TRIC  40.61990  16.10698   720  1           1  0  TRIC	Tricarico
+VENO  40.96443  15.82340   409  1           1  0  VENO	Venosa
+BIDON 39.9457   16.4559    958  2.4       750  1  BIDN	XE  HH  Nota: parametri calcolati da MLR 
+CNESE 39.8941   16.0843   1547  2.4       750  1  CNES	XE  HH  Nota: parametri calcolati da MLR
+CS2FF 39.29332  16.25836   235  1           1  1  C2FF	7C  HH 
+CS2FS 39.2933   16.2584    237  1           1  1  C2FS	7C  HH 
+CSGE1 38.2705   16.2205    480  1           1  1  CGE1	7C  HH 
+CSMBE 39.2895   16.2642    251  1           1  1  CMBE	7C  HH 
+FRASC 39.83809  16.26629   559  2.4       750  1  FRSC	XE  HH  Nota: parametri calcolati da MLR
+LAICA 39.94848  15.97505   350  2.4       750  1  LAIC	XE  HH  Nota: parametri calcolati da MLR
+ME03  38.33013  15.83742   567  1           1  1  ME03	IV  HH  Palmi
+ME05  38.12428  15.89986  1458  1           1  1  ME05	IV  HH  Diga Del Menta
+ME09  37.95240  15.75640   244  1           1  1  ME09	IV  HH  Pentedattilo
+ME10  38.30291  16.19533   728  1           1  1  ME10	IV  HH  Cittanova
+MORMA 39.8699   15.9721   1023  2.4       750  1  MORM	XE  HH  Nota: parametri calcolati da MLR
+MRCB  38.162    15.703     500  1           1  1  MRCB	IV  HH  Reggio Calabria
+SHEVA 39.8153   16.16773   605  2.4       750  1  SHEV	XE  HH  Nota: parametri calcolati da MLR 
+SOR   40.58200  14.33500   497  1.27156  1500  1  SOR	IV  HH
+TNOVA 39.9747   16.2611   1127  2.4       750  1  TNOV	XE  HH  Nota: parametri calcolati da MLR
+ZIDIL 39.78218  16.25963   451  2.4       750  1  ZDIL	XE  HH  Nota: parametri calcolati da MLR
+ALJA  37.74897  13.75373   700  1           1  1  ALJA	
+BSSO  41.5461   14.5938   1010  1           1  1  BSSO	
+CAGR  37.622    14.4999    548  1           1  1  CAGR	
+CAVT  37.67883  12.7556    158  1           1  1  CAVT	
+CERA  41.5978   14.0183    800  1           1  1  CERA	
+CERT  41.94903  12.98176   773  1           1  1  CERT	
+CGL   39.366    9.296     1050  1           1  1  CGL	
+CLTB  37.578    13.216     949  1           1  1  CLTB	
+CORL  37.8943   13.3038    660  1           1  1  CORL	
+CRBB  41.08     16.27      495  1           1  0  CRBB	
+CRJA  37.80162  13.00433   560  1           1  1  CRJA	
+CSLB  37.93745  14.05785   583  1           1  1  CSLB	
+DGI   40.31802   9.60668   354  1           1  1  DGI	
+ECNV  37.5956   14.7125    484  1           1  1  ECNV	
+EPZF  37.824    14.857    1140  1           1  1  EPZF	
+ESML  37.6181   14.8794    417  1           1  1  ESML	
+FAVR  37.2671   13.667     289  1           1  1  FAVR	
+FIAM  42.26802  13.11718  1070  1           1  1  FIAM	
+GATE  41.51314  14.91020   487  1           1  1  GATE	
+GIO   37.56667  15.10833   200  1           1  1  GIO	
+GIUL  41.55827  13.25458   566  1           1  1  GIUL	IV	GIULIANO_DI_ROMA
+GUAR  41.7945   13.31229   741  1           1  1  GUAR	
+HBSP  37.127    14.492     255  1           1  1  HBSP	
+HCRL  37.2831   15.0325    240  1           1  1  HCRL	
+HVZN  37.1783   14.7155    787  1           1  1  HVZN	
+ILOS  38.4457   14.9483    283  1           1  1  ILOS	
+INTR  42.01154  13.9046    924  1           1  1  INTR	
+LATB  41.4939   12.96239     0  1           1  1  LATB	
+LAV9  41.67778  12.69888   300  1           1  1  LAV9	
+MA9   41.77017  12.65933   340  1           1  1  MA9	
+MCT   37.61864  13.60761  1558  1           1  1  MCT	
+ME04  38.59285  16.35762   907  1           1  1  ME04	
+MEU   37.11112  14.83      986  1           1  1  MEU	
+MFNL  37.79082  12.92242   677  1           1  1  MFNL	
+MIDA  41.64188  14.25402   950  1           1  1  MIDA	
+MMGL  37.66195  12.97673   397  1           1  1  MMGL	
+MNO   37.931    14.695    1830  1           1  1  MNO	
+MNS   42.38546  12.68106   706  1           1  1  MNS	
+MODR  41.1459   13.8779    345  1           1  1  MODR	
+MPG   38.16167  13.36      600  1           1  1  MPG	
+MSFR  38.0339   14.5916    723  1           1  1  MSFR	
+MTC   42.0228   12.74222   388  1           1  1  MTC	
+MTGR  37.89337  12.75932   751  1           1  1  MTGR	
+PETRA 37.8335   14.1148   1547  1           1  1  PETR	
+PLLN  37.9926   14.1431    787  1           1  1  PLLN	
+POFI  41.71743  13.71202   878  1           1  1  POFI	
+PSB1  41.22345  14.81078   551  1           1  1  PSB1	
+PTMD  36.7885   11.9934    626  1           1  1  PTMD	
+PTQR  42.02193  13.40057   957  1           1  1  PTQR	
+PTRJ  41.3641   14.529    1027  1           1  1  PTRJ	
+RAFF  37.2225   14.3624    310  1           1  1  RAFF	
+RDP   41.75833  12.71667   760  1           1  1  RDP	
+RESU  37.6468   14.0568    785  1           1  1  RESU	
+RMP   41.81112  12.70222   380  1           1  1  RMP	
+RNI2  41.70328  14.1524    950  1           1  1  RNI2	
+ROM9  41.82842  12.51553   110  1           1  1  ROM9	
+SACR  41.3974   14.7057    859  1           1  1  SACR	
+SAMA  41.7805   12.5923    119  1           1  1  SAMA	
+SGG   41.38667  14.37917   880  1           1  1  SGG	
+SOLUN 38.09193  13.53261   190  1           1  1  SOLU	
+SPAL  39.66600  16.29450   265  1.00000   400  0  SPAL	
+TOLF  42.06406  12.00017   371  1           1  1  TOLF	
+TREB  39.86530  16.51840   133  1           1  1  TREB	
+TRIV  41.7666   14.5502    598  1           1  1  TRIV	
+USI   38.70787  13.17913   285  1           1  1  USI	
+VAGA  41.4154   14.2342    795  1           1  1  VAGA	
+VENT  40.79478  13.42156   108  1           1  1  VENT	
+VSL   39.496    9.378      370  1           1  1  VSL	
+VVLD  41.86965  13.62324  1051  1           1  1  VVLD	
+T1811 39.56904  16.77169   226  1  	    1  1  T811	
+T1812 39.48464  16.50149  1131  1           1  1  T812	
+T1813 39.31469  16.75119  1211  1           1  1  T813 	
+T1886 39.287    16.97583   524  1           1  1  T886 
+ACR   39.4889   16.3798    705  1           1  0  ACR	RAN  nm/s/s 
+ALD   39.9298   16.4653    785  1           1  0  ALD	RAN  nm/s/s 
+ALT   40.5583   15.3921    357  1           1  0  ALT	RAN  nm/s/s 
+AMN   39.1367   16.0796     98  1           1  0  AMN	RAN  nm/s/s 
+ARE   38.5614   16.2088    492  1           1  0  ARE	RAN  nm/s/s 
+AVT   40.3217   17.6994     47  1           1  0  AVT	RAN  nm/s/s 
+BAG   38.0291   15.8222    534  1           1  0  BAG	RAN  nm/s/s 
+BCL   38.1827   15.2316     38  1           1  0  BCL	RAN  nm/s/s 
+BNF   39.5845   15.8909    475  1           1  0  BNF	RAN  nm/s/s 
+BNT   37.7805   14.8444    924  1           1  0  BNT	RAN  nm/s/s 
+BRN   40.4726   15.6431    708  1           1  0  BRN	RAN  nm/s/s 
+BRO   38.6021   16.3493    821  1           1  0  BRO	RAN  nm/s/s 
+BTR   38.9415   16.8589    100  1           1  0  BTR	RAN  nm/s/s 
+BVM   37.931    15.936     187  1           1  0  BVM	RAN  nm/s/s 
+CIR   39.3877   17.0577    358  1           1  0  CIR	RAN  nm/s/s 
+CLM   40.4355   15.3834    703  1           1  0  CLM	RAN  nm/s/s 
+CLS7  40.0095   15.974     718  1           1  0  CLS7	RAN  nm/s/s 
+CMA   39.4149   16.818     610  1           1  0  CMA	RAN  nm/s/s 
+COP   40.3782   16.0406    776  1           1  0  COP	RAN  nm/s/s 
+COR   39.1179   16.38      841  1           1  0  COR	RAN  nm/s/s 
+COS   39.289    16.2576    377  1           1  0  COS	RAN  nm/s/s 
+CRN   39.0777   17.1113     26  1           1  0  CRN	RAN  nm/s/s 
+CSA7  40.1619   15.9908   1018  1           1  0  CSA7	RAN  nm/s/s 
+CSL   40.6323   16.9283    263  1           1  0  CSL	RAN  nm/s/s 
+CTN   38.9171   16.5849    432  1           1  0  CTN	RAN  nm/s/s 
+CTV   38.3498   16.0804    468  1           1  0  CTV	RAN  nm/s/s 
+CTZ   38.9407   16.5851    452  1           1  0  CTZ	RAN  nm/s/s 
+CVL   39.8168   16.1947    484  1           1  0  CVL	RAN  nm/s/s 
+DNM   38.5196   16.1576    578  1           1  0  DNM	RAN  nm/s/s 
+FDF   38.7891   16.3       653  1           1  0  FDF	RAN  nm/s/s 
+FRR   38.0515   16.1325     25  1           1  0  FRR	RAN  nm/s/s 
+FRZ   38.0379   16.0874    472  1           1  0  FRZ	RAN  nm/s/s 
+GMB   38.1666   15.8363   1329  1           1  0  GMB	RAN  nm/s/s 
+GRM   40.3102   15.886     586  1           1  0  GRM	RAN  nm/s/s 
+GSM   38.172    14.8985    147  1           1  0  GSM	RAN  nm/s/s 
+GTR   38.4484   15.918      38  1           1  0  GTR	RAN  nm/s/s 
+KRT   39.0698   17.1278     22  1           1  0  KRT	RAN  nm/s/s 
+LGN   40.131    15.7585    803  1           1  0  LGN	RAN  nm/s/s 
+LMZ   38.9187   16.2527     63  1           1  0  LMZ	RAN  nm/s/s 
+LPR1  38.4695   14.9569     63  1           1  0  LPR1	RAN  nm/s/s 
+LRG   40.0218   15.8908    756  1           1  0  LRG	RAN  nm/s/s 
+LRS   40.0466   15.8348    440  1           1  0  LRS	RAN  nm/s/s 
+LTR   40.0876   16.0094    882  1           1  0  LTR	RAN  nm/s/s 
+MAR   40.675    16.582     412  1           1  0  MAR	RAN  nm/s/s 
+MCA   39.0774   16.7897    450  1           1  0  MCA	RAN  nm/s/s 
+MFG   38.1888   15.5406    196  1           1  0  MFG	RAN  nm/s/s 
+MLR   40.2402   15.8631    850  1           1  0  MLR	RAN  nm/s/s 
+MMR7  40.297    15.9887    693  1           1  0  MMR7	RAN  nm/s/s 
+MRA   39.9871   15.7309    534  1           1  0  MRA	RAN  nm/s/s 
+MRM   39.8832   15.9895    918  1           1  0  MRM	RAN  nm/s/s 
+MRV   40.3613   15.8265    745  1           1  0  MRV	RAN  nm/s/s 
+MSR   39.0768   16.7897    458  1           1  0  MSR	RAN  nm/s/s 
+MZZ   38.2341   15.2451    110  1           1  0  MZZ	RAN  nm/s/s 
+NAS   38.1183   14.7863    514  1           1  0  NAS	RAN  nm/s/s 
+NCH   38.9621   16.3151    178  1           1  0  NCH	RAN  nm/s/s 
+NCO   38.5531   15.938     269  1           1  0  NCO	RAN  nm/s/s 
+NVR1  38.0124   15.1288    754  1           1  0  NVR1	RAN  nm/s/s 
+ORS   39.798    15.9066    130  1           1  0  ORS	RAN  nm/s/s 
+PGA   40.5686   15.7788   1018  1           1  0  PGA	RAN  nm/s/s 
+PIE7  40.7473   15.8804    887  1           1  0  PIE7	RAN  nm/s/s 
+PLC   40.183    16.6599     36  1           1  0  PLC	RAN  nm/s/s 
+PLT   39.0022   16.3192    716  1           1  0  PLT	RAN  nm/s/s 
+PMI   38.3554   15.8533    342  1           1  0  PMI	RAN  nm/s/s 
+PNI   39.158    16.4126    922  1           1  0  PNI	RAN  nm/s/s 
+POL   39.37     16.0445    228  1           1  0  POL	RAN  nm/s/s 
+POT7  40.6501   15.801     817  1           1  0  POT7	RAN  nm/s/s 
+PRA   39.902    15.7854     29  1           1  0  PRA	RAN  nm/s/s 
+PTC   40.3887   16.5611    386  1           1  0  PTC	RAN  nm/s/s 
+PTT   38.1343   14.9751    135  1           1  0  PTT	RAN  nm/s/s 
+PTZ   40.6482   15.8081    773  1           1  0  PTZ	RAN  nm/s/s 
+RCI   38.4251   16.4619     21  1           1  0  RCI	RAN  nm/s/s 
+RCU   38.1214   15.6662    128  1           1  0  RCU	RAN  nm/s/s 
+ROT7  39.949    16.042     661  1           1  0  ROT7	RAN  nm/s/s 
+RSN   39.5706   16.6301    433  1           1  0  RSN	RAN  nm/s/s 
+SAA   38.6257   16.5227    381  1           1  0  SAA	RAN  nm/s/s 
+SAP   38.6251   16.5251    351  1           1  0  SAP	RAN  nm/s/s 
+SAR   40.0746   15.652     196  1           1  0  SAR	RAN  nm/s/s 
+SBR   39.6946   16.4682     18  1           1  0  SBR	RAN  nm/s/s 
+SCI   38.2557   15.7147     98  1           1  0  SCI	RAN  nm/s/s 
+SCL   39.7739   15.8004     14  1           1  0  SCL	RAN  nm/s/s 
+SDN   39.7082   16.0461    776  1           1  0  SDN	RAN  nm/s/s 
+SGV   39.2633   16.6897   1165  1           1  0  SGV	RAN  nm/s/s 
+SLC1  40.3951   15.596     563  1           1  0  SLC1	RAN  nm/s/s 
+SLL   38.8843   16.7447      8  1           1  0  SLL	RAN  nm/s/s 
+SMA   39.5564   16.125     457  1           1  0  SMA	RAN  nm/s/s 
+SMR   40.4871   16.2459    584  1           1  0  SMR	RAN  nm/s/s 
+SNA   40.2579   16.2477    322  1           1  0  SNA	RAN  nm/s/s 
+SNZ   40.2427   15.5503    641  1           1  0  SNZ	RAN  nm/s/s 
+SPA   40.0353   16.3345    855  1           1  0  SPA	RAN  nm/s/s 
+SPR   38.2672   15.6019    111  1           1  0  SPR	RAN  nm/s/s 
+SPS   39.3402   16.4491   1307  1           1  0  SPS	RAN  nm/s/s 
+SPZ   39.6594   16.3019    386  1           1  0  SPZ	RAN  nm/s/s 
+SQL   38.7799   16.5162    535  1           1  0  SQL	RAN  nm/s/s 
+SRN   38.572    16.3235    815  1           1  0  SRN	RAN  nm/s/s 
+SSA   38.1686   15.7907    784  1           1  0  SSA	RAN  nm/s/s 
+SSB   38.581    16.3207    835  1           1  0  SSB	RAN  nm/s/s 
+STB   38.804    15.2336    112  1           1  0  STB	RAN  nm/s/s 
+STI   38.4751   16.4619    439  1           1  0  STI	RAN  nm/s/s 
+STL   40.5408   15.6431    748  1           1  0  STL	RAN  nm/s/s 
+SVN   37.683    15.1299    426  1           1  0  SVN	RAN  nm/s/s 
+TAO   37.8523   15.2862    261  1           1  0  TAO	RAN  nm/s/s 
+TGN   40.3919   15.5258    475  1           1  0  TGN	RAN  nm/s/s 
+TOR   38.0443   14.8146    604  1           1  0  TOR	RAN  nm/s/s 
+TPA   38.6736   15.8891     92  1           1  0  TPA	RAN  nm/s/s 
+TRF   38.2643   15.6341     12  1           1  0  TRF	RAN  nm/s/s 
+TRO   40.6145   16.1422    769  1           1  0  TRO	RAN  nm/s/s 
+TRR   40.6196   16.1561    666  1           1  0  TRR	RAN  nm/s/s 
+TRS   39.6311   16.2241    112  1           1  0  TRS	RAN  nm/s/s 
+UGN   39.8949   18.123      23  1           1  0  UGN	RAN  nm/s/s 
+VBM   38.7138   16.1238     53  1           1  0  VBM	RAN  nm/s/s 
+VBV   38.6779   16.1065    537  1           1  0  VBV	RAN  nm/s/s 
+VGG   39.9676   16.0511    371  1           1  0  VGG	RAN  nm/s/s 
+VGG7  39.9727   16.0851    616  1           1  0  VGG7	RAN  nm/s/s 
+VLC   40.5877   17.469     293  1           1  0  VLC	RAN  nm/s/s 
+VLS2  38.2175   15.6469    106  1           1  0  VLS2	RAN  nm/s/s 
+VNN   40.1719   16.4431    247  1           1  0  VNN	RAN  nm/s/s 
+ARMO  38.0761   15.7125    364  1           1  0  ARMO	RAN  nm/s/s
+CSPC  39.3102   16.2337    266  1           1  0  CSPC	RAN  nm/s/s
+CSSE  39.3023   16.2494    286  1           1  0  CSSE	RAN  nm/s/s
+CSST  39.2911   16.2545    266  1           1  0  CSST	RAN  nm/s/s
+DLNV  38.237    15.919     640  1           1  0  DLNV	RAN  nm/s/s
+DNMI  38.5315   16.1448    280  1           1  0  DNMI	RAN  nm/s/s
+LAZR  37.9778   15.6659     82  1           1  0  LAZR	RAN  nm/s/s
+MLPS  37.9227   15.7776     31  1           1  0  MLPS	RAN  nm/s/s
+RCPC  38.093    15.6565     98  1           1  0  RCPC	RAN  nm/s/s
+RNMU  39.3471   16.2439    190  1           1  0  RNMU	RAN  nm/s/s
+RNPC  39.3334   16.243     197  1           1  0  RNPC	RAN  nm/s/s
+RNSF  39.3591   16.2399    188  1           1  0  RNSF	RAN  nm/s/s
+SAAM  38.1733   15.7583    586  1           1  0  SAAM	RAN  nm/s/s
+SCZA  38.0422   15.4561    103  1           1  0  SCZA	RAN  nm/s/s
+STRV  37.949    15.365      74  1           1  0  STRV	RAN  nm/s/s
+VLTR  38.2354   15.4328     34  1           1  0  VLTR	RAN  nm/s/s

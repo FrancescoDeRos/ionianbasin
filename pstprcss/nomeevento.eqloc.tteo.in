@@ -1,0 +1,12 @@
+nomeevento.eqloc.out   # nome file out  
+nomeevento.eqloc.loc   # nome file out  
+/home/mario/unical/stazioni/Stazioni.unical.tabella.txt   # nome file coordinate (sta lat lon quota) 
+/home/mario/locali/modello-calabria-eqloc.txt        # nome file modello di velocita'
+nomeevento         # data e ora di riferimento YYYYMMDDhhmmss 
+39.3697   20.5203   13.5  # lat  lon  prof (solo per opzione -t) 
+nomeevento.focmec.in   # nome file input per focmec 
+#stazione  fase(P/S)  tempo(s)
+GIMI     P   40.500
+SMIN     P   43.190
+SMIN     S   47.080
+SPNT     P   43.330
