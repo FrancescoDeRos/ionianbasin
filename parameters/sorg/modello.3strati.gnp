@@ -1,0 +1,22 @@
+#set terminal postscript "Helvetica, 14" portrait color
+#set output "modelli.3strati.gnp.ps"
+
+reset
+set multiplot 
+set style data line
+set style line 1 lt 1 lw 1
+set key bottom left
+set grid
+set xlabel "Velocita' (km/s) / densita' (g/cm3)"
+set ylabel "Profondita' (km)"
+set ytics 10
+set mytics 5
+set xrange [0:9]
+set xtics 1
+set mxtics 5
+set yrange [60:-2]
+plot "modello.3strati.dat" u 2:1 lw 4, "modello.3strati.dat" u 3:1 lw 4, "modello.3strati.dat" u 4:1 lw 4 lc 4
+
+unset multiplot
+#reset
+

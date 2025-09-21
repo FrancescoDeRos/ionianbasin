@@ -1,0 +1,56 @@
+#!/bin/bash
+#PBS -S /bin/bash
+#PBS -N test
+#PBS -l select=1:ncpus=20:mpiprocs=20:host=wn013+1:ncpus=20:mpiprocs=20:host=wn014+1:ncpus=20:mpiprocs=20:host=wn015+1:ncpus=20:mpiprocs=20:host=wn016
+#PBS -q large 
+#PBS -o OUTPUT_FILES/$PBS_JOBID.o
+#PBS -e OUTPUT_FILES/$PBS_JOBID.e
+#PBS -V
+#PBS -M  derose.fr@gmail.com
+#PBS -m abe
+cd $PBS_O_WORKDIR
+echo "====================================="
+echo "starting run in current directory" $PWD
+echo "====================================="
+## links executables
+mkdir -p bin
+cd bin/
+ln -s ../../bin/xdecompose_mesh
+ln -s ../../bin/xgenerate_databases
+ln -s ../../bin/xspecfem3D
+######################decompose mesh####################### 
+## read Par_file to get information about the run
+NPROC=`grep ^NPROC DATA/Par_file | grep -v -E '^[[:space:]]*#' | cut -d = -f 2`
+LOCALPATH=`grep ^LOCAL_PATH DATA/Par_file | grep -v -E '^[[:space:]]*#' | cut -d = -f 2`
+echo "====================================="
+echo starting decomposer for $NPROC partitions
+echo "====================================="
+mkdir -p OUTPUT_FILES/
+rm -rf OUTPUT_FILES/*
+######################
+## USER: CHANGE MESH DIRECTORY
+MESHDIR=./MESH-default
+######################
+mkdir -p $LOCALPATH
+echo "----------------------------------------"
+echo "  running decomp-mesh on $NPROC procs..."
+echo "----------------------------------------"
+./bin/xdecompose_mesh $NPROC $MESHDIR/ $LOCALPATH/
+echo "done decomposing mesh"
+echo "----------------------------------------"
+echo "running gen-databases on $NPROC procs..."
+echo "----------------------------------------"
+mpirun -np $NPROC ./bin/xgenerate_databases
+echo "done interpolating GLL nodes"
+######################
+cp DATA/Par_file OUTPUT_FILES/
+cp DATA/STATIONS OUTPUT_FILES/
+cp DATA/CMTSOLUTION OUTPUT_FILES/
+echo "----------------------------------------"
+echo "  running solver on $NPROC processors..."
+echo "----------------------------------------"
+mpirun -np $NPROC ./bin/xspecfem3D
+cp DATA/STATIONS_FILTERED OUTPUT_FILES/
+echo "----------------------------------------"
+echo "		finished successfully.        "
+echo "----------------------------------------"

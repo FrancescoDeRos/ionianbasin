@@ -1,0 +1,35 @@
+
+beginframe
+xvport 0.08 0.48
+picks off
+color off
+xlim off
+ylim all
+fileid type list kstnm kcmpnm 
+fileid location ul
+r *Zd.sac 
+sort dist
+dc 11-42
+int
+bp c 0.1 0.3 n 2 p 1
+cutim 40 100
+mul 1000000
+plabel 1 "Observed signals " position 0.15 0.9
+xlabel "Time [s]"
+ylabel "Ground displacement [micron]"
+p1
+plabel 1 off
+
+xvport 0.56 0.96
+color 1
+r *.CXZ*sac
+sort dist
+dc 11-45
+bp
+cutim 40 100
+mul 1000000
+plabel 1 "Synthetic signals " position 0.65 0.9
+p1 
+endframe 
+
+
