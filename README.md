@@ -1,10 +1,8 @@
 # ionianbasin
 This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
-
 ---------------------
 ### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
 <img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
-
 This main branch includes:
         
     Thesis (.tex, .pdf and all other outputs from Texmaker 
@@ -36,7 +34,7 @@ The aim is to maintain a reproducible and transparent archive of the numerical t
 ***
 ### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
 ### Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
-### Time and Location - Cosenza, Calabria 23092025.
+### Time and Location - Cosenza, Calabria 22092025.
 ***
 
 ---------------------
@@ -112,9 +110,6 @@ GREECE2024: https://www.emsc-csem.org/Earthquake_information/earthquake.php?id=1
 ---------------------
 ###### pagina FAQ per visualizzare i file della topografia della Calabria importati in Paraview
 ----->https://discourse.paraview.org/t/visualization-of-digital-elevation-model-tiff-file-with-x-y-and-z-axis-in-3d-view/15986/7
-### .ipynb single file: 
-Description of the markdown chapters in the notebook
-* 
 ---------------------
 ### SPECFEM3D related
 Description of the files:
