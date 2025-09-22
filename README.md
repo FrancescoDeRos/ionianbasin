@@ -3,8 +3,11 @@
 ---------------------
 #### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
 <img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
+
+
 #### Regional earthquake 20250416012608.7 Mw 4.7 39.0 km Deep simulation. Coast relief for Calabria shown. Made with Specfem3D and shown with Paraview.
-<video src='https://github.com/FrancescoDeRos/ionianbasin/blob/main/open.gif' width="700"></video>
+
+
 ![Output sample]([https://github.com/FrancescoDeRos/ionianbasin/blob/main/open.gif])
 ---------------------
 
