@@ -1,7 +1,7 @@
 # ionianbasin
-This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
+##### This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
 ---------------------
-### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
+#### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
 <img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
 This main branch includes:
         
@@ -29,10 +29,10 @@ This main branch includes:
     Documentation and notes on simulation parameters and workflow
     (all the articles that have been read during the thesis writing). #check the folder refs/# 
 
-The aim is to maintain a reproducible and transparent archive of the numerical tests conducted for regional waveform modeling studies in the area that has been studied. I hope whichever user interested in these kind of simulations will find this repository useful for its studies.
+##### The aim is to maintain a reproducible and transparent archive of the numerical tests conducted for regional waveform modeling studies in the area that has been studied. I hope whichever user interested in these kind of simulations will find this repository useful for its studies.
 
 ***
-### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
+#### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
 ### Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
 ### Time and Location - Cosenza, Calabria 22092025.
 ***
