@@ -37,7 +37,7 @@ This main branch includes:
 
 ***
 #### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
-*Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
+* Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
 * Time and Location - Cosenza, Calabria 22092025.
 ***
 
