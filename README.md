@@ -2,7 +2,7 @@
 ##### This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
 ---------------------
 #### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
-<img src="events_runs.png" width="1000" alt="Closeup of the Ionian basin arc">
+<img src="events_runs.png" width="500" alt="Closeup of the Ionian basin arc">
 Regional earthquake 20250416012608.7 Mw 4.7 39.0 km shown with Paraview.
 
 ![](open.gif)
