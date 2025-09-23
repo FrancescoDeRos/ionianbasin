@@ -1,9 +1,9 @@
 # ionianbasin
-##### This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines used during the the simulation runs. If you still have issues after this tinkering step do not hesitate to contact me and help solving any problem. The goal is always to start from the end point at which I stopped.
+##### This repository collects all material related to my master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used on the machines during the the simulation runs. If you still have issues after this tinkering step you can contact me. The goal is always to start from the end point at which I stopped. derose.fr@gmail.com
 ---------------------
 #### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
 <img src="events_runs.png" width="500" alt="Closeup of the Ionian basin arc">
-Regional earthquake 20250416012608.7 Mw 4.7 39.0 km shown with Paraview.
+Regional earthquake animation EQ20250416012608.7 Mw 4.7 39.0 km depth shown with Paraview.
 
 ![](open.gif)
 
@@ -37,8 +37,8 @@ This main branch includes:
 
 ***
 #### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
-* Everything in this page is free to produce, share and build for one's needs. No limits. - To contact ---> derose.fr@gmail.com <-----
-* Time and Location - Cosenza, Calabria 22092025.
+* Everything in this page is free to produce, share and build for one's needs.
+* * Time and Location - Cosenza, Calabria 22092025.
 ***
 
 ---------------------
