@@ -1,10 +1,7 @@
-#QUICK LOOKUP
+#tavola per programmi che ho usato troppo spesso, non metto in ordine niente
 python3 -m venv venv && source venv/bin/activate && jupyter lab
 jupyter lab --notebook-dir=$HOME
 jupyter lab --notebook-dir=/.
-dt <= h_min/ sqrt(3) * VP_MAX(max velocity in model)
-#copia file con tutti i permessi nei binari, eseguibile dovunque, 
-sudo cp -r /path/.sh /usr/bin/
 ls -l  *semd | wc
 ls -l timestamp* | wc
 CTRL+Z , bg 1 mette in background il processo
@@ -12,12 +9,6 @@ get *.semd .
 put <locale> <remoto>
 get <remoto> <locale>
 get dir/ . -R
-griglia3D.mod3D.dat
-cd /home/fderose/dati/specfem3d/EXAMPLES/3strati2012/OUTPUT_FILES
-lcd /home/francesco/dati/specfem3d/EXAMPLES/3strati2012/
-get *.semd 
-(  -  ) * (   ) * ( ) / 1000000000
-cd /home/fderose/dati/specfem3d/EXAMPLES
 #newton cluster general
 wn008, wn009, wn010, wn020, wn023 e wn027 non funzionanti.
 #PBS -l select=1:ncpus=20:mpiprocs=20:host=wn002+1:ncpus=20:mpiprocs=20:host=wn003+1:ncpus=20:mpiprocs=20:host=wn004+1:ncpus=20:mpiprocs=20:host=wn005
@@ -45,7 +36,6 @@ set grid
 
 plot "griglia3D.mod3D_m.dat" using ($2==18110.7646081 ? $1 : 1/0):(3/1000) title "Section at Y=18110 mesh grid points", "" using ($2==18110.7646081 ? $1 : 1/0):($7 > 800 ? $3 : 1/0) title "Shell (col7 > 800)"
 
-cd /home/fderose/dati/specfem3d/EXAMPLES
 #GRIGLIE GMT:
 -Rminlon/maxlon/minlat/maxlat   -I0.005/0.0005 for 500 m resolution
 gmt nearneighbor topocalabria.90mXYZ.dat -I0.01/0.01 -S0.05 -E0 -R15.95000/17.15000/38.75000/39.65000 -Gtopocal_fine.grd
@@ -1154,72 +1144,3 @@ T1811 CAL 174834 -105526 226 0
 T1812 CAL 165810 -128889 1131 0
 T1813 CAL 146627 -107670 1211 0
 T1886 CAL 143314 -88337 524 0
-
-#------MODELLO 3d + MESH ------#
-input: modello di velocità
-output: due file .dat per creare la mesh e per l'input del programma .py che crea il file .xyz
-
-Si parte dal modello di velocità .dat. Bisogna generare la mesh e tagliare a 1400 metri la topografia. Seleziono da griglia.00akm.dat
-Creo prima il modello in .dat che verrà letto con GEST.py per generare il .xyz che verrà letto e interpolato sulla mesh generata a sua volta da mesh.dat.
-mesh.dat viene generata selezionando tutte le quote al di sopra di -10. Viene poi letta nel notebook e crea la mesh fino alla profondità (CONGRUENTE CON IL MODELLO DI VELOCITA').
-
-#SELEZIONA L'AREA DELLA MESH/MODELLO
-awk '$1 >= 15.200 && $1 <= 17.800 && $2 >= 37.000 && $2 <= 40.000' griglia3D.mod3Da.dat > iclarc.dat
-#parti da qui
-#CHECK PER STABILITA' NEL MODELLO DI VELOCITA' E DENSITA'(IN BASE A DOMINIO ELASTICO/ACUSTICO)
-awk '{if ($4 <= 4147.50) print $1, $2, $3,  " 4147 ", $5, $6; else print} ' griglia3D.mod3Da.dat > test.dat
-awk '{if ($5 <= 2370) print $1, $2, $3, $4,  " 2370.0 ", $6; else print} ' test.dat > test2.dat
-awk '{if ($6 <= 2500) print $1, $2, $3, $4, $5, " 2500 "; else print}' test2.dat > test3.dat
-#CLIPPA TOPOGRAFIA a 1400 m
-awk '{if ($3 >= 1400) print $1, $2, "1400 ", $4, $5, $6; else print} ' test3.dat > final_iclarc3d.dat
-#CONVERTI IN UTM LA LAT E LONG DEL MODELLO
-export LC_NUMERIC=C paste <(awk '{print $1, $2}' final_iclarc3d.dat) | proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.1f" < final_iclarc3d.dat | LC_NUMERIC=C awk '{print $1, $2 , $3 , $4, $5, $6}' > finale_mod.dat
-
-finale_mod.dat would be the file used for the interpolation INSIDE GEST.PY
-#SELEZIONA LO STRATO AL DI SOPRA DI -10M PER CREARE IL LAYER DELLA TOPOGRAFIA
-awk '$3>0 {print $1, $2, $3}' finale_mod.dat > mesh.dat
-
-#CHECK PER VERIFICARE LA CONSISTENZA DEL MODELLO E DELLO STRATO DI TOPOGRAFIA DA CUI GENERIAMO LA MESH (LE DIMENSIONI DEL PARALLELEPIPEDO DEVONO COMBACIARE!)
-awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
-     {
-       if ($1 < minlon) minlon = $1;
-       if ($1 > maxlon) maxlon = $1;
-       if ($2 < minlat) minlat = $2;
-       if ($2 > maxlat) maxlat = $2;
-     }
-     END {
-       print "Min Lon:", minlon;
-       print "Max Lon:", maxlon;
-       print "Min Lat:", minlat;
-       print "Max Lat:", maxlat;
-     }' finale_mod.dat
-awk 'NR==1 {minlon=$1; maxlon=$1; minlat=$2; maxlat=$2}
-     {
-       if ($1 < minlon) minlon = $1;
-       if ($1 > maxlon) maxlon = $1;
-       if ($2 < minlat) minlat = $2;
-       if ($2 > maxlat) maxlat = $2;
-     }
-     END {
-       print "Min Lon:", minlon;
-       print "Max Lon:", maxlon;
-       print "Min Lat:", minlat;
-       print "Max Lat:", maxlat;
-     }' mesh.dat
-# if they match create mesh, if they don't the interpolation in gest.py failed.
-#CREA LA MESH CON IL NOTEBOOK
-#CREA IL FILE .XYZ CON GEST.PY
-#TRASPORTA IN MESH-DEFAULT E IN DATA QUELLO OTTENUTO
-
-#STATIONS CONVERTI IN UTM (STAT, NET, lat, long, elev, burial=0)
-export LC_NUMERIC=C
-awk '{print $3, $2}' stazioni.francesco.txt | \
-proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.3f" | \
-paste - <(awk '{print $1, $4}' stazioni.francesco.txt) | \
-awk '{print "CAL", $3, $1, $2, $4}' > stations
-
-awk '{tmp=$3; $3=$4; $4=tmp; print}' stations > astations
-awk '{tmp=$1; $1=$2; $2=tmp; print}' astations > STATION
-
-
-awk 'NR > 1 && $2 ~ /^[0-9.]/ {print $2, $3}' dcittà.txt > proj +proj=utm +zone=33 +ellps=WGS84 +units=m +datum=WGS84 -f "%.3f" > proviamo
