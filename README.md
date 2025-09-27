@@ -42,7 +42,7 @@ This main branch includes:
 ***
 
 ---------------------
-Simulations were run with the aid of Newton cluster, Rende(CS) (http://newton-1.hpcc.unical.it) and with the SPECFEM3D software (https://specfem.org/).
+Simulations were run with the aid of Newton cluster, Rende(CS) (http://newton-1.hpcc.unical.it) and with the SPECFEM3D software (https://specfem.org/) and the Mecenate PC lab (http://www.sismocal.org/)
 SPECFEM3D Cartesian has been used ( Komatitsch and Tromp, 2002; Komatitsch and Tromp, 2002) published under the GPL 2 license.
 Dr. Rafael Abreu's help (IPGP, https://rafaelabreuseis.github.io/)  with the meshing modeling python code and relative notebook is greatly appreciated. All figures have been made using SAC and GMT.
 * GMT - The Generic Mapping Tools, Version 6.5.0 [64-bit] [12 cores] (c) 1991-2024 The GMT Team (https://www.generic-mapping-tools.org/team.html).
