@@ -51,7 +51,7 @@ Dr. Rafael Abreu's help (IPGP, https://rafaelabreuseis.github.io/)  with the mes
 Uploaded in September 2025.
 
 * Komatitsch, D.; Tromp, J. (2002a), Spectral-element simulations of global seismic wave propagation-I. Validation, Geophysical Journal International, 149 (2) , 390-412, doi: 10.1046/j.1365-246X.2002.01653.x, url: http://doi.wiley.com/10.1046/j.1365-246X.2002.01653.x
-* Komatitsch, D.; Tromp, J. (2002b), Spectral-element simulations of global seismic wave propagation–II. Three-dimensional models, oceans, rotation and self-gravitation, Geophysical Journal International, 150 (1) , 303-318
+* Komatitsch, D.; Tromp, J. (2002b), Spectral-element simulations of global seismic wave propagation–II. Three-dimensional models, oceans, rotation and self-gravitation, Geophysical Journal International, 150 (1) , 303-318, url: https://academic.oup.com/gji/article/150/1/303/593406
 * Komatitsch, D.; Vilotte, J.-P.; Tromp, J.; Ampuero, J.-P.; Bai, K.; Basini, P.; Blitz, C.; Bozdag, E.; Casarotti, E.; Charles, J.; Chen, M.; Galvez, P.; Goddeke, D.; Hjorleifsdottir, V.; Labarta, J.; Le Goff, N.; Le Loher, P.; Lefebvre, M.; Liu, Q.; Luo, Y.; Maggi, A.; Magnoni, F.; Martin, R.; Matzen, R.; McRitchie, D.; Meschede, M.; Messmer, P.; Michea, D.; Nadh Somala, S.; Nissen-Meyer, T.; Peter, D.; Rietmann, M.; de Andrade, E.S. ; Savage, B.; Schuberth, B.; Sieminski, A.; Strand, L.; Tape, C.; Xie, Z.; Zhu, H. (9999), SPECFEM3D Cartesian [software], doi: 8926d3d3354b9fde5fc3b356189b8ddc4c3a30e5, url: https://geodynamics.org/cig/software/specfem3d/
 
 
