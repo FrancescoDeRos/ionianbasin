@@ -1,0 +1,4180 @@
+ **********************************************
+ **** Specfem 3-D Solver - MPI version f90 ****
+ **********************************************
+ 
+ Running Git package version of the code: v4.1.1-201-g9774906
+ which is Git 97749062df8580b2da227f7660079220a20539cd
+ dating 2025-05-13 20:17:44 +0200
+ 
+ 
+ 
+ 
+ There are           80  MPI processes
+ Processes are numbered from 0 to           79
+ 
+ There is a total of           80  slices
+ 
+  NDIM =            3
+ 
+  NGLLX =            5
+  NGLLY =            5
+  NGLLZ =            5
+ 
+ using single precision for the calculations
+ 
+ smallest and largest possible floating-point numbers are:   1.1754944E-38
+  3.4028235E+38
+ 
+ velocity model:   tomo
+ 
+ Reading mesh databases...
+   reads binary mesh files: proc***_external_mesh.bin
+   from directory         : OUTPUT_FILES/DATABASES_MPI
+ 
+   simulation w/ acoustic    domain:  F
+   simulation w/ elastic     domain:  T
+   simulation w/ poroelastic domain:  F
+ 
+   slice 0 has:
+   number of elements acoustic   :           0
+   number of elements elastic    :       12114
+   number of elements poroelastic:           0
+   done
+ 
+   total acoustic elements    :           0
+   total elastic elements     :     1000350
+   total poroelastic elements :           0
+ 
+ Mesh resolution:
+ 
+ ********
+ minimum and maximum number of elements
+ and points in the CUBIT + SCOTCH mesh:
+ 
+ NSPEC_global_min =        11565
+ NSPEC_global_max =        13280
+ NSPEC_global_max / NSPEC_global_min imbalance =    1.148292      = 
+   14.82923      %
+ NSPEC_global_sum =      1000350
+ 
+ NGLOB_global_min =       768917
+ NGLOB_global_max =       879909
+ NGLOB_global_max / NGLOB_global_min imbalance =    1.144349      = 
+   14.43485      %
+ NGLOB_global_sum =     66301212
+ 
+ If you have elements of a single type (all acoustic, all elastic, all poroelast
+ ic, and without CPML)
+ in the whole mesh, then there should be no significant imbalance in the above n
+ umbers.
+ Otherwise, it is normal to have imbalance in elements and points because the do
+ main decomposer
+ compensates for the different cost of different elements by partitioning them u
+ nevenly among processes.
+ ********
+ 
+ 
+ ********
+ Model: P   velocity min,max =    5900.000       8045.000    
+ Model: S   velocity min,max =    3370.000       4570.000    
+ 
+ Model: Poisson's ratio min,max =   0.2578006      0.2737968    
+ ********
+ 
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+ 
+ *** Xmin and Xmax of the model =    473202.6       750137.0    
+ *** Ymin and Ymax of the model =    4061593.       4464818.    
+ *** Zmin and Zmax of the model =   -112500.0       1215.530    
+ 
+ *** Max GLL point distance =    882.1140    
+ *** Min GLL point distance =    359.8594    
+ *** Max/min ratio =    2.451274    
+ 
+ *** Max element size =    2696.427    
+ *** Min element size =    2084.059    
+ *** Max/min ratio =    1.293835    
+ 
+ *** Minimum period resolved =    1.000159    
+ *** Maximum suggested time step =   2.4499999E-02
+ 
+ *** for DT :   2.000000000000000E-003
+ *** Max stability for wave velocities =   4.0322654E-02
+ 
+ Elapsed time for checking mesh resolution in seconds =   2.067494392395020E-002
+ 
+ ******************************************
+ There is a total of           80  slices
+ ******************************************
+ 
+ 
+ kd-tree:
+   total data points:       327078
+   theoretical   number of nodes:       654144
+                tree memory size:    19.96289     MB
+   actual        number of nodes:       654155
+                tree memory size:    19.96323     MB
+   maximum depth   :           21
+   creation timing :   0.1739730     (s)
+ 
+ 
+ sources:            1
+ 
+ ********************
+  locating sources
+ ********************
+ 
+ reading source information from ./DATA/CMTSOLUTION file
+ 
+ no UTM projection
+ 
+ 
+ source #            1
+   source located in slice            9
+                  in element        11038
+                  in elastic domain
+ 
+   using moment tensor source: 
+     xi coordinate of source in that element:   0.927350654837490     
+     eta coordinate of source in that element:   0.911025614927952     
+     gamma coordinate of source in that element:   0.189464478090610     
+ 
+   source time function:
+     using Ricker source time function
+     using a source of dominant frequency   1.000000000000000E-002
+ 
+     time shift:   0.000000000000000E+000  seconds
+ 
+   magnitude of the source:
+        scalar moment M0 =   7.369405064182588E+023  dyne-cm
+     moment magnitude Mw =    5.21162180970813     
+ 
+   original (requested) position of the source:
+ 
+             latitude:    4160525.84920000     
+            longitude:    603299.519500000     
+ 
+                x:    603299.519500000     
+                y:    4160525.84920000     
+            depth:    51.0000000000000       km
+   topo elevation:   0.708287954330444     
+ 
+   position of the source that will be used:
+ 
+                x:    603299.519500000     
+                y:    4160525.84920000     
+            depth:    51.0000000000000       km
+                z:   -50999.2917120457     
+ 
+   error in location of the source:   9.3143626E-10  m
+ 
+ 
+ 
+ maximum error in location of the sources:   9.3143626E-10  m
+ 
+ 
+ Elapsed time for detection of sources in seconds =   0.1015851    
+ 
+ End of source detection - done
+ 
+ 
+ printing the source-time function
+ 
+ receivers:
+ 
+   there are           85  stations in file ./DATA/STATIONS
+   saving           84 
+  stations inside the model in file ./DATA/STATIONS_FILTERED
+   excluding            1  stations located outside the model
+ 
+   Total number of receivers =           84
+ 
+ 
+ ********************
+  locating receivers
+ ********************
+ 
+ reading receiver information from ./DATA/STATIONS_FILTERED file
+ 
+ 
+ station #            1     CAL    EPIC
+      original latitude:    4160526.    
+      original longitude:    603299.5    
+      original x:    603299.5    
+      original y:    4160526.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:   5.3851625E-07
+      target x, y, z:    603299.5       4160526.      0.7082880    
+      closest estimate found:   4.6566129E-10  m away
+ 
+      receiver located in slice            5
+                       in element        13054
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.927350232361615     
+      eta   =   0.911025445292166     
+      gamma =   0.999999403138595     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    603299.519000000     
+      y:    4160525.84900000     
+      depth:   1.987299214079030E-014  m
+      z:   0.708287954330464     
+ 
+ 
+ 
+ station #            2     CAL    ACIS
+      original latitude:    4357340.    
+      original longitude:    605699.4    
+      original x:    605699.4    
+      original y:    4357340.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    196.8285    
+      target x, y, z:    605699.4       4357340.       89.63152    
+      closest estimate found:   1.8771407E-09  m away
+ 
+      receiver located in slice           74
+                       in element        12985
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.955192310738977     
+      eta   =  -0.158849024597754     
+      gamma =    1.00122320370176     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    605699.409000000     
+      y:    4357339.71700000     
+      depth:   1.421085471520200E-014  m
+      z:    89.6315231323242     
+ 
+ 
+ 
+ station #            3     CAL    AGAN
+      original latitude:    4239762.    
+      original longitude:    606738.6    
+      original x:    606738.6    
+      original y:    4239762.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    79.31063    
+      target x, y, z:    606738.6       4239762.       146.2326    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           37
+                       in element        12345
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.166716062422530     
+      eta   =   0.116100932993595     
+      gamma =    1.00569996032817     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    606738.603000000     
+      y:    4239761.88300000     
+      depth:   1.136868377216160E-013  m
+      z:    146.232589721680     
+ 
+ 
+ 
+ station #            4     CAL    CARP
+      original latitude:    4334006.    
+      original longitude:    613488.5    
+      original x:    613488.5    
+      original y:    4334006.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    173.7793    
+      target x, y, z:    613488.5       4334006.       148.7406    
+      closest estimate found:   1.1641538E-10  m away
+ 
+      receiver located in slice           74
+                       in element        12810
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.463270576430586     
+      eta   =   5.064461407968698E-002
+      gamma =    1.00250743967399     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    613488.515000000     
+      y:    4334006.21000000     
+      depth:   1.136868377216160E-013  m
+      z:    148.740631103516     
+ 
+ 
+ 
+ station #            5     CAL    CET2
+      original latitude:    4375892.    
+      original longitude:    582044.2    
+      original x:    582044.2    
+      original y:    4375892.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    216.4118    
+      target x, y, z:    582044.2       4375892.       152.9287    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           61
+                       in element        11696
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.967355707533472     
+      eta   =  -0.424213740458191     
+      gamma =   0.999962390982833     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    582044.179000000     
+      y:    4375891.35200000     
+      depth:   2.842170943040401E-014  m
+      z:    152.928665161133     
+ 
+ 
+ 
+ station #            6     CAL    CHCE
+      original latitude:    4282656.    
+      original longitude:    623001.9    
+      original x:    623001.9    
+      original y:    4282656.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    123.7094    
+      target x, y, z:    623001.9       4282656.       183.5411    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           40
+                       in element        12112
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.424766813656887     
+      eta   =   0.497221374046305     
+      gamma =   0.998076197546384     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    623001.958000000     
+      y:    4282656.22400000     
+      depth:   0.000000000000000E+000  m
+      z:    183.541137695312     
+ 
+ 
+ 
+ station #            7     CAL    CIRK
+      original latitude:    4361910.    
+      original longitude:    677526.9    
+      original x:    677526.9    
+      original y:    4361910.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    214.6278    
+      target x, y, z:    677526.9       4361910.       44.39119    
+      closest estimate found:   2.1316282E-14  m away
+ 
+      receiver located in slice           56
+                       in element        12278
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.353093184758737     
+      eta   =  -0.282835453774826     
+      gamma =    1.00003222701624     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    677526.844000000     
+      y:    4361909.53700000     
+      depth:   2.131628207280301E-014  m
+      z:    44.3911857604980     
+ 
+ 
+ 
+ station #            8     CAL    CMPN
+      original latitude:    4363614.    
+      original longitude:    657580.7    
+      original x:    657580.7    
+      original y:    4363614.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    210.2168    
+      target x, y, z:    657580.7       4363614.       405.7715    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           56
+                       in element        12294
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.793095085949694     
+      eta   =  -0.837433418150805     
+      gamma =   0.999990991249259     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    657580.697000000     
+      y:    4363613.66600000     
+      depth:   0.000000000000000E+000  m
+      z:    405.771514892578     
+ 
+ 
+ 
+ station #            9     CAL    CNDF
+      original latitude:    4206521.    
+      original longitude:    575252.9    
+      original x:    575252.9    
+      original y:    4206521.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    53.87187    
+      target x, y, z:    575252.9       4206521.       243.8664    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           11
+                       in element        12370
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.771087874947154     
+      eta   =  -7.752586938075902E-002
+      gamma =   0.998345256225208     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    575252.855000000     
+      y:    4206521.09700000     
+      depth:   0.000000000000000E+000  m
+      z:    243.866409301758     
+ 
+ 
+ 
+ station #           10     CAL    CO22
+      original latitude:    4372255.    
+      original longitude:    612220.7    
+      original x:    612220.7    
+      original y:    4372255.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    211.9170    
+      target x, y, z:    612220.7       4372255.       138.4764    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           61
+                       in element        11647
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.465460748329986     
+      eta   =   0.491968617472932     
+      gamma =   0.998194201158431     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    612220.702000000     
+      y:    4372255.03100000     
+      depth:   8.526512829121202E-014  m
+      z:    138.476440429688     
+ 
+ 
+ 
+ station #           11     CAL    CUP2
+      original latitude:    4360471.    
+      original longitude:    633337.1    
+      original x:    633337.1    
+      original y:    4360471.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    202.1886    
+      target x, y, z:    633337.1       4360471.       587.4173    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           56
+                       in element        12234
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.308124950489821     
+      eta   =   0.496873621713663     
+      gamma =    1.00450865535559     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    633337.125000000     
+      y:    4360470.81400000     
+      depth:   0.000000000000000E+000  m
+      z:    587.417297363281     
+ 
+ 
+ 
+ station #           12     CAL    CUTR
+      original latitude:    4321245.    
+      original longitude:    679517.5    
+      original x:    679517.5    
+      original y:    4321245.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    177.8758    
+      target x, y, z:    679517.5       4321245.       42.20709    
+      closest estimate found:   4.2632564E-14  m away
+ 
+      receiver located in slice           42
+                       in element        11964
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.671073510773218     
+      eta   =  -0.773144189991294     
+      gamma =   0.999277425538896     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    679517.472000000     
+      y:    4321244.96300000     
+      depth:   4.263256414560601E-014  m
+      z:    42.2070884704590     
+ 
+ 
+ 
+ station #           13     CAL    FALC
+      original latitude:    4347524.    
+      original longitude:    593123.1    
+      original x:    593123.1    
+      original y:    4347524.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    187.2754    
+      target x, y, z:    593123.1       4347524.       88.12419    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           74
+                       in element        12908
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.328597396424668     
+      eta   =  -0.483829516539231     
+      gamma =    1.00026144571229     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    593123.041000000     
+      y:    4347524.56500000     
+      depth:   8.526512829121202E-014  m
+      z:    88.1241912841796     
+ 
+ 
+ 
+ station #           14     CAL    FERC
+      original latitude:    4256648.    
+      original longitude:    598431.1    
+      original x:    598431.1    
+      original y:    4256648.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    96.24606    
+      target x, y, z:    598431.1       4256648.       191.8558    
+      closest estimate found:   2.8421709E-14  m away
+ 
+      receiver located in slice           10
+                       in element        11987
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.813670891423705     
+      eta   =   0.438675996607451     
+      gamma =   0.999958372344263     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    598431.042000000     
+      y:    4256648.69900000     
+      depth:   2.842170943040401E-014  m
+      z:    191.855789184570     
+ 
+ 
+ 
+ station #           15     CAL    GERV
+      original latitude:    4350322.    
+      original longitude:    606146.6    
+      original x:    606146.6    
+      original y:    4350322.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    189.8170    
+      target x, y, z:    606146.6       4350322.       130.9418    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           74
+                       in element        12932
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.666973462543874     
+      eta   =  -0.111508905852057     
+      gamma =    1.00249002258084     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    606146.564000000     
+      y:    4350321.53100000     
+      depth:   5.684341886080801E-014  m
+      z:    130.941772460937     
+ 
+ 
+ 
+ station #           16     CAL    GIMI
+      original latitude:    4314332.    
+      original longitude:    633199.3    
+      original x:    633199.3    
+      original y:    4314332.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    156.6853    
+      target x, y, z:    633199.3       4314332.       359.7800    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           42
+                       in element        11851
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.191678276253608     
+      eta   =  -0.636692111959552     
+      gamma =    1.00000000000000     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    633199.314000000     
+      y:    4314331.84000000     
+      depth:   0.000000000000000E+000  m
+      z:    359.779998779297     
+ 
+ 
+ 
+ station #           17     CAL    GIOM
+      original latitude:    4249239.    
+      original longitude:    596935.4    
+      original x:    596935.4    
+      original y:    4249239.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    88.94133    
+      target x, y, z:    596935.4       4249239.       95.61877    
+      closest estimate found:   7.1054274E-14  m away
+ 
+      receiver located in slice           10
+                       in element        11906
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.450076468103133     
+      eta   =   0.154287894847714     
+      gamma =    1.00227109577376     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    596935.397000000     
+      y:    4249239.19400000     
+      depth:   7.105427357601002E-014  m
+      z:    95.6187744140626     
+ 
+ 
+ 
+ station #           18     CAL    GIOT
+      original latitude:    4252017.    
+      original longitude:    581956.6    
+      original x:    581956.6    
+      original y:    4252017.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    93.94766    
+      target x, y, z:    581956.6       4252017.       28.70413    
+      closest estimate found:   4.9737992E-14  m away
+ 
+      receiver located in slice           10
+                       in element        11926
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.893372342953689     
+      eta   =   0.510240033927075     
+      gamma =   0.999627151652959     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    581956.622000000     
+      y:    4252017.07300000     
+      depth:   4.973799150320701E-014  m
+      z:    28.7041320800782     
+ 
+ 
+ 
+ station #           19     CAL    LADO
+      original latitude:    4350158.    
+      original longitude:    670727.1    
+      original x:    670727.1    
+      original y:    4350158.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    201.2637    
+      target x, y, z:    670727.1       4350158.       115.0927    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           42
+                       in element        12325
+                       in elastic domain
+      at coordinates: 
+      xi    =  -9.870032478684697E-002
+      eta   =  -0.249657336725957     
+      gamma =    1.00089156589637     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    670727.035000000     
+      y:    4350158.65400000     
+      depth:   5.684341886080801E-014  m
+      z:    115.092735290527     
+ 
+ 
+ 
+ station #           20     CAL    LARA
+      original latitude:    4348104.    
+      original longitude:    607209.4    
+      original x:    607209.4    
+      original y:    4348104.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    187.6187    
+      target x, y, z:    607209.4       4348104.       146.6024    
+      closest estimate found:   1.1641532E-10  m away
+ 
+      receiver located in slice           74
+                       in element        12914
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.231134746904000     
+      eta   =   7.466497031641624E-003
+      gamma =   0.999615031981174     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    607209.447000000     
+      y:    4348103.80300000     
+      depth:   2.842170943040401E-014  m
+      z:    146.602447509766     
+ 
+ 
+ 
+ station #           21     CAL    LATT
+      original latitude:    4366532.    
+      original longitude:    605826.6    
+      original x:    605826.6    
+      original y:    4366532.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    206.0211    
+      target x, y, z:    605826.6       4366532.       36.40272    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           74
+                       in element        13062
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.937295767209781     
+      eta   =  -0.362600508906035     
+      gamma =    1.00088094077841     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    605826.646000000     
+      y:    4366531.49400000     
+      depth:   3.552713678800501E-014  m
+      z:    36.4027175903320     
+ 
+ 
+ 
+ station #           22     CAL    LC22
+      original latitude:    4421156.    
+      original longitude:    583551.4    
+      original x:    583551.4    
+      original y:    4421156.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    261.3773    
+      target x, y, z:    583551.4       4421156.       130.8012    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           60
+                       in element        11670
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.240854668356423     
+      eta   =  -3.222137404664201E-002
+      gamma =   0.999065408262318     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    583551.364000000     
+      y:    4421156.01100000     
+      depth:   2.842170943040401E-014  m
+      z:    130.801177978516     
+ 
+ 
+ 
+ station #           23     CAL    MANE
+      original latitude:    4340024.    
+      original longitude:    615488.9    
+      original x:    615488.9    
+      original y:    4340024.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    179.9117    
+      target x, y, z:    615488.9       4340024.       248.2083    
+      closest estimate found:   1.1641532E-10  m away
+ 
+      receiver located in slice           74
+                       in element        12864
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.773018166455548     
+      eta   =  -0.845137163450973     
+      gamma =   0.997606777850323     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    615488.883000000     
+      y:    4340024.12200000     
+      depth:   0.000000000000000E+000  m
+      z:    248.208343505859     
+ 
+ 
+ 
+ station #           24     CAL    MC32
+      original latitude:    4355918.    
+      original longitude:    622959.0    
+      original x:    622959.0    
+      original y:    4355918.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    196.3788    
+      target x, y, z:    622959.0       4355918.       916.2636    
+      closest estimate found:   2.3283067E-10  m away
+ 
+      receiver located in slice           42
+                       in element        12365
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.461079559557326     
+      eta   =   0.635369804919380     
+      gamma =    1.00001588959250     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    622958.983000000     
+      y:    4355918.10100000     
+      depth:   1.136868377216160E-013  m
+      z:    916.263610839844     
+ 
+ 
+ 
+ station #           25     CAL    MCDA
+      original latitude:    4320784.    
+      original longitude:    659309.5    
+      original x:    659309.5    
+      original y:    4320784.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    169.7646    
+      target x, y, z:    659309.5       4320784.       66.28923    
+      closest estimate found:   9.5998531E-10  m away
+ 
+      receiver located in slice           42
+                       in element        11924
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.253873834860355     
+      eta   =   0.836455470737800     
+      gamma =   0.999900055770707     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    659309.483000000     
+      y:    4320784.68100000     
+      depth:   0.000000000000000E+000  m
+      z:    66.2892303466797     
+ 
+ 
+ 
+ station #           26     CAL    MMN1
+      original latitude:    4415674.    
+      original longitude:    584570.0    
+      original x:    584570.0    
+      original y:    4415674.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    255.8343    
+      target x, y, z:    584570.0       4415674.       228.3936    
+      closest estimate found:   1.8771407E-09  m away
+ 
+      receiver located in slice           60
+                       in element        11620
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.898439650392176     
+      eta   =  -0.682274809160247     
+      gamma =    1.00011000425263     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    584570.006000000     
+      y:    4415673.59800000     
+      depth:   1.136868377216160E-013  m
+      z:    228.393646240234     
+ 
+ 
+ 
+ station #           27     CAL    MMN
+      original latitude:    4416110.    
+      original longitude:    584692.6    
+      original x:    584692.6    
+      original y:    4416110.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    256.2607    
+      target x, y, z:    584692.6       4416110.       228.7938    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           60
+                       in element        11620
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.794867840828095     
+      eta   =  -0.312049194232699     
+      gamma =   0.999840102188228     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    584692.580000000     
+      y:    4416110.09400000     
+      depth:   5.684341886080801E-014  m
+      z:    228.793823242187     
+ 
+ 
+ 
+ station #           28     CAL    MMN9
+      original latitude:    4416282.    
+      original longitude:    589795.4    
+      original x:    589795.4    
+      original y:    4416282.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    256.1131    
+      target x, y, z:    589795.4       4416282.       279.2553    
+      closest estimate found:   1.8771407E-09  m away
+ 
+      receiver located in slice           60
+                       in element        11622
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.483081115336004     
+      eta   =  -0.165629346904717     
+      gamma =    1.00094211524920     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    589795.461000000     
+      y:    4416282.72300000     
+      depth:   0.000000000000000E+000  m
+      z:    279.255279541016     
+ 
+ 
+ 
+ station #           29     CAL    MOKA
+      original latitude:    4415707.    
+      original longitude:    598391.6    
+      original x:    598391.6    
+      original y:    4415707.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    255.2284    
+      target x, y, z:    598391.6       4415707.       525.4413    
+      closest estimate found:   9.5998531E-10  m away
+ 
+      receiver located in slice           60
+                       in element        11625
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.780312209548125     
+      eta   =  -0.653919423239300     
+      gamma =    1.00042071154179     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    598391.562000000     
+      y:    4415707.02900000     
+      depth:   1.136868377216160E-013  m
+      z:    525.441284179688     
+ 
+ 
+ 
+ station #           30     CAL    MUGA
+      original latitude:    4264057.    
+      original longitude:    615272.8    
+      original x:    615272.8    
+      original y:    4264057.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    104.2212    
+      target x, y, z:    615272.8       4264057.       680.2000    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           37
+                       in element        12660
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.955619771863237     
+      eta   =   0.722237489397275     
+      gamma =   0.999999941733659     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    615272.774000000     
+      y:    4264057.01800000     
+      depth:   2.273736754432321E-013  m
+      z:    680.199951171875     
+ 
+ 
+ 
+ station #           31     CAL    OPPI
+      original latitude:    4235982.    
+      original longitude:    588357.6    
+      original x:    588357.6    
+      original y:    4235982.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    76.92152    
+      target x, y, z:    588357.6       4235982.       172.5219    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           10
+                       in element        11738
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.302001425893186     
+      eta   =   0.910255301102326     
+      gamma =    1.00656189816656     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    588357.628000000     
+      y:    4235982.19100000     
+      depth:   5.684341886080801E-014  m
+      z:    172.521911621094     
+ 
+ 
+ 
+ station #           32     CAL    RICA
+      original latitude:    4275407.    
+      original longitude:    574875.1    
+      original x:    574875.1    
+      original y:    4275407.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    118.3453    
+      target x, y, z:    574875.1       4275407.       45.64260    
+      closest estimate found:   1.4210855E-14  m away
+ 
+      receiver located in slice           70
+                       in element        11818
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.909711599905063     
+      eta   =   0.349000848176615     
+      gamma =   0.998490079584970     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    574875.084000000     
+      y:    4275406.97200000     
+      depth:   1.421085471520200E-014  m
+      z:    45.6425971984863     
+ 
+ 
+ 
+ station #           33     CAL    ROI
+      original latitude:    4381406.    
+      original longitude:    634784.3    
+      original x:    634784.3    
+      original y:    4381406.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    223.1135    
+      target x, y, z:    634784.3       4381406.       98.24246    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           56
+                       in element        12460
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.469051542036427     
+      eta   =   0.253797285835466     
+      gamma =   0.996453612567940     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    634784.315000000     
+      y:    4381406.72700000     
+      depth:   0.000000000000000E+000  m
+      z:    98.2424621582031     
+ 
+ 
+ 
+ station #           34     CAL    SCAI
+      original latitude:    4266190.    
+      original longitude:    632283.6    
+      original x:    632283.6    
+      original y:    4266190.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    109.5672    
+      target x, y, z:    632283.6       4266190.       110.0207    
+      closest estimate found:   8.5265128E-14  m away
+ 
+      receiver located in slice           37
+                       in element        12685
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.582108948799870     
+      eta   =   0.531342663273860     
+      gamma =    1.00672728608626     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    632283.561000000     
+      y:    4266189.95300000     
+      depth:   8.526512829121202E-014  m
+      z:    110.020652770996     
+ 
+ 
+ 
+ station #           35     CAL    SCAN
+      original latitude:    4333922.    
+      original longitude:    671804.8    
+      original x:    671804.8    
+      original y:    4333922.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    186.4385    
+      target x, y, z:    671804.8       4333922.       29.95609    
+      closest estimate found:   9.2370556E-14  m away
+ 
+      receiver located in slice           42
+                       in element        12115
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.811921100578325     
+      eta   =  -2.044189991500541E-002
+      gamma =    1.00211477215368     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    671804.727000000     
+      y:    4333922.39900000     
+      depth:   9.237055564881302E-014  m
+      z:    29.9560890197753     
+ 
+ 
+ 
+ station #           36     CAL    SERA
+      original latitude:    4327164.    
+      original longitude:    597335.8    
+      original x:    597335.8    
+      original y:    4327164.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    166.7446    
+      target x, y, z:    597335.8       4327164.       93.98027    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           74
+                       in element        12752
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.111768060836474     
+      eta   =   0.247058524172737     
+      gamma =   0.999268615088791     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    597335.785000000     
+      y:    4327163.78200000     
+      depth:   5.684341886080801E-014  m
+      z:    93.9802703857421     
+ 
+ 
+ 
+ station #           37     CAL    SIMB
+      original latitude:    4273964.    
+      original longitude:    615068.4    
+      original x:    615068.4    
+      original y:    4273964.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    114.0465    
+      target x, y, z:    615068.4       4273964.       405.6526    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           40
+                       in element        12015
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.871690739616085     
+      eta   =  -0.875339270568594     
+      gamma =   0.999881069270220     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    615068.400000000     
+      y:    4273963.47500000     
+      depth:   0.000000000000000E+000  m
+      z:    405.652618408203     
+ 
+ 
+ 
+ station #           38     CAL    SMIN
+      original latitude:    4314494.    
+      original longitude:    606399.4    
+      original x:    606399.4    
+      original y:    4314494.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    153.9986    
+      target x, y, z:    606399.4       4314494.       138.0528    
+      closest estimate found:   1.1641535E-10  m away
+ 
+      receiver located in slice           74
+                       in element        12672
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.453352274827768     
+      eta   =  -0.499759117896673     
+      gamma =    1.00850601983334     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    606399.378000000     
+      y:    4314493.28400000     
+      depth:   8.526512829121202E-014  m
+      z:    138.052841186524     
+ 
+ 
+ 
+ station #           39     CAL    SPDC
+      original latitude:    4264820.    
+      original longitude:    598687.5    
+      original x:    598687.5    
+      original y:    4264820.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    104.3963    
+      target x, y, z:    598687.5       4264820.       145.1451    
+      closest estimate found:   2.8421709E-14  m away
+ 
+      receiver located in slice           10
+                       in element        12097
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.969653191096127     
+      eta   =  -0.630452926208398     
+      gamma =    1.00242765815827     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    598687.477000000     
+      y:    4264820.19600000     
+      depth:   2.842170943040401E-014  m
+      z:    145.145080566406     
+ 
+ 
+ 
+ station #           40     CAL    SPNT
+      original latitude:    4335294.    
+      original longitude:    631899.2    
+      original x:    631899.2    
+      original y:    4335294.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    177.0922    
+      target x, y, z:    631899.2       4335294.       891.8020    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           42
+                       in element        12129
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.906879670460282     
+      eta   =  -0.857569974554865     
+      gamma =   0.998034340428393     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    631899.205000000     
+      y:    4335293.42500000     
+      depth:   0.000000000000000E+000  m
+      z:    891.802001953125     
+ 
+ 
+ 
+ station #           41     CAL    SPS2
+      original latitude:    4350266.    
+      original longitude:    615369.5    
+      original x:    615369.5    
+      original y:    4350266.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    190.1237    
+      target x, y, z:    615369.5       4350266.       333.4708    
+      closest estimate found:   1.1368684E-13  m away
+ 
+      receiver located in slice           74
+                       in element        12936
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.873885086607534     
+      eta   =  -0.158605597964610     
+      gamma =    1.00203614079201     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    615369.507000000     
+      y:    4350266.00400000     
+      depth:   1.136868377216160E-013  m
+      z:    333.470764160156     
+ 
+ 
+ 
+ station #           42     CAL    UC01
+      original latitude:    4292824.    
+      original longitude:    610328.8    
+      original x:    610328.8    
+      original y:    4292824.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    132.4850    
+      target x, y, z:    610328.8       4292824.       100.4458    
+      closest estimate found:   9.5998531E-10  m away
+ 
+      receiver located in slice           70
+                       in element        12057
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.866826362484030     
+      eta   =  -0.878538592027357     
+      gamma =   0.997900025083503     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    610328.764000000     
+      y:    4292824.20300000     
+      depth:   1.421085471520200E-014  m
+      z:    100.445846557617     
+ 
+ 
+ 
+ station #           43     CAL    VBL2
+      original latitude:    4280821.    
+      original longitude:    596407.2    
+      original x:    596407.2    
+      original y:    4280821.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    120.4922    
+      target x, y, z:    596407.2       4280821.       120.7093    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           70
+                       in element        11884
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.896357836924378     
+      eta   =   0.940462158150609     
+      gamma =    1.00066677996295     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    596407.223000000     
+      y:    4280820.79000000     
+      depth:   9.947598300641403E-014  m
+      z:    120.709274291992     
+ 
+ 
+ 
+ station #           44     CAL    ALB1
+      original latitude:    4320628.    
+      original longitude:    638276.5    
+      original x:    638276.5    
+      original y:    4320628.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    163.8785    
+      target x, y, z:    638276.5       4320628.       602.5360    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           42
+                       in element        11915
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.481738744685769     
+      eta   =   0.703733672603676     
+      gamma =    1.00398599805323     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    638276.529000000     
+      y:    4320628.20200000     
+      depth:   0.000000000000000E+000  m
+      z:    602.536010742188     
+ 
+ 
+ 
+ station #           45     CAL    ATN
+      original latitude:    4223612.    
+      original longitude:    540712.8    
+      original x:    540712.8    
+      original y:    4223612.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    88.86481    
+      target x, y, z:    540712.8       4223612.       203.0500    
+      closest estimate found:   2.8421709E-14  m away
+ 
+      receiver located in slice           11
+                       in element        12550
+                       in elastic domain
+      at coordinates: 
+      xi    =   4.371196958087845E-002
+      eta   =   0.418076335876825     
+      gamma =    1.00000001461493     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    540712.763000000     
+      y:    4223611.91200000     
+      depth:   2.842170943040401E-014  m
+      z:    203.050018310547     
+ 
+ 
+ 
+ station #           46     CAL    BRICA
+      original latitude:    4286634.    
+      original longitude:    589453.6    
+      original x:    589453.6    
+      original y:    4286634.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    126.8661    
+      target x, y, z:    589453.6       4286634.       27.93687    
+      closest estimate found:   8.8817842E-14  m away
+ 
+      receiver located in slice           70
+                       in element        11965
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.771900718208716     
+      eta   =  -0.128845631892211     
+      gamma =    1.00126516009004     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    589453.643000000     
+      y:    4286634.09100000     
+      depth:   8.881784197001252E-014  m
+      z:    27.9368686676026     
+ 
+ 
+ 
+ station #           47     CAL    BULG
+      original latitude:    4436516.    
+      original longitude:    532195.0    
+      original x:    532195.0    
+      original y:    4436516.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    285.0026    
+      target x, y, z:    532195.0       4436516.      -11.46952    
+      closest estimate found:    1.501928      m away
+ 
+      receiver located in slice           67
+                       in element        12889
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.846498098859349     
+      eta   =   0.995434386262783     
+      gamma =    1.01000000000000     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    532195.018000000     
+      y:    4436516.11600000     
+      depth:    1.50192847286658       m
+      z:   -12.9714490417142     
+ 
+ 
+ 
+ station #           48     CAL    CAR1
+      original latitude:    4345596.    
+      original longitude:    604523.6    
+      original x:    604523.6    
+      original y:    4345596.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    185.0747    
+      target x, y, z:    604523.6       4345596.       169.0600    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           74
+                       in element        12895
+                       in elastic domain
+      at coordinates: 
+      xi    =  -3.830582767816276E-002
+      eta   =  -0.119173876166287     
+      gamma =    1.00000000000000     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    604523.635000000     
+      y:    4345596.49400000     
+      depth:   0.000000000000000E+000  m
+      z:    169.059997558594     
+ 
+ 
+ 
+ station #           49     CAL    CEL
+      original latitude:    4235074.    
+      original longitude:    578204.6    
+      original x:    578204.6    
+      original y:    4235074.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    78.65891    
+      target x, y, z:    578204.6       4235074.       220.7392    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           10
+                       in element        11734
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.277021467613694     
+      eta   =   0.140178965224527     
+      gamma =   0.994559320611230     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    578204.560000000     
+      y:    4235074.27100000     
+      depth:   0.000000000000000E+000  m
+      z:    220.739181518555     
+ 
+ 
+ 
+ station #           50     CAL    CELI
+      original latitude:    4362552.    
+      original longitude:    629908.8    
+      original x:    629908.8    
+      original y:    4362552.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    203.7711    
+      target x, y, z:    629908.8       4362552.       576.4900    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           56
+                       in element        12258
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.588742415040480     
+      eta   =   0.262151823579002     
+      gamma =    1.00000000000000     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    629908.773000000     
+      y:    4362552.07700000     
+      depth:   0.000000000000000E+000  m
+      z:    576.489990234375     
+ 
+ 
+ 
+ station #           51     CAL    CUC
+      original latitude:    4427388.    
+      original longitude:    569617.6    
+      original x:    569617.6    
+      original y:    4427388.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    268.9789    
+      target x, y, z:    569617.6       4427388.       205.0390    
+      closest estimate found:   1.8662796E-09  m away
+ 
+      receiver located in slice           60
+                       in element        11753
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.467281244223795     
+      eta   =  -0.746809160304603     
+      gamma =    1.00364733845491     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    569617.544000000     
+      y:    4427387.51200000     
+      depth:   2.842170943040401E-014  m
+      z:    205.038955688477     
+ 
+ 
+ 
+ station #           52     CAL    GIZZ
+      original latitude:    4315232.    
+      original longitude:    604614.2    
+      original x:    604614.2    
+      original y:    4315232.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    154.7117    
+      target x, y, z:    604614.2       4315232.       203.9081    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           74
+                       in element        12671
+                       in elastic domain
+      at coordinates: 
+      xi    =   3.825555174145220E-002
+      eta   =   0.126761662425431     
+      gamma =    1.00527198887449     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    604614.243000000     
+      y:    4315231.95200000     
+      depth:   5.684341886080801E-014  m
+      z:    203.908142089844     
+ 
+ 
+ 
+ station #           53     CAL    GMB1
+      original latitude:    4225248.    
+      original longitude:    571641.7    
+      original x:    571641.7    
+      original y:    4225248.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    72.05016    
+      target x, y, z:    571641.7       4225248.       667.1018    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           11
+                       in element        12591
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.177590198563546     
+      eta   =  -0.193909245122151     
+      gamma =    1.00498527172129     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    571641.678000000     
+      y:    4225248.38100000     
+      depth:   0.000000000000000E+000  m
+      z:    667.101806640625     
+ 
+ 
+ 
+ station #           54     CAL    GRI
+      original latitude:    4297996.    
+      original longitude:    623272.0    
+      original x:    623272.0    
+      original y:    4297996.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    138.9137    
+      target x, y, z:    623272.0       4297996.       106.7118    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           42
+                       in element        11623
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.196572364078082     
+      eta   =  -0.491754028838079     
+      gamma =    1.00065196873485     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    623272.019000000     
+      y:    4297996.22200000     
+      depth:   4.263256414560601E-014  m
+      z:    106.711784362793     
+ 
+ 
+ 
+ station #           55     CAL    GRIS
+      original latitude:    4399304.    
+      original longitude:    573095.8    
+      original x:    573095.8    
+      original y:    4399304.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    240.6807    
+      target x, y, z:    573095.8       4399304.       41.45799    
+      closest estimate found:   3.5527137E-14  m away
+ 
+      receiver located in slice           61
+                       in element        12003
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.593767051305763     
+      eta   =  -0.566313825276081     
+      gamma =   0.994713541509635     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    573095.764000000     
+      y:    4399303.81600000     
+      depth:   3.552713678800501E-014  m
+      z:    41.4579887390136     
+ 
+ 
+ 
+ station #           56     CAL    JOPP
+      original latitude:    4273516.    
+      original longitude:    577108.9    
+      original x:    577108.9    
+      original y:    4273516.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    115.9859    
+      target x, y, z:    577108.9       4273516.       121.9009    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           70
+                       in element        11791
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.797232361639301     
+      eta   =   0.745195080576866     
+      gamma =    1.00286066045397     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    577108.962000000     
+      y:    4273516.08500000     
+      depth:   7.105427357601002E-014  m
+      z:    121.900863647461     
+ 
+ 
+ 
+ station #           57     CAL    MPAZ
+      original latitude:    4201090.    
+      original longitude:    588442.9    
+      original x:    588442.9    
+      original y:    4201090.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    43.19848    
+      target x, y, z:    588442.9       4201090.       99.24502    
+      closest estimate found:   2.8421709E-14  m away
+ 
+      receiver located in slice           11
+                       in element        12321
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.374096274193915     
+      eta   =  -0.684671755725430     
+      gamma =   0.988239896115983     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    588442.950000000     
+      y:    4201089.27200000     
+      depth:   2.842170943040401E-014  m
+      z:    99.2450180053711     
+ 
+ 
+ 
+ station #           58     CAL    MPNC
+      original latitude:    4222128.    
+      original longitude:    530913.2    
+      original x:    530913.2    
+      original y:    4222128.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    95.05083    
+      target x, y, z:    530913.2       4222128.       44.26490    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           19
+                       in element        12858
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.236556400506972     
+      eta   =  -0.840127226463705     
+      gamma =   0.999801501860003     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    530913.223000000     
+      y:    4222128.49000000     
+      depth:   1.421085471520200E-014  m
+      z:    44.2648963928223     
+ 
+ 
+ 
+ station #           59     CAL    MSCL
+      original latitude:    4231852.    
+      original longitude:    569141.3    
+      original x:    569141.3    
+      original y:    4231852.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    79.08298    
+      target x, y, z:    569141.3       4231852.       415.6786    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           10
+                       in element        11702
+                       in elastic domain
+      at coordinates: 
+      xi    =   6.489123603820970E-002
+      eta   =  -0.593380831212948     
+      gamma =    1.00330858932022     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    569141.328000000     
+      y:    4231851.40400000     
+      depth:   5.684341886080801E-014  m
+      z:    415.678588867187     
+ 
+ 
+ 
+ station #           60     CAL    MSRU
+      original latitude:    4235218.    
+      original longitude:    544467.1    
+      original x:    544467.1    
+      original y:    4235218.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    95.07986    
+      target x, y, z:    544467.1       4235218.       60.44288    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           10
+                       in element        11720
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.783959864807685     
+      eta   =   0.262158608990638     
+      gamma =   0.999336600070986     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    544467.121000000     
+      y:    4235218.08500000     
+      depth:   2.842170943040401E-014  m
+      z:    60.4428787231446     
+ 
+ 
+ 
+ station #           61     CAL    MTTG
+      original latitude:    4206390.    
+      original longitude:    561448.9    
+      original x:    561448.9    
+      original y:    4206390.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    62.08866    
+      target x, y, z:    561448.9       4206390.       123.5199    
+      closest estimate found:   1.1368684E-13  m away
+ 
+      receiver located in slice           11
+                       in element        12364
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.434962266642013     
+      eta   =  -0.188661577608131     
+      gamma =    1.00191075330756     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    561448.892000000     
+      y:    4206390.06800000     
+      depth:   1.136868377216160E-013  m
+      z:    123.519851684570     
+ 
+ 
+ 
+ station #           62     CAL    NICCA
+      original latitude:    4268029.    
+      original longitude:    581778.6    
+      original x:    581778.6    
+      original y:    4268029.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    109.6362    
+      target x, y, z:    581778.6       4268029.       119.5280    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           10
+                       in element        12117
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.742892661931364     
+      eta   =   9.128329092502419E-002
+      gamma =    1.00201459954761     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    581778.534000000     
+      y:    4268029.12300000     
+      depth:   7.105427357601002E-014  m
+      z:    119.527954101563     
+ 
+ 
+ 
+ station #           63     CAL    ORI
+      original latitude:    4434421.    
+      original longitude:    623716.4    
+      original x:    623716.4    
+      original y:    4434421.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    274.6551    
+      target x, y, z:    623716.4       4434421.       164.6076    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           57
+                       in element        11729
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.178877346782464     
+      eta   =  -0.781191435233875     
+      gamma =   0.999991225463384     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    623716.352000000     
+      y:    4434421.03000000     
+      depth:   8.526512829121202E-014  m
+      z:    164.607574462891     
+ 
+ 
+ 
+ station #           64     CAL    PIPA
+      original latitude:    4372189.    
+      original longitude:    656159.0    
+      original x:    656159.0    
+      original y:    4372189.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    218.1638    
+      target x, y, z:    656159.0       4372189.       128.4050    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           56
+                       in element        12369
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.408207441049950     
+      eta   =   0.436039864291966     
+      gamma =   0.999672265960812     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    656158.993000000     
+      y:    4372189.09100000     
+      depth:   5.684341886080801E-014  m
+      z:    128.404953002930     
+ 
+ 
+ 
+ station #           65     CAL    PLAC
+      original latitude:    4256658.    
+      original longitude:    625507.4    
+      original x:    625507.4    
+      original y:    4256658.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    98.66444    
+      target x, y, z:    625507.4       4256658.       249.3821    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           37
+                       in element        12581
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.307724010456540     
+      eta   =   0.446969465648955     
+      gamma =    1.00090968826556     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    625507.412000000     
+      y:    4256658.47700000     
+      depth:   5.684341886080801E-014  m
+      z:    249.382064819336     
+ 
+ 
+ 
+ station #           66     CAL    SALB
+      original latitude:    4414994.    
+      original longitude:    615093.1    
+      original x:    615093.1    
+      original y:    4414994.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    254.7418    
+      target x, y, z:    615093.1       4414994.       403.2909    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           61
+                       in element        12198
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.892526946740355     
+      eta   =   0.741768447837225     
+      gamma =    1.00178721213962     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    615093.059000000     
+      y:    4414994.54500000     
+      depth:   5.684341886080801E-014  m
+      z:    403.290863037109     
+ 
+ 
+ 
+ station #           67     CAL    SDT2
+      original latitude:    4408182.    
+      original longitude:    572908.4    
+      original x:    572908.4    
+      original y:    4408182.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    249.5138    
+      target x, y, z:    572908.4       4408182.       51.95208    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           61
+                       in element        12096
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.752029785323777     
+      eta   =   0.963441899916003     
+      gamma =   0.999853728269650     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    572908.465000000     
+      y:    4408181.89800000     
+      depth:   2.131628207280301E-014  m
+      z:    51.9520759582520     
+ 
+ 
+ 
+ station #           68     CAL    SELL
+      original latitude:    4316150.    
+      original longitude:    641000.4    
+      original x:    641000.4    
+      original y:    4316150.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    160.1261    
+      target x, y, z:    641000.4       4316150.       138.8841    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           42
+                       in element        11854
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.783372818251411     
+      eta   =   0.905747243426790     
+      gamma =   0.999370786380816     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    641000.441000000     
+      y:    4316150.37600000     
+      depth:   5.684341886080801E-014  m
+      z:    138.884078979492     
+ 
+ 
+ 
+ station #           69     CAL    SERS
+      original latitude:    4322117.    
+      original longitude:    646149.3    
+      original x:    646149.3    
+      original y:    4322117.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    167.1760    
+      target x, y, z:    646149.3       4322117.       416.5529    
+      closest estimate found:   1.1641532E-10  m away
+ 
+      receiver located in slice           42
+                       in element        11950
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.866000000000068     
+      eta   =  -3.346310432548488E-002
+      gamma =   0.999590852854028     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    646149.339000000     
+      y:    4322117.04700000     
+      depth:   0.000000000000000E+000  m
+      z:    416.552856445312     
+ 
+ 
+ 
+ station #           70     CAL    SICLA
+      original latitude:    4234494.    
+      original longitude:    562512.6    
+      original x:    562512.6    
+      original y:    4234494.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    84.46810    
+      target x, y, z:    562512.6       4234494.       76.08636    
+      closest estimate found:   1.8626451E-09  m away
+ 
+      receiver located in slice           10
+                       in element        11727
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.463858255657364     
+      eta   =  -0.351985581002105     
+      gamma =   0.997538621267424     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    562512.618000000     
+      y:    4234494.00900000     
+      depth:   1.421085471520200E-014  m
+      z:    76.0863571166992     
+ 
+ 
+ 
+ station #           71     CAL    SOI
+      original latitude:    4214464.    
+      original longitude:    592468.6    
+      original x:    592468.6    
+      original y:    4214464.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    55.01556    
+      target x, y, z:    592468.6       4214464.       158.1585    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           11
+                       in element        12460
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.224388054183960     
+      eta   =   0.660076335878380     
+      gamma =   0.998836390642588     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    592468.600000000     
+      y:    4214464.73000000     
+      depth:   0.000000000000000E+000  m
+      z:    158.158477783203     
+ 
+ 
+ 
+ station #           72     CAL    TDS
+      original latitude:    4390888.    
+      original longitude:    614743.2    
+      original x:    614743.2    
+      original y:    4390888.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    230.6459    
+      target x, y, z:    614743.2       4390888.       73.47797    
+      closest estimate found:   1.4210855E-14  m away
+ 
+      receiver located in slice           61
+                       in element        11896
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.596893454094235     
+      eta   =   0.295306191688042     
+      gamma =   0.997911442374990     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    614743.186000000     
+      y:    4390887.66600000     
+      depth:   1.421085471520200E-014  m
+      z:    73.4779663085937     
+ 
+ 
+ 
+ station #           73     CAL    TIP
+      original latitude:    4338158.    
+      original longitude:    651873.9    
+      original x:    651873.9    
+      original y:    4338158.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    184.1535    
+      target x, y, z:    651873.9       4338158.       237.2428    
+      closest estimate found:   9.3132257E-10  m away
+ 
+      receiver located in slice           42
+                       in element        12167
+                       in elastic domain
+      at coordinates: 
+      xi    =  -2.893211164218163E-002
+      eta   =  -0.428273112807905     
+      gamma =    1.00012719073693     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    651873.916000000     
+      y:    4338157.56600000     
+      depth:   1.705302565824240E-013  m
+      z:    237.242843627930     
+ 
+ 
+ 
+ station #           74     CAL    BIDON
+      original latitude:    4422745.    
+      original longitude:    624375.9    
+      original x:    624375.9    
+      original y:    4422745.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    263.0650    
+      target x, y, z:    624375.9       4422745.       178.5859    
+      closest estimate found:   9.3857033E-10  m away
+ 
+      receiver located in slice           57
+                       in element        11600
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.736217791978055     
+      eta   =  -0.684316369805355     
+      gamma =    1.00029649573378     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    624375.947000000     
+      y:    4422745.19100000     
+      depth:   5.684341886080801E-014  m
+      z:    178.585906982422     
+ 
+ 
+ 
+ station #           75     CAL    CNESE
+      original latitude:    4416566.    
+      original longitude:    592699.3    
+      original x:    592699.3    
+      original y:    4416566.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    256.2596    
+      target x, y, z:    592699.3       4416566.       318.4754    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           60
+                       in element        11623
+                       in elastic domain
+      at coordinates: 
+      xi    =  -2.942135142980519E-002
+      eta   =   7.470483460524407E-002
+      gamma =   0.998608477884009     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    592699.337000000     
+      y:    4416566.07700000     
+      depth:   5.684341886080801E-014  m
+      z:    318.475372314453     
+ 
+ 
+ 
+ station #           76     CAL    FRASC
+      original latitude:    4410554.    
+      original longitude:    608346.6    
+      original x:    608346.6    
+      original y:    4410554.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    250.0792    
+      target x, y, z:    608346.6       4410554.       232.7705    
+      closest estimate found:    18.03187      m away
+ 
+      receiver located in slice           61
+                       in element        12173
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.808012674271223     
+      eta   =   -1.01000000000000     
+      gamma =    1.00928090791100     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    608346.592000000     
+      y:    4410571.21000000     
+      depth:    5.73667568481488       m
+      z:    238.507152979737     
+ 
+ 
+ 
+ station #           77     CAL    LAICA
+      original latitude:    4422494.    
+      original longitude:    583293.2    
+      original x:    583293.2    
+      original y:    4422494.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    262.7311    
+      target x, y, z:    583293.2       4422494.       142.5195    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           60
+                       in element        11697
+                       in elastic domain
+      at coordinates: 
+      xi    =   2.272370088720371E-002
+      eta   =  -0.897260390160458     
+      gamma =   0.995560488043873     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    583293.206000000     
+      y:    4422494.13000000     
+      depth:   5.684341886080801E-014  m
+      z:    142.519500732422     
+ 
+ 
+ 
+ station #           78     CAL    SHEVA
+      original latitude:    4407910.    
+      original longitude:    599946.4    
+      original x:    599946.4    
+      original y:    4407910.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    247.4067    
+      target x, y, z:    599946.4       4407910.       219.7615    
+      closest estimate found:   2.8421709E-14  m away
+ 
+      receiver located in slice           61
+                       in element        12107
+                       in elastic domain
+      at coordinates: 
+      xi    =   9.408761321332072E-002
+      eta   =   0.732703138252762     
+      gamma =   0.998853356602704     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    599946.381000000     
+      y:    4407909.85700000     
+      depth:   2.842170943040401E-014  m
+      z:    219.761474609375     
+ 
+ 
+ 
+ station #           79     CAL    TNOVA
+      original latitude:    4425710.    
+      original longitude:    607688.4    
+      original x:    607688.4    
+      original y:    4425710.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    265.2211    
+      target x, y, z:    607688.4       4425710.       851.5001    
+      closest estimate found:   0.0000000E+00  m away
+ 
+      receiver located in slice           60
+                       in element        11738
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.635813788914964     
+      eta   =  -0.169105173876166     
+      gamma =    1.00000011639490     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    607688.372000000     
+      y:    4425710.62500000     
+      depth:   0.000000000000000E+000  m
+      z:    851.500122070312     
+ 
+ 
+ 
+ station #           80     CAL    ZIDIL
+      original latitude:    4404340.    
+      original longitude:    607864.1    
+      original x:    607864.1    
+      original y:    4404340.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    243.8574    
+      target x, y, z:    607864.1       4404340.       130.6864    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           61
+                       in element        12079
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.784292572152774     
+      eta   =  -0.294438838244799     
+      gamma =   0.999625761007346     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    607864.092000000     
+      y:    4404340.53300000     
+      depth:   5.684341886080801E-014  m
+      z:    130.686401367188     
+ 
+ 
+ 
+ station #           81     CAL    T1811
+      original latitude:    4381426.    
+      original longitude:    652182.0    
+      original x:    652182.0    
+      original y:    4381426.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    226.2438    
+      target x, y, z:    652182.0       4381426.       13.07458    
+      closest estimate found:   4.2632564E-14  m away
+ 
+      receiver located in slice           56
+                       in element        12467
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.231364579757633     
+      eta   =   0.269904156064613     
+      gamma =   0.999020922879653     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    652181.969000000     
+      y:    4381425.71700000     
+      depth:   4.263256414560601E-014  m
+      z:    13.0745792388916     
+ 
+ 
+ 
+ station #           82     CAL    T1812
+      original latitude:    4371636.    
+      original longitude:    629127.9    
+      original x:    629127.9    
+      original y:    4371636.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    212.6841    
+      target x, y, z:    629127.9       4371636.       548.5833    
+      closest estimate found:   1.1641538E-10  m away
+ 
+      receiver located in slice           56
+                       in element        12357
+                       in elastic domain
+      at coordinates: 
+      xi    =   0.751448669201569     
+      eta   =  -3.320441051742553E-002
+      gamma =   0.999339513492616     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    629127.902000000     
+      y:    4371635.85200000     
+      depth:   1.136868377216160E-013  m
+      z:    548.583251953125     
+ 
+ 
+ 
+ station #           83     CAL    T1813
+      original latitude:    4353161.    
+      original longitude:    650969.3    
+      original x:    650969.3    
+      original y:    4353161.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    198.4457    
+      target x, y, z:    650969.3       4353161.       426.0800    
+      closest estimate found:   1.1368684E-13  m away
+ 
+      receiver located in slice           42
+                       in element        12347
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.793302104512805     
+      eta   =   0.296868532655056     
+      gamma =    1.00000002918471     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    650969.308000000     
+      y:    4353161.00800000     
+      depth:   1.136868377216160E-013  m
+      z:    426.080017089844     
+ 
+ 
+ 
+ station #           84     CAL    T1886
+      original latitude:    4350487.    
+      original longitude:    670404.0    
+      original x:    670404.0    
+      original y:    4350487.    
+      original depth:   0.0000000E+00  m
+      horizontal distance:    201.4652    
+      target x, y, z:    670404.0       4350487.       128.7972    
+      closest estimate found:   5.6843419E-14  m away
+ 
+      receiver located in slice           42
+                       in element        12325
+                       in elastic domain
+      at coordinates: 
+      xi    =  -0.371638668110192     
+      eta   =   2.878795589452279E-002
+      gamma =    1.00391613612280     
+      rotation matrix: 
+      nu1 =    1.000000      0.0000000E+00  0.0000000E+00
+      nu2 =   0.0000000E+00   1.000000      0.0000000E+00
+      nu3 =   0.0000000E+00  0.0000000E+00   1.000000    
+      x:    670404.021000000     
+      y:    4350486.94100000     
+      depth:   5.684341886080801E-014  m
+      z:    128.797195434570     
+ 
+ 
+ 
+ maximum error in location of all the receivers:    18.03187      m
+ 
+ Elapsed time for receiver detection in seconds =   0.1167948    
+ 
+ End of receiver detection - done
+ 
+ found a total of           84  receivers in all the slices
+ 
+ source arrays:
+   number of sources is            1
+   size of source array                 =   1.4305115E-03 MB
+                                        =   1.3969839E-06 GB
+ 
+ seismograms:
+   seismograms written by all processes
+ 
+   Total number of simulation steps (NSTEP)                       =        50000
+   writing out seismograms at every NTSTEP_BETWEEN_OUTPUT_SEISMOS =        10000
+   number of subsampling steps for seismograms                    =            1
+   Total number of samples for seismograms                        =        50000
+ 
+ 
+   maximum number of local receivers is           14  in slice           42
+   size of maximum seismogram array       =    1.602173     MB
+                                          =   1.5646219E-03 GB
+ 
+ 
+ Total number of samples for seismograms =        50000
+ 
+ 
+ Simulation setup:
+ 
+   no acoustic simulation
+ incorporating elastic simulation
+   no poroelastic simulation
+ 
+   no attenuation
+   no anisotropy
+   no oceans
+   no gravity
+   no movie simulation
+ 
+ 
+ preparing mass matrices
+ preparing constants
+ preparing wavefields
+ preparing fault simulation
+   no dynamic faults
+   no kinematic faults
+   no fault simulation
+ preparing gravity
+   no gravity simulation
+ preparing Stacey absorbing boundaries
+ preparing optimized arrays
+   number of regular shaped elements  :            0
+   number of irregular shaped elements:        12114
+   fused array done
+   bandwidth test (STREAM TRIAD): 
+      memory accesses =    27.52175     MB
+      timing  min/max =   8.7039471E-03 s /   8.8210106E-03 s
+      timing      avg =   8.7534189E-03 s
+      bandwidth       =    3.070424     GB/s
+ 
+ 
+ Elapsed time for preparing timerun in seconds =   0.210651874542236     
+ 
+ ************
+  time loop
+ ************
+               scheme:         Newmark
+ 
+            time step:   2.0000001E-03  s
+ number of time steps:        50000
+ total simulated time:    100.0000      seconds
+ start time:  -120.0000      seconds
+ 
+ All processes are synchronized before the time loop
+ 
+ Starting time iteration loop...
+ 
+ Time step #            5
+ Time:   -119.9920      seconds
+ Elapsed time in seconds =   0.581027984619141     
+ Elapsed time in hh:mm:ss =      0 h 00 m 00 s
+ Mean elapsed time per time step in seconds =   0.1162056    
+ Max norm displacement vector U in all slices (m) =   2.3794530E-07
+ Time steps done =            5  out of        50000
+ Time steps remaining =        49995
+ Estimated remaining time in seconds =    5809.699    
+ Estimated remaining time in hh:mm:ss =      1 h 36 m 49 s
+ Estimated total run time in seconds =    5810.280    
+ Estimated total run time in hh:mm:ss =      1 h 36 m 50 s
+ We have done   9.9999998E-03 % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:00
+ ************************************************************
+ **** BEWARE: the above time estimates are not very reliable
+ **** because fewer than 100 iterations have been performed
+ ************************************************************
+ 
+ Time step #          500
+ Time:   -119.0020      seconds
+ Elapsed time in seconds =    78.4134399890900     
+ Elapsed time in hh:mm:ss =      0 h 01 m 18 s
+ Mean elapsed time per time step in seconds =   0.1568269    
+ Max norm displacement vector U in all slices (m) =   1.1969072E-05
+ Time steps done =          500  out of        50000
+ Time steps remaining =        49500
+ Estimated remaining time in seconds =    7762.931    
+ Estimated remaining time in hh:mm:ss =      2 h 09 m 22 s
+ Estimated total run time in seconds =    7841.344    
+ Estimated total run time in hh:mm:ss =      2 h 10 m 41 s
+ We have done    1.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #         1000
+ Time:   -118.0020      seconds
+ Elapsed time in seconds =    156.175425052643     
+ Elapsed time in hh:mm:ss =      0 h 02 m 36 s
+ Mean elapsed time per time step in seconds =   0.1561754    
+ Max norm displacement vector U in all slices (m) =   1.4535238E-05
+ Time steps done =         1000  out of        50000
+ Time steps remaining =        49000
+ Estimated remaining time in seconds =    7652.596    
+ Estimated remaining time in hh:mm:ss =      2 h 07 m 32 s
+ Estimated total run time in seconds =    7808.771    
+ Estimated total run time in hh:mm:ss =      2 h 10 m 08 s
+ We have done    2.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:34
+ 
+ Time step #         1500
+ Time:   -117.0020      seconds
+ Elapsed time in seconds =    233.176487922668     
+ Elapsed time in hh:mm:ss =      0 h 03 m 53 s
+ Mean elapsed time per time step in seconds =   0.1554510    
+ Max norm displacement vector U in all slices (m) =   1.8094215E-05
+ Time steps done =         1500  out of        50000
+ Time steps remaining =        48500
+ Estimated remaining time in seconds =    7539.373    
+ Estimated remaining time in hh:mm:ss =      2 h 05 m 39 s
+ Estimated total run time in seconds =    7772.550    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 32 s
+ We have done    3.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #         2000
+ Time:   -116.0020      seconds
+ Elapsed time in seconds =    310.237668991089     
+ Elapsed time in hh:mm:ss =      0 h 05 m 10 s
+ Mean elapsed time per time step in seconds =   0.1551188    
+ Max norm displacement vector U in all slices (m) =   2.2229091E-05
+ Time steps done =         2000  out of        50000
+ Time steps remaining =        48000
+ Estimated remaining time in seconds =    7445.704    
+ Estimated remaining time in hh:mm:ss =      2 h 04 m 05 s
+ Estimated total run time in seconds =    7755.942    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    4.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         2500
+ Time:   -115.0020      seconds
+ Elapsed time in seconds =    387.217385053635     
+ Elapsed time in hh:mm:ss =      0 h 06 m 27 s
+ Mean elapsed time per time step in seconds =   0.1548870    
+ Max norm displacement vector U in all slices (m) =   2.7391736E-05
+ Time steps done =         2500  out of        50000
+ Time steps remaining =        47500
+ Estimated remaining time in seconds =    7357.130    
+ Estimated remaining time in hh:mm:ss =      2 h 02 m 37 s
+ Estimated total run time in seconds =    7744.348    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 04 s
+ We have done    5.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         3000
+ Time:   -114.0020      seconds
+ Elapsed time in seconds =    465.080914974213     
+ Elapsed time in hh:mm:ss =      0 h 07 m 45 s
+ Mean elapsed time per time step in seconds =   0.1550270    
+ Max norm displacement vector U in all slices (m) =   3.3664135E-05
+ Time steps done =         3000  out of        50000
+ Time steps remaining =        47000
+ Estimated remaining time in seconds =    7286.268    
+ Estimated remaining time in hh:mm:ss =      2 h 01 m 26 s
+ Estimated total run time in seconds =    7751.349    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 11 s
+ We have done    6.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         3500
+ Time:   -113.0020      seconds
+ Elapsed time in seconds =    542.093858957291     
+ Elapsed time in hh:mm:ss =      0 h 09 m 02 s
+ Mean elapsed time per time step in seconds =   0.1548840    
+ Max norm displacement vector U in all slices (m) =   4.1357012E-05
+ Time steps done =         3500  out of        50000
+ Time steps remaining =        46500
+ Estimated remaining time in seconds =    7202.104    
+ Estimated remaining time in hh:mm:ss =      2 h 00 m 02 s
+ Estimated total run time in seconds =    7744.198    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 04 s
+ We have done    7.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         4000
+ Time:   -112.0020      seconds
+ Elapsed time in seconds =    619.231667041779     
+ Elapsed time in hh:mm:ss =      0 h 10 m 19 s
+ Mean elapsed time per time step in seconds =   0.1548079    
+ Max norm displacement vector U in all slices (m) =   5.0777289E-05
+ Time steps done =         4000  out of        50000
+ Time steps remaining =        46000
+ Estimated remaining time in seconds =    7121.164    
+ Estimated remaining time in hh:mm:ss =      1 h 58 m 41 s
+ Estimated total run time in seconds =    7740.396    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    8.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         4500
+ Time:   -111.0020      seconds
+ Elapsed time in seconds =    696.566603899002     
+ Elapsed time in hh:mm:ss =      0 h 11 m 36 s
+ Mean elapsed time per time step in seconds =   0.1547926    
+ Max norm displacement vector U in all slices (m) =   6.2088220E-05
+ Time steps done =         4500  out of        50000
+ Time steps remaining =        45500
+ Estimated remaining time in seconds =    7043.062    
+ Estimated remaining time in hh:mm:ss =      1 h 57 m 23 s
+ Estimated total run time in seconds =    7739.629    
+ Estimated total run time in hh:mm:ss =      2 h 08 m 59 s
+ We have done    9.000000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         5000
+ Time:   -110.0020      seconds
+ Elapsed time in seconds =    773.964235067368     
+ Elapsed time in hh:mm:ss =      0 h 12 m 53 s
+ Mean elapsed time per time step in seconds =   0.1547928    
+ Max norm displacement vector U in all slices (m) =   7.5778582E-05
+ Time steps done =         5000  out of        50000
+ Time steps remaining =        45000
+ Estimated remaining time in seconds =    6965.678    
+ Estimated remaining time in hh:mm:ss =      1 h 56 m 05 s
+ Estimated total run time in seconds =    7739.643    
+ Estimated total run time in hh:mm:ss =      2 h 08 m 59 s
+ We have done    10.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         5500
+ Time:   -109.0020      seconds
+ Elapsed time in seconds =    851.115650892258     
+ Elapsed time in hh:mm:ss =      0 h 14 m 11 s
+ Mean elapsed time per time step in seconds =   0.1547483    
+ Max norm displacement vector U in all slices (m) =   9.2218273E-05
+ Time steps done =         5500  out of        50000
+ Time steps remaining =        44500
+ Estimated remaining time in seconds =    6886.299    
+ Estimated remaining time in hh:mm:ss =      1 h 54 m 46 s
+ Estimated total run time in seconds =    7737.415    
+ Estimated total run time in hh:mm:ss =      2 h 08 m 57 s
+ We have done    11.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         6000
+ Time:   -108.0020      seconds
+ Elapsed time in seconds =    928.471935033798     
+ Elapsed time in hh:mm:ss =      0 h 15 m 28 s
+ Mean elapsed time per time step in seconds =   0.1547453    
+ Max norm displacement vector U in all slices (m) =   1.1206784E-04
+ Time steps done =         6000  out of        50000
+ Time steps remaining =        44000
+ Estimated remaining time in seconds =    6808.794    
+ Estimated remaining time in hh:mm:ss =      1 h 53 m 28 s
+ Estimated total run time in seconds =    7737.266    
+ Estimated total run time in hh:mm:ss =      2 h 08 m 57 s
+ We have done    12.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:31
+ 
+ Time step #         6500
+ Time:   -107.0020      seconds
+ Elapsed time in seconds =    1005.92877006531     
+ Elapsed time in hh:mm:ss =      0 h 16 m 45 s
+ Mean elapsed time per time step in seconds =   0.1547583    
+ Max norm displacement vector U in all slices (m) =   1.3589600E-04
+ Time steps done =         6500  out of        50000
+ Time steps remaining =        43500
+ Estimated remaining time in seconds =    6731.985    
+ Estimated remaining time in hh:mm:ss =      1 h 52 m 11 s
+ Estimated total run time in seconds =    7737.914    
+ Estimated total run time in hh:mm:ss =      2 h 08 m 57 s
+ We have done    13.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         7000
+ Time:   -106.0020      seconds
+ Elapsed time in seconds =    1083.80321693420     
+ Elapsed time in hh:mm:ss =      0 h 18 m 03 s
+ Mean elapsed time per time step in seconds =   0.1548290    
+ Max norm displacement vector U in all slices (m) =   1.6446436E-04
+ Time steps done =         7000  out of        50000
+ Time steps remaining =        43000
+ Estimated remaining time in seconds =    6657.648    
+ Estimated remaining time in hh:mm:ss =      1 h 50 m 57 s
+ Estimated total run time in seconds =    7741.452    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 01 s
+ We have done    14.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         7500
+ Time:   -105.0020      seconds
+ Elapsed time in seconds =    1161.14404487610     
+ Elapsed time in hh:mm:ss =      0 h 19 m 21 s
+ Mean elapsed time per time step in seconds =   0.1548192    
+ Max norm displacement vector U in all slices (m) =   1.9855598E-04
+ Time steps done =         7500  out of        50000
+ Time steps remaining =        42500
+ Estimated remaining time in seconds =    6579.816    
+ Estimated remaining time in hh:mm:ss =      1 h 49 m 39 s
+ Estimated total run time in seconds =    7740.960    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    15.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         8000
+ Time:   -104.0020      seconds
+ Elapsed time in seconds =    1238.40811300278     
+ Elapsed time in hh:mm:ss =      0 h 20 m 38 s
+ Mean elapsed time per time step in seconds =   0.1548010    
+ Max norm displacement vector U in all slices (m) =   2.3916391E-04
+ Time steps done =         8000  out of        50000
+ Time steps remaining =        42000
+ Estimated remaining time in seconds =    6501.643    
+ Estimated remaining time in hh:mm:ss =      1 h 48 m 21 s
+ Estimated total run time in seconds =    7740.051    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    16.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         8500
+ Time:   -103.0020      seconds
+ Elapsed time in seconds =    1315.93353104591     
+ Elapsed time in hh:mm:ss =      0 h 21 m 55 s
+ Mean elapsed time per time step in seconds =   0.1548157    
+ Max norm displacement vector U in all slices (m) =   2.8746741E-04
+ Time steps done =         8500  out of        50000
+ Time steps remaining =        41500
+ Estimated remaining time in seconds =    6424.852    
+ Estimated remaining time in hh:mm:ss =      1 h 47 m 04 s
+ Estimated total run time in seconds =    7740.786    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    17.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         9000
+ Time:   -102.0020      seconds
+ Elapsed time in seconds =    1393.32079195976     
+ Elapsed time in hh:mm:ss =      0 h 23 m 13 s
+ Mean elapsed time per time step in seconds =   0.1548134    
+ Max norm displacement vector U in all slices (m) =   3.4478982E-04
+ Time steps done =         9000  out of        50000
+ Time steps remaining =        41000
+ Estimated remaining time in seconds =    6347.350    
+ Estimated remaining time in hh:mm:ss =      1 h 45 m 47 s
+ Estimated total run time in seconds =    7740.671    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    18.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #         9500
+ Time:   -101.0020      seconds
+ Elapsed time in seconds =    1470.72587108612     
+ Elapsed time in hh:mm:ss =      0 h 24 m 30 s
+ Mean elapsed time per time step in seconds =   0.1548132    
+ Max norm displacement vector U in all slices (m) =   4.1264543E-04
+ Time steps done =         9500  out of        50000
+ Time steps remaining =        40500
+ Estimated remaining time in seconds =    6269.937    
+ Estimated remaining time in hh:mm:ss =      1 h 44 m 29 s
+ Estimated total run time in seconds =    7740.663    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    19.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        10000
+ Time:   -100.0020      seconds
+ Elapsed time in seconds =    1548.07002186775     
+ Elapsed time in hh:mm:ss =      0 h 25 m 48 s
+ Mean elapsed time per time step in seconds =   0.1548070    
+ Max norm displacement vector U in all slices (m) =   4.9276027E-04
+ Time steps done =        10000  out of        50000
+ Time steps remaining =        40000
+ Estimated remaining time in seconds =    6192.280    
+ Estimated remaining time in hh:mm:ss =      1 h 43 m 12 s
+ Estimated total run time in seconds =    7740.350    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 00 s
+ We have done    20.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Writing the seismograms
+ Total number of time steps written:        10000
+ Writing the seismograms in parallel took    4.141542      seconds
+ 
+ Time step #        10500
+ Time:   -99.00200      seconds
+ Elapsed time in seconds =    1629.57161688805     
+ Elapsed time in hh:mm:ss =      0 h 27 m 09 s
+ Mean elapsed time per time step in seconds =   0.1551973    
+ Max norm displacement vector U in all slices (m) =   5.8713841E-04
+ Time steps done =        10500  out of        50000
+ Time steps remaining =        39500
+ Estimated remaining time in seconds =    6130.293    
+ Estimated remaining time in hh:mm:ss =      1 h 42 m 10 s
+ Estimated total run time in seconds =    7759.865    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 19 s
+ We have done    21.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        11000
+ Time:   -98.00200      seconds
+ Elapsed time in seconds =    1707.54282402992     
+ Elapsed time in hh:mm:ss =      0 h 28 m 27 s
+ Mean elapsed time per time step in seconds =   0.1552312    
+ Max norm displacement vector U in all slices (m) =   6.9803424E-04
+ Time steps done =        11000  out of        50000
+ Time steps remaining =        39000
+ Estimated remaining time in seconds =    6054.016    
+ Estimated remaining time in hh:mm:ss =      1 h 40 m 54 s
+ Estimated total run time in seconds =    7761.558    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    22.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        11500
+ Time:   -97.00200      seconds
+ Elapsed time in seconds =    1784.95547986031     
+ Elapsed time in hh:mm:ss =      0 h 29 m 44 s
+ Mean elapsed time per time step in seconds =   0.1552135    
+ Max norm displacement vector U in all slices (m) =   8.2802289E-04
+ Time steps done =        11500  out of        50000
+ Time steps remaining =        38500
+ Estimated remaining time in seconds =    5975.721    
+ Estimated remaining time in hh:mm:ss =      1 h 39 m 35 s
+ Estimated total run time in seconds =    7760.676    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    23.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        12000
+ Time:   -96.00200      seconds
+ Elapsed time in seconds =    1862.38933587074     
+ Elapsed time in hh:mm:ss =      0 h 31 m 02 s
+ Mean elapsed time per time step in seconds =   0.1551991    
+ Max norm displacement vector U in all slices (m) =   9.8008534E-04
+ Time steps done =        12000  out of        50000
+ Time steps remaining =        38000
+ Estimated remaining time in seconds =    5897.566    
+ Estimated remaining time in hh:mm:ss =      1 h 38 m 17 s
+ Estimated total run time in seconds =    7759.956    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 19 s
+ We have done    24.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        12500
+ Time:   -95.00200      seconds
+ Elapsed time in seconds =    1939.63434886932     
+ Elapsed time in hh:mm:ss =      0 h 32 m 19 s
+ Mean elapsed time per time step in seconds =   0.1551708    
+ Max norm displacement vector U in all slices (m) =   1.1574596E-03
+ Time steps done =        12500  out of        50000
+ Time steps remaining =        37500
+ Estimated remaining time in seconds =    5818.903    
+ Estimated remaining time in hh:mm:ss =      1 h 36 m 58 s
+ Estimated total run time in seconds =    7758.538    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 18 s
+ We have done    25.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        13000
+ Time:   -94.00200      seconds
+ Elapsed time in seconds =    2016.76113796234     
+ Elapsed time in hh:mm:ss =      0 h 33 m 36 s
+ Mean elapsed time per time step in seconds =   0.1551355    
+ Max norm displacement vector U in all slices (m) =   1.3638875E-03
+ Time steps done =        13000  out of        50000
+ Time steps remaining =        37000
+ Estimated remaining time in seconds =    5740.013    
+ Estimated remaining time in hh:mm:ss =      1 h 35 m 40 s
+ Estimated total run time in seconds =    7756.773    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    26.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        13500
+ Time:   -93.00200      seconds
+ Elapsed time in seconds =    2093.85686087608     
+ Elapsed time in hh:mm:ss =      0 h 34 m 53 s
+ Mean elapsed time per time step in seconds =   0.1551005    
+ Max norm displacement vector U in all slices (m) =   1.6035195E-03
+ Time steps done =        13500  out of        50000
+ Time steps remaining =        36500
+ Estimated remaining time in seconds =    5661.168    
+ Estimated remaining time in hh:mm:ss =      1 h 34 m 21 s
+ Estimated total run time in seconds =    7755.025    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    27.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        14000
+ Time:   -92.00200      seconds
+ Elapsed time in seconds =    2170.93358302116     
+ Elapsed time in hh:mm:ss =      0 h 36 m 10 s
+ Mean elapsed time per time step in seconds =   0.1550667    
+ Max norm displacement vector U in all slices (m) =   1.8810158E-03
+ Time steps done =        14000  out of        50000
+ Time steps remaining =        36000
+ Estimated remaining time in seconds =    5582.401    
+ Estimated remaining time in hh:mm:ss =      1 h 33 m 02 s
+ Estimated total run time in seconds =    7753.334    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    28.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        14500
+ Time:   -91.00200      seconds
+ Elapsed time in seconds =    2248.53742790222     
+ Elapsed time in hh:mm:ss =      0 h 37 m 28 s
+ Mean elapsed time per time step in seconds =   0.1550715    
+ Max norm displacement vector U in all slices (m) =   2.2015781E-03
+ Time steps done =        14500  out of        50000
+ Time steps remaining =        35500
+ Estimated remaining time in seconds =    5505.040    
+ Estimated remaining time in hh:mm:ss =      1 h 31 m 45 s
+ Estimated total run time in seconds =    7753.577    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    29.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        15000
+ Time:   -90.00200      seconds
+ Elapsed time in seconds =    2326.85169601440     
+ Elapsed time in hh:mm:ss =      0 h 38 m 46 s
+ Mean elapsed time per time step in seconds =   0.1551234    
+ Max norm displacement vector U in all slices (m) =   2.5709423E-03
+ Time steps done =        15000  out of        50000
+ Time steps remaining =        35000
+ Estimated remaining time in seconds =    5429.321    
+ Estimated remaining time in hh:mm:ss =      1 h 30 m 29 s
+ Estimated total run time in seconds =    7756.172    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    30.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        15500
+ Time:   -89.00200      seconds
+ Elapsed time in seconds =    2404.33923387527     
+ Elapsed time in hh:mm:ss =      0 h 40 m 04 s
+ Mean elapsed time per time step in seconds =   0.1551187    
+ Max norm displacement vector U in all slices (m) =   2.9954470E-03
+ Time steps done =        15500  out of        50000
+ Time steps remaining =        34500
+ Estimated remaining time in seconds =    5351.594    
+ Estimated remaining time in hh:mm:ss =      1 h 29 m 11 s
+ Estimated total run time in seconds =    7755.933    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    31.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        16000
+ Time:   -88.00200      seconds
+ Elapsed time in seconds =    2481.83265304565     
+ Elapsed time in hh:mm:ss =      0 h 41 m 21 s
+ Mean elapsed time per time step in seconds =   0.1551145    
+ Max norm displacement vector U in all slices (m) =   3.4820838E-03
+ Time steps done =        16000  out of        50000
+ Time steps remaining =        34000
+ Estimated remaining time in seconds =    5273.895    
+ Estimated remaining time in hh:mm:ss =      1 h 27 m 53 s
+ Estimated total run time in seconds =    7755.727    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    32.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        16500
+ Time:   -87.00200      seconds
+ Elapsed time in seconds =    2559.31623697281     
+ Elapsed time in hh:mm:ss =      0 h 42 m 39 s
+ Mean elapsed time per time step in seconds =   0.1551101    
+ Max norm displacement vector U in all slices (m) =   4.0385369E-03
+ Time steps done =        16500  out of        50000
+ Time steps remaining =        33500
+ Estimated remaining time in seconds =    5196.188    
+ Estimated remaining time in hh:mm:ss =      1 h 26 m 36 s
+ Estimated total run time in seconds =    7755.504    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    33.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        17000
+ Time:   -86.00200      seconds
+ Elapsed time in seconds =    2636.51886701584     
+ Elapsed time in hh:mm:ss =      0 h 43 m 56 s
+ Mean elapsed time per time step in seconds =   0.1550893    
+ Max norm displacement vector U in all slices (m) =   4.6731713E-03
+ Time steps done =        17000  out of        50000
+ Time steps remaining =        33000
+ Estimated remaining time in seconds =    5117.948    
+ Estimated remaining time in hh:mm:ss =      1 h 25 m 17 s
+ Estimated total run time in seconds =    7754.467    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 14 s
+ We have done    34.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        17500
+ Time:   -85.00200      seconds
+ Elapsed time in seconds =    2713.75830507278     
+ Elapsed time in hh:mm:ss =      0 h 45 m 13 s
+ Mean elapsed time per time step in seconds =   0.1550719    
+ Max norm displacement vector U in all slices (m) =   5.3950599E-03
+ Time steps done =        17500  out of        50000
+ Time steps remaining =        32500
+ Estimated remaining time in seconds =    5039.837    
+ Estimated remaining time in hh:mm:ss =      1 h 23 m 59 s
+ Estimated total run time in seconds =    7753.595    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    35.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        18000
+ Time:   -84.00200      seconds
+ Elapsed time in seconds =    2790.94177198410     
+ Elapsed time in hh:mm:ss =      0 h 46 m 30 s
+ Mean elapsed time per time step in seconds =   0.1550523    
+ Max norm displacement vector U in all slices (m) =   6.2140548E-03
+ Time steps done =        18000  out of        50000
+ Time steps remaining =        32000
+ Estimated remaining time in seconds =    4961.674    
+ Estimated remaining time in hh:mm:ss =      1 h 22 m 41 s
+ Estimated total run time in seconds =    7752.616    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 12 s
+ We have done    36.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        18500
+ Time:   -83.00200      seconds
+ Elapsed time in seconds =    2868.84587502480     
+ Elapsed time in hh:mm:ss =      0 h 47 m 48 s
+ Mean elapsed time per time step in seconds =   0.1550727    
+ Max norm displacement vector U in all slices (m) =   7.1407449E-03
+ Time steps done =        18500  out of        50000
+ Time steps remaining =        31500
+ Estimated remaining time in seconds =    4884.792    
+ Estimated remaining time in hh:mm:ss =      1 h 21 m 24 s
+ Estimated total run time in seconds =    7753.638    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    37.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        19000
+ Time:   -82.00200      seconds
+ Elapsed time in seconds =    2946.36751103401     
+ Elapsed time in hh:mm:ss =      0 h 49 m 06 s
+ Mean elapsed time per time step in seconds =   0.1550720    
+ Max norm displacement vector U in all slices (m) =   8.1864893E-03
+ Time steps done =        19000  out of        50000
+ Time steps remaining =        31000
+ Estimated remaining time in seconds =    4807.231    
+ Estimated remaining time in hh:mm:ss =      1 h 20 m 07 s
+ Estimated total run time in seconds =    7753.599    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    38.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        19500
+ Time:   -81.00200      seconds
+ Elapsed time in seconds =    3023.46081900597     
+ Elapsed time in hh:mm:ss =      0 h 50 m 23 s
+ Mean elapsed time per time step in seconds =   0.1550493    
+ Max norm displacement vector U in all slices (m) =   9.3633588E-03
+ Time steps done =        19500  out of        50000
+ Time steps remaining =        30500
+ Estimated remaining time in seconds =    4729.003    
+ Estimated remaining time in hh:mm:ss =      1 h 18 m 49 s
+ Estimated total run time in seconds =    7752.464    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 12 s
+ We have done    39.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        20000
+ Time:   -80.00200      seconds
+ Elapsed time in seconds =    3100.44235086441     
+ Elapsed time in hh:mm:ss =      0 h 51 m 40 s
+ Mean elapsed time per time step in seconds =   0.1550221    
+ Max norm displacement vector U in all slices (m) =   1.0684165E-02
+ Time steps done =        20000  out of        50000
+ Time steps remaining =        30000
+ Estimated remaining time in seconds =    4650.664    
+ Estimated remaining time in hh:mm:ss =      1 h 17 m 30 s
+ Estimated total run time in seconds =    7751.106    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 11 s
+ We have done    40.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Writing the seismograms
+ Total number of time steps written:        20000
+ Writing the seismograms in parallel took    3.107509      seconds
+ 
+ Time step #        20500
+ Time:   -79.00200      seconds
+ Elapsed time in seconds =    3180.53013205528     
+ Elapsed time in hh:mm:ss =      0 h 53 m 00 s
+ Mean elapsed time per time step in seconds =   0.1551478    
+ Max norm displacement vector U in all slices (m) =   1.2162416E-02
+ Time steps done =        20500  out of        50000
+ Time steps remaining =        29500
+ Estimated remaining time in seconds =    4576.860    
+ Estimated remaining time in hh:mm:ss =      1 h 16 m 16 s
+ Estimated total run time in seconds =    7757.391    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 17 s
+ We have done    41.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        21000
+ Time:   -78.00200      seconds
+ Elapsed time in seconds =    3257.83762288094     
+ Elapsed time in hh:mm:ss =      0 h 54 m 17 s
+ Mean elapsed time per time step in seconds =   0.1551351    
+ Max norm displacement vector U in all slices (m) =   1.3812218E-02
+ Time steps done =        21000  out of        50000
+ Time steps remaining =        29000
+ Estimated remaining time in seconds =    4498.918    
+ Estimated remaining time in hh:mm:ss =      1 h 14 m 58 s
+ Estimated total run time in seconds =    7756.756    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    42.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        21500
+ Time:   -77.00200      seconds
+ Elapsed time in seconds =    3335.17621088028     
+ Elapsed time in hh:mm:ss =      0 h 55 m 35 s
+ Mean elapsed time per time step in seconds =   0.1551245    
+ Max norm displacement vector U in all slices (m) =   1.5648236E-02
+ Time steps done =        21500  out of        50000
+ Time steps remaining =        28500
+ Estimated remaining time in seconds =    4421.047    
+ Estimated remaining time in hh:mm:ss =      1 h 13 m 41 s
+ Estimated total run time in seconds =    7756.224    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    43.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        22000
+ Time:   -76.00200      seconds
+ Elapsed time in seconds =    3412.84166789055     
+ Elapsed time in hh:mm:ss =      0 h 56 m 52 s
+ Mean elapsed time per time step in seconds =   0.1551292    
+ Max norm displacement vector U in all slices (m) =   1.7685631E-02
+ Time steps done =        22000  out of        50000
+ Time steps remaining =        28000
+ Estimated remaining time in seconds =    4343.617    
+ Estimated remaining time in hh:mm:ss =      1 h 12 m 23 s
+ Estimated total run time in seconds =    7756.458    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    44.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        22500
+ Time:   -75.00200      seconds
+ Elapsed time in seconds =    3491.32319998741     
+ Elapsed time in hh:mm:ss =      0 h 58 m 11 s
+ Mean elapsed time per time step in seconds =   0.1551699    
+ Max norm displacement vector U in all slices (m) =   1.9939842E-02
+ Time steps done =        22500  out of        50000
+ Time steps remaining =        27500
+ Estimated remaining time in seconds =    4267.173    
+ Estimated remaining time in hh:mm:ss =      1 h 11 m 07 s
+ Estimated total run time in seconds =    7758.496    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 18 s
+ We have done    45.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        23000
+ Time:   -74.00200      seconds
+ Elapsed time in seconds =    3568.98653197289     
+ Elapsed time in hh:mm:ss =      0 h 59 m 28 s
+ Mean elapsed time per time step in seconds =   0.1551733    
+ Max norm displacement vector U in all slices (m) =   2.2426553E-02
+ Time steps done =        23000  out of        50000
+ Time steps remaining =        27000
+ Estimated remaining time in seconds =    4189.680    
+ Estimated remaining time in hh:mm:ss =      1 h 09 m 49 s
+ Estimated total run time in seconds =    7758.667    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 18 s
+ We have done    46.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        23500
+ Time:   -73.00200      seconds
+ Elapsed time in seconds =    3646.17524600029     
+ Elapsed time in hh:mm:ss =      1 h 00 m 46 s
+ Mean elapsed time per time step in seconds =   0.1551564    
+ Max norm displacement vector U in all slices (m) =   2.5161436E-02
+ Time steps done =        23500  out of        50000
+ Time steps remaining =        26500
+ Estimated remaining time in seconds =    4111.645    
+ Estimated remaining time in hh:mm:ss =      1 h 08 m 31 s
+ Estimated total run time in seconds =    7757.820    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 17 s
+ We have done    47.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        24000
+ Time:   -72.00200      seconds
+ Elapsed time in seconds =    3723.31742501259     
+ Elapsed time in hh:mm:ss =      1 h 02 m 03 s
+ Mean elapsed time per time step in seconds =   0.1551382    
+ Max norm displacement vector U in all slices (m) =   2.8160006E-02
+ Time steps done =        24000  out of        50000
+ Time steps remaining =        26000
+ Estimated remaining time in seconds =    4033.594    
+ Estimated remaining time in hh:mm:ss =      1 h 07 m 13 s
+ Estimated total run time in seconds =    7756.911    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    48.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        24500
+ Time:   -71.00200      seconds
+ Elapsed time in seconds =    3800.33088707924     
+ Elapsed time in hh:mm:ss =      1 h 03 m 20 s
+ Mean elapsed time per time step in seconds =   0.1551155    
+ Max norm displacement vector U in all slices (m) =   3.1437442E-02
+ Time steps done =        24500  out of        50000
+ Time steps remaining =        25500
+ Estimated remaining time in seconds =    3955.447    
+ Estimated remaining time in hh:mm:ss =      1 h 05 m 55 s
+ Estimated total run time in seconds =    7755.777    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    49.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        25000
+ Time:   -70.00200      seconds
+ Elapsed time in seconds =    3877.54683303833     
+ Elapsed time in hh:mm:ss =      1 h 04 m 37 s
+ Mean elapsed time per time step in seconds =   0.1551019    
+ Max norm displacement vector U in all slices (m) =   3.5008229E-02
+ Time steps done =        25000  out of        50000
+ Time steps remaining =        25000
+ Estimated remaining time in seconds =    3877.547    
+ Estimated remaining time in hh:mm:ss =      1 h 04 m 37 s
+ Estimated total run time in seconds =    7755.094    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    50.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        25500
+ Time:   -69.00200      seconds
+ Elapsed time in seconds =    3954.57756590843     
+ Elapsed time in hh:mm:ss =      1 h 05 m 54 s
+ Mean elapsed time per time step in seconds =   0.1550815    
+ Max norm displacement vector U in all slices (m) =   3.8885906E-02
+ Time steps done =        25500  out of        50000
+ Time steps remaining =        24500
+ Estimated remaining time in seconds =    3799.496    
+ Estimated remaining time in hh:mm:ss =      1 h 03 m 19 s
+ Estimated total run time in seconds =    7754.074    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 14 s
+ We have done    51.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        26000
+ Time:   -68.00200      seconds
+ Elapsed time in seconds =    4031.64673995972     
+ Elapsed time in hh:mm:ss =      1 h 07 m 11 s
+ Mean elapsed time per time step in seconds =   0.1550633    
+ Max norm displacement vector U in all slices (m) =   4.3082889E-02
+ Time steps done =        26000  out of        50000
+ Time steps remaining =        24000
+ Estimated remaining time in seconds =    3721.520    
+ Estimated remaining time in hh:mm:ss =      1 h 02 m 01 s
+ Estimated total run time in seconds =    7753.167    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 13 s
+ We have done    52.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        26500
+ Time:   -67.00200      seconds
+ Elapsed time in seconds =    4108.87915086746     
+ Elapsed time in hh:mm:ss =      1 h 08 m 28 s
+ Mean elapsed time per time step in seconds =   0.1550520    
+ Max norm displacement vector U in all slices (m) =   4.7609810E-02
+ Time steps done =        26500  out of        50000
+ Time steps remaining =        23500
+ Estimated remaining time in seconds =    3643.723    
+ Estimated remaining time in hh:mm:ss =      1 h 00 m 43 s
+ Estimated total run time in seconds =    7752.602    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 12 s
+ We have done    53.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        27000
+ Time:   -66.00200      seconds
+ Elapsed time in seconds =    4185.93151903152     
+ Elapsed time in hh:mm:ss =      1 h 09 m 45 s
+ Mean elapsed time per time step in seconds =   0.1550345    
+ Max norm displacement vector U in all slices (m) =   5.2475654E-02
+ Time steps done =        27000  out of        50000
+ Time steps remaining =        23000
+ Estimated remaining time in seconds =    3565.793    
+ Estimated remaining time in hh:mm:ss =      0 h 59 m 25 s
+ Estimated total run time in seconds =    7751.725    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 11 s
+ We have done    54.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        27500
+ Time:   -65.00200      seconds
+ Elapsed time in seconds =    4263.35328602791     
+ Elapsed time in hh:mm:ss =      1 h 11 m 03 s
+ Mean elapsed time per time step in seconds =   0.1550310    
+ Max norm displacement vector U in all slices (m) =   5.7686787E-02
+ Time steps done =        27500  out of        50000
+ Time steps remaining =        22500
+ Estimated remaining time in seconds =    3488.198    
+ Estimated remaining time in hh:mm:ss =      0 h 58 m 08 s
+ Estimated total run time in seconds =    7751.551    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 11 s
+ We have done    55.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        28000
+ Time:   -64.00200      seconds
+ Elapsed time in seconds =    4340.63455796242     
+ Elapsed time in hh:mm:ss =      1 h 12 m 20 s
+ Mean elapsed time per time step in seconds =   0.1550227    
+ Max norm displacement vector U in all slices (m) =   6.3247167E-02
+ Time steps done =        28000  out of        50000
+ Time steps remaining =        22000
+ Estimated remaining time in seconds =    3410.499    
+ Estimated remaining time in hh:mm:ss =      0 h 56 m 50 s
+ Estimated total run time in seconds =    7751.133    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 11 s
+ We have done    56.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        28500
+ Time:   -63.00200      seconds
+ Elapsed time in seconds =    4417.96358799934     
+ Elapsed time in hh:mm:ss =      1 h 13 m 37 s
+ Mean elapsed time per time step in seconds =   0.1550163    
+ Max norm displacement vector U in all slices (m) =   6.9157258E-02
+ Time steps done =        28500  out of        50000
+ Time steps remaining =        21500
+ Estimated remaining time in seconds =    3332.850    
+ Estimated remaining time in hh:mm:ss =      0 h 55 m 32 s
+ Estimated total run time in seconds =    7750.813    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 10 s
+ We have done    57.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        29000
+ Time:   -62.00200      seconds
+ Elapsed time in seconds =    4495.21843004227     
+ Elapsed time in hh:mm:ss =      1 h 14 m 55 s
+ Mean elapsed time per time step in seconds =   0.1550075    
+ Max norm displacement vector U in all slices (m) =   7.5414106E-02
+ Time steps done =        29000  out of        50000
+ Time steps remaining =        21000
+ Estimated remaining time in seconds =    3255.158    
+ Estimated remaining time in hh:mm:ss =      0 h 54 m 15 s
+ Estimated total run time in seconds =    7750.376    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 10 s
+ We have done    58.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        29500
+ Time:   -61.00200      seconds
+ Elapsed time in seconds =    4572.53696894646     
+ Elapsed time in hh:mm:ss =      1 h 16 m 12 s
+ Mean elapsed time per time step in seconds =   0.1550013    
+ Max norm displacement vector U in all slices (m) =   8.2010865E-02
+ Time steps done =        29500  out of        50000
+ Time steps remaining =        20500
+ Estimated remaining time in seconds =    3177.526    
+ Estimated remaining time in hh:mm:ss =      0 h 52 m 57 s
+ Estimated total run time in seconds =    7750.062    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 10 s
+ We have done    59.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        30000
+ Time:   -60.00200      seconds
+ Elapsed time in seconds =    4650.56575608253     
+ Elapsed time in hh:mm:ss =      1 h 17 m 30 s
+ Mean elapsed time per time step in seconds =   0.1550189    
+ Max norm displacement vector U in all slices (m) =   8.8935882E-02
+ Time steps done =        30000  out of        50000
+ Time steps remaining =        20000
+ Estimated remaining time in seconds =    3100.377    
+ Estimated remaining time in hh:mm:ss =      0 h 51 m 40 s
+ Estimated total run time in seconds =    7750.943    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 10 s
+ We have done    60.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Writing the seismograms
+ Total number of time steps written:        30000
+ Writing the seismograms in parallel took    1.797982      seconds
+ 
+ Time step #        30500
+ Time:   -59.00200      seconds
+ Elapsed time in seconds =    4730.14139294624     
+ Elapsed time in hh:mm:ss =      1 h 18 m 50 s
+ Mean elapsed time per time step in seconds =   0.1550866    
+ Max norm displacement vector U in all slices (m) =   9.6172914E-02
+ Time steps done =        30500  out of        50000
+ Time steps remaining =        19500
+ Estimated remaining time in seconds =    3024.189    
+ Estimated remaining time in hh:mm:ss =      0 h 50 m 24 s
+ Estimated total run time in seconds =    7754.330    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 14 s
+ We have done    61.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        31000
+ Time:   -58.00200      seconds
+ Elapsed time in seconds =    4808.29115390778     
+ Elapsed time in hh:mm:ss =      1 h 20 m 08 s
+ Mean elapsed time per time step in seconds =   0.1551062    
+ Max norm displacement vector U in all slices (m) =   0.1037002    
+ Time steps done =        31000  out of        50000
+ Time steps remaining =        19000
+ Estimated remaining time in seconds =    2947.017    
+ Estimated remaining time in hh:mm:ss =      0 h 49 m 07 s
+ Estimated total run time in seconds =    7755.308    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 15 s
+ We have done    62.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        31500
+ Time:   -57.00200      seconds
+ Elapsed time in seconds =    4886.33683300018     
+ Elapsed time in hh:mm:ss =      1 h 21 m 26 s
+ Mean elapsed time per time step in seconds =   0.1551218    
+ Max norm displacement vector U in all slices (m) =   0.1114906    
+ Time steps done =        31500  out of        50000
+ Time steps remaining =        18500
+ Estimated remaining time in seconds =    2869.753    
+ Estimated remaining time in hh:mm:ss =      0 h 47 m 49 s
+ Estimated total run time in seconds =    7756.090    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    63.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        32000
+ Time:   -56.00200      seconds
+ Elapsed time in seconds =    4964.00919294357     
+ Elapsed time in hh:mm:ss =      1 h 22 m 44 s
+ Mean elapsed time per time step in seconds =   0.1551253    
+ Max norm displacement vector U in all slices (m) =   0.1195100    
+ Time steps done =        32000  out of        50000
+ Time steps remaining =        18000
+ Estimated remaining time in seconds =    2792.255    
+ Estimated remaining time in hh:mm:ss =      0 h 46 m 32 s
+ Estimated total run time in seconds =    7756.264    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    64.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        32500
+ Time:   -55.00200      seconds
+ Elapsed time in seconds =    5041.77616286278     
+ Elapsed time in hh:mm:ss =      1 h 24 m 01 s
+ Mean elapsed time per time step in seconds =   0.1551316    
+ Max norm displacement vector U in all slices (m) =   0.1277193    
+ Time steps done =        32500  out of        50000
+ Time steps remaining =        17500
+ Estimated remaining time in seconds =    2714.802    
+ Estimated remaining time in hh:mm:ss =      0 h 45 m 14 s
+ Estimated total run time in seconds =    7756.579    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 16 s
+ We have done    65.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        33000
+ Time:   -54.00200      seconds
+ Elapsed time in seconds =    5119.89371991158     
+ Elapsed time in hh:mm:ss =      1 h 25 m 19 s
+ Mean elapsed time per time step in seconds =   0.1551483    
+ Max norm displacement vector U in all slices (m) =   0.1360715    
+ Time steps done =        33000  out of        50000
+ Time steps remaining =        17000
+ Estimated remaining time in seconds =    2637.521    
+ Estimated remaining time in hh:mm:ss =      0 h 43 m 57 s
+ Estimated total run time in seconds =    7757.415    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 17 s
+ We have done    66.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        33500
+ Time:   -53.00200      seconds
+ Elapsed time in seconds =    5197.44668197632     
+ Elapsed time in hh:mm:ss =      1 h 26 m 37 s
+ Mean elapsed time per time step in seconds =   0.1551477    
+ Max norm displacement vector U in all slices (m) =   0.1445134    
+ Time steps done =        33500  out of        50000
+ Time steps remaining =        16500
+ Estimated remaining time in seconds =    2559.937    
+ Estimated remaining time in hh:mm:ss =      0 h 42 m 39 s
+ Estimated total run time in seconds =    7757.383    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 17 s
+ We have done    67.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        34000
+ Time:   -52.00200      seconds
+ Elapsed time in seconds =    5275.35740303993     
+ Elapsed time in hh:mm:ss =      1 h 27 m 55 s
+ Mean elapsed time per time step in seconds =   0.1551576    
+ Max norm displacement vector U in all slices (m) =   0.1529852    
+ Time steps done =        34000  out of        50000
+ Time steps remaining =        16000
+ Estimated remaining time in seconds =    2482.521    
+ Estimated remaining time in hh:mm:ss =      0 h 41 m 22 s
+ Estimated total run time in seconds =    7757.878    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 17 s
+ We have done    68.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        34500
+ Time:   -51.00200      seconds
+ Elapsed time in seconds =    5353.38219594955     
+ Elapsed time in hh:mm:ss =      1 h 29 m 13 s
+ Mean elapsed time per time step in seconds =   0.1551705    
+ Max norm displacement vector U in all slices (m) =   0.1614190    
+ Time steps done =        34500  out of        50000
+ Time steps remaining =        15500
+ Estimated remaining time in seconds =    2405.143    
+ Estimated remaining time in hh:mm:ss =      0 h 40 m 05 s
+ Estimated total run time in seconds =    7758.525    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 18 s
+ We have done    69.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        35000
+ Time:   -50.00200      seconds
+ Elapsed time in seconds =    5431.39736008644     
+ Elapsed time in hh:mm:ss =      1 h 30 m 31 s
+ Mean elapsed time per time step in seconds =   0.1551828    
+ Max norm displacement vector U in all slices (m) =   0.1697414    
+ Time steps done =        35000  out of        50000
+ Time steps remaining =        15000
+ Estimated remaining time in seconds =    2327.742    
+ Estimated remaining time in hh:mm:ss =      0 h 38 m 47 s
+ Estimated total run time in seconds =    7759.139    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 19 s
+ We have done    70.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        35500
+ Time:   -49.00200      seconds
+ Elapsed time in seconds =    5509.46557593346     
+ Elapsed time in hh:mm:ss =      1 h 31 m 49 s
+ Mean elapsed time per time step in seconds =   0.1551962    
+ Max norm displacement vector U in all slices (m) =   0.1778714    
+ Time steps done =        35500  out of        50000
+ Time steps remaining =        14500
+ Estimated remaining time in seconds =    2250.345    
+ Estimated remaining time in hh:mm:ss =      0 h 37 m 30 s
+ Estimated total run time in seconds =    7759.811    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 19 s
+ We have done    71.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        36000
+ Time:   -48.00200      seconds
+ Elapsed time in seconds =    5587.53962397575     
+ Elapsed time in hh:mm:ss =      1 h 33 m 07 s
+ Mean elapsed time per time step in seconds =   0.1552094    
+ Max norm displacement vector U in all slices (m) =   0.1857216    
+ Time steps done =        36000  out of        50000
+ Time steps remaining =        14000
+ Estimated remaining time in seconds =    2172.932    
+ Estimated remaining time in hh:mm:ss =      0 h 36 m 12 s
+ Estimated total run time in seconds =    7760.472    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    72.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        36500
+ Time:   -47.00200      seconds
+ Elapsed time in seconds =    5665.46335387230     
+ Elapsed time in hh:mm:ss =      1 h 34 m 25 s
+ Mean elapsed time per time step in seconds =   0.1552182    
+ Max norm displacement vector U in all slices (m) =   0.1931999    
+ Time steps done =        36500  out of        50000
+ Time steps remaining =        13500
+ Estimated remaining time in seconds =    2095.445    
+ Estimated remaining time in hh:mm:ss =      0 h 34 m 55 s
+ Estimated total run time in seconds =    7760.909    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    73.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        37000
+ Time:   -46.00200      seconds
+ Elapsed time in seconds =    5743.26824998856     
+ Elapsed time in hh:mm:ss =      1 h 35 m 43 s
+ Mean elapsed time per time step in seconds =   0.1552235    
+ Max norm displacement vector U in all slices (m) =   0.2002067    
+ Time steps done =        37000  out of        50000
+ Time steps remaining =        13000
+ Estimated remaining time in seconds =    2017.905    
+ Estimated remaining time in hh:mm:ss =      0 h 33 m 37 s
+ Estimated total run time in seconds =    7761.173    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    74.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        37500
+ Time:   -45.00200      seconds
+ Elapsed time in seconds =    5821.27254796028     
+ Elapsed time in hh:mm:ss =      1 h 37 m 01 s
+ Mean elapsed time per time step in seconds =   0.1552339    
+ Max norm displacement vector U in all slices (m) =   0.2066399    
+ Time steps done =        37500  out of        50000
+ Time steps remaining =        12500
+ Estimated remaining time in seconds =    1940.424    
+ Estimated remaining time in hh:mm:ss =      0 h 32 m 20 s
+ Estimated total run time in seconds =    7761.697    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    75.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        38000
+ Time:   -44.00200      seconds
+ Elapsed time in seconds =    5899.09290504456     
+ Elapsed time in hh:mm:ss =      1 h 38 m 19 s
+ Mean elapsed time per time step in seconds =   0.1552393    
+ Max norm displacement vector U in all slices (m) =   0.2123915    
+ Time steps done =        38000  out of        50000
+ Time steps remaining =        12000
+ Estimated remaining time in seconds =    1862.871    
+ Estimated remaining time in hh:mm:ss =      0 h 31 m 02 s
+ Estimated total run time in seconds =    7761.964    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    76.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        38500
+ Time:   -43.00200      seconds
+ Elapsed time in seconds =    5976.54257106781     
+ Elapsed time in hh:mm:ss =      1 h 39 m 36 s
+ Mean elapsed time per time step in seconds =   0.1552349    
+ Max norm displacement vector U in all slices (m) =   0.2173525    
+ Time steps done =        38500  out of        50000
+ Time steps remaining =        11500
+ Estimated remaining time in seconds =    1785.201    
+ Estimated remaining time in hh:mm:ss =      0 h 29 m 45 s
+ Estimated total run time in seconds =    7761.744    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    77.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        39000
+ Time:   -42.00200      seconds
+ Elapsed time in seconds =    6054.46972990036     
+ Elapsed time in hh:mm:ss =      1 h 40 m 54 s
+ Mean elapsed time per time step in seconds =   0.1552428    
+ Max norm displacement vector U in all slices (m) =   0.2214105    
+ Time steps done =        39000  out of        50000
+ Time steps remaining =        11000
+ Estimated remaining time in seconds =    1707.671    
+ Estimated remaining time in hh:mm:ss =      0 h 28 m 27 s
+ Estimated total run time in seconds =    7762.141    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    78.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        39500
+ Time:   -41.00200      seconds
+ Elapsed time in seconds =    6132.20508098602     
+ Elapsed time in hh:mm:ss =      1 h 42 m 12 s
+ Mean elapsed time per time step in seconds =   0.1552457    
+ Max norm displacement vector U in all slices (m) =   0.2244532    
+ Time steps done =        39500  out of        50000
+ Time steps remaining =        10500
+ Estimated remaining time in seconds =    1630.080    
+ Estimated remaining time in hh:mm:ss =      0 h 27 m 10 s
+ Estimated total run time in seconds =    7762.285    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    79.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        40000
+ Time:   -40.00200      seconds
+ Elapsed time in seconds =    6210.06441092491     
+ Elapsed time in hh:mm:ss =      1 h 43 m 30 s
+ Mean elapsed time per time step in seconds =   0.1552516    
+ Max norm displacement vector U in all slices (m) =   0.2263696    
+ Time steps done =        40000  out of        50000
+ Time steps remaining =        10000
+ Estimated remaining time in seconds =    1552.516    
+ Estimated remaining time in hh:mm:ss =      0 h 25 m 52 s
+ Estimated total run time in seconds =    7762.581    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    80.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Writing the seismograms
+ Total number of time steps written:        40000
+ Writing the seismograms in parallel took    1.066185      seconds
+ 
+ Time step #        40500
+ Time:   -39.00200      seconds
+ Elapsed time in seconds =    6288.77677392960     
+ Elapsed time in hh:mm:ss =      1 h 44 m 48 s
+ Mean elapsed time per time step in seconds =   0.1552784    
+ Max norm displacement vector U in all slices (m) =   0.2270490    
+ Time steps done =        40500  out of        50000
+ Time steps remaining =         9500
+ Estimated remaining time in seconds =    1475.145    
+ Estimated remaining time in hh:mm:ss =      0 h 24 m 35 s
+ Estimated total run time in seconds =    7763.922    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 23 s
+ We have done    81.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        41000
+ Time:   -38.00200      seconds
+ Elapsed time in seconds =    6366.53159999847     
+ Elapsed time in hh:mm:ss =      1 h 46 m 06 s
+ Mean elapsed time per time step in seconds =   0.1552813    
+ Max norm displacement vector U in all slices (m) =   0.2263869    
+ Time steps done =        41000  out of        50000
+ Time steps remaining =         9000
+ Estimated remaining time in seconds =    1397.531    
+ Estimated remaining time in hh:mm:ss =      0 h 23 m 17 s
+ Estimated total run time in seconds =    7764.063    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 24 s
+ We have done    82.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        41500
+ Time:   -37.00200      seconds
+ Elapsed time in seconds =    6444.68139505386     
+ Elapsed time in hh:mm:ss =      1 h 47 m 24 s
+ Mean elapsed time per time step in seconds =   0.1552935    
+ Max norm displacement vector U in all slices (m) =   0.2242817    
+ Time steps done =        41500  out of        50000
+ Time steps remaining =         8500
+ Estimated remaining time in seconds =    1319.995    
+ Estimated remaining time in hh:mm:ss =      0 h 21 m 59 s
+ Estimated total run time in seconds =    7764.676    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 24 s
+ We have done    83.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        42000
+ Time:   -36.00200      seconds
+ Elapsed time in seconds =    6522.03012704849     
+ Elapsed time in hh:mm:ss =      1 h 48 m 42 s
+ Mean elapsed time per time step in seconds =   0.1552864    
+ Max norm displacement vector U in all slices (m) =   0.2206407    
+ Time steps done =        42000  out of        50000
+ Time steps remaining =         8000
+ Estimated remaining time in seconds =    1242.292    
+ Estimated remaining time in hh:mm:ss =      0 h 20 m 42 s
+ Estimated total run time in seconds =    7764.322    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 24 s
+ We have done    84.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        42500
+ Time:   -35.00200      seconds
+ Elapsed time in seconds =    6599.24697089195     
+ Elapsed time in hh:mm:ss =      1 h 49 m 59 s
+ Mean elapsed time per time step in seconds =   0.1552764    
+ Max norm displacement vector U in all slices (m) =   0.2153785    
+ Time steps done =        42500  out of        50000
+ Time steps remaining =         7500
+ Estimated remaining time in seconds =    1164.573    
+ Estimated remaining time in hh:mm:ss =      0 h 19 m 24 s
+ Estimated total run time in seconds =    7763.820    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 23 s
+ We have done    85.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        43000
+ Time:   -34.00200      seconds
+ Elapsed time in seconds =    6676.16109204292     
+ Elapsed time in hh:mm:ss =      1 h 51 m 16 s
+ Mean elapsed time per time step in seconds =   0.1552596    
+ Max norm displacement vector U in all slices (m) =   0.2084201    
+ Time steps done =        43000  out of        50000
+ Time steps remaining =         7000
+ Estimated remaining time in seconds =    1086.817    
+ Estimated remaining time in hh:mm:ss =      0 h 18 m 06 s
+ Estimated total run time in seconds =    7762.978    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    86.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        43500
+ Time:   -33.00200      seconds
+ Elapsed time in seconds =    6753.29501485825     
+ Elapsed time in hh:mm:ss =      1 h 52 m 33 s
+ Mean elapsed time per time step in seconds =   0.1552482    
+ Max norm displacement vector U in all slices (m) =   0.1997037    
+ Time steps done =        43500  out of        50000
+ Time steps remaining =         6500
+ Estimated remaining time in seconds =    1009.113    
+ Estimated remaining time in hh:mm:ss =      0 h 16 m 49 s
+ Estimated total run time in seconds =    7762.408    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    87.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        44000
+ Time:   -32.00200      seconds
+ Elapsed time in seconds =    6830.66429305077     
+ Elapsed time in hh:mm:ss =      1 h 53 m 50 s
+ Mean elapsed time per time step in seconds =   0.1552424    
+ Max norm displacement vector U in all slices (m) =   0.1891792    
+ Time steps done =        44000  out of        50000
+ Time steps remaining =         6000
+ Estimated remaining time in seconds =    931.4542    
+ Estimated remaining time in hh:mm:ss =      0 h 15 m 31 s
+ Estimated total run time in seconds =    7762.119    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 22 s
+ We have done    88.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        44500
+ Time:   -31.00200      seconds
+ Elapsed time in seconds =    6907.80897593498     
+ Elapsed time in hh:mm:ss =      1 h 55 m 07 s
+ Mean elapsed time per time step in seconds =   0.1552317    
+ Max norm displacement vector U in all slices (m) =   0.1768133    
+ Time steps done =        44500  out of        50000
+ Time steps remaining =         5500
+ Estimated remaining time in seconds =    853.7742    
+ Estimated remaining time in hh:mm:ss =      0 h 14 m 13 s
+ Estimated total run time in seconds =    7761.583    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    89.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        45000
+ Time:   -30.00200      seconds
+ Elapsed time in seconds =    6985.11386299133     
+ Elapsed time in hh:mm:ss =      1 h 56 m 25 s
+ Mean elapsed time per time step in seconds =   0.1552248    
+ Max norm displacement vector U in all slices (m) =   0.1625882    
+ Time steps done =        45000  out of        50000
+ Time steps remaining =         5000
+ Estimated remaining time in seconds =    776.1238    
+ Estimated remaining time in hh:mm:ss =      0 h 12 m 56 s
+ Estimated total run time in seconds =    7761.238    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    90.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        45500
+ Time:   -29.00200      seconds
+ Elapsed time in seconds =    7062.11795687675     
+ Elapsed time in hh:mm:ss =      1 h 57 m 42 s
+ Mean elapsed time per time step in seconds =   0.1552114    
+ Max norm displacement vector U in all slices (m) =   0.1465041    
+ Time steps done =        45500  out of        50000
+ Time steps remaining =         4500
+ Estimated remaining time in seconds =    698.4512    
+ Estimated remaining time in hh:mm:ss =      0 h 11 m 38 s
+ Estimated total run time in seconds =    7760.569    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    91.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        46000
+ Time:   -28.00200      seconds
+ Elapsed time in seconds =    7139.47479391098     
+ Elapsed time in hh:mm:ss =      1 h 58 m 59 s
+ Mean elapsed time per time step in seconds =   0.1552060    
+ Max norm displacement vector U in all slices (m) =   0.1285805    
+ Time steps done =        46000  out of        50000
+ Time steps remaining =         4000
+ Estimated remaining time in seconds =    620.8239    
+ Estimated remaining time in hh:mm:ss =      0 h 10 m 20 s
+ Estimated total run time in seconds =    7760.299    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    92.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        46500
+ Time:   -27.00200      seconds
+ Elapsed time in seconds =    7217.00753593445     
+ Elapsed time in hh:mm:ss =      2 h 00 m 17 s
+ Mean elapsed time per time step in seconds =   0.1552045    
+ Max norm displacement vector U in all slices (m) =   0.1088560    
+ Time steps done =        46500  out of        50000
+ Time steps remaining =         3500
+ Estimated remaining time in seconds =    543.2156    
+ Estimated remaining time in hh:mm:ss =      0 h 09 m 03 s
+ Estimated total run time in seconds =    7760.223    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    93.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        47000
+ Time:   -26.00200      seconds
+ Elapsed time in seconds =    7294.44376492500     
+ Elapsed time in hh:mm:ss =      2 h 01 m 34 s
+ Mean elapsed time per time step in seconds =   0.1552009    
+ Max norm displacement vector U in all slices (m) =   8.7390289E-02
+ Time steps done =        47000  out of        50000
+ Time steps remaining =         3000
+ Estimated remaining time in seconds =    465.6028    
+ Estimated remaining time in hh:mm:ss =      0 h 07 m 45 s
+ Estimated total run time in seconds =    7760.046    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    94.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        47500
+ Time:   -25.00200      seconds
+ Elapsed time in seconds =    7372.57925796509     
+ Elapsed time in hh:mm:ss =      2 h 02 m 52 s
+ Mean elapsed time per time step in seconds =   0.1552122    
+ Max norm displacement vector U in all slices (m) =   6.4263552E-02
+ Time steps done =        47500  out of        50000
+ Time steps remaining =         2500
+ Estimated remaining time in seconds =    388.0305    
+ Estimated remaining time in hh:mm:ss =      0 h 06 m 28 s
+ Estimated total run time in seconds =    7760.610    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    95.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        48000
+ Time:   -24.00200      seconds
+ Elapsed time in seconds =    7450.84509587288     
+ Elapsed time in hh:mm:ss =      2 h 04 m 10 s
+ Mean elapsed time per time step in seconds =   0.1552259    
+ Max norm displacement vector U in all slices (m) =   3.9577186E-02
+ Time steps done =        48000  out of        50000
+ Time steps remaining =         2000
+ Estimated remaining time in seconds =    310.4519    
+ Estimated remaining time in hh:mm:ss =      0 h 05 m 10 s
+ Estimated total run time in seconds =    7761.297    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    96.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        48500
+ Time:   -23.00200      seconds
+ Elapsed time in seconds =    7528.54672789574     
+ Elapsed time in hh:mm:ss =      2 h 05 m 28 s
+ Mean elapsed time per time step in seconds =   0.1552278    
+ Max norm displacement vector U in all slices (m) =   1.3453363E-02
+ Time steps done =        48500  out of        50000
+ Time steps remaining =         1500
+ Estimated remaining time in seconds =    232.8416    
+ Estimated remaining time in hh:mm:ss =      0 h 03 m 52 s
+ Estimated total run time in seconds =    7761.388    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    97.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        49000
+ Time:   -22.00200      seconds
+ Elapsed time in seconds =    7605.85554790497     
+ Elapsed time in hh:mm:ss =      2 h 06 m 45 s
+ Mean elapsed time per time step in seconds =   0.1552215    
+ Max norm displacement vector U in all slices (m) =   1.3965324E-02
+ Time steps done =        49000  out of        50000
+ Time steps remaining =         1000
+ Estimated remaining time in seconds =    155.2215    
+ Estimated remaining time in hh:mm:ss =      0 h 02 m 35 s
+ Estimated total run time in seconds =    7761.077    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    98.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:33
+ 
+ Time step #        49500
+ Time:   -21.00200      seconds
+ Elapsed time in seconds =    7683.35919785500     
+ Elapsed time in hh:mm:ss =      2 h 08 m 03 s
+ Mean elapsed time per time step in seconds =   0.1552194    
+ Max norm displacement vector U in all slices (m) =   4.2516451E-02
+ Time steps done =        49500  out of        50000
+ Time steps remaining =          500
+ Estimated remaining time in seconds =    77.60969    
+ Estimated remaining time in hh:mm:ss =      0 h 01 m 17 s
+ Estimated total run time in seconds =    7760.969    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 20 s
+ We have done    99.00000     % of that
+ The run will finish approximately on (in local time): Thu Jun 12, 2025 18:32
+ 
+ Time step #        50000
+ Time:   -20.00200      seconds
+ Elapsed time in seconds =    7761.50629401207     
+ Elapsed time in hh:mm:ss =      2 h 09 m 21 s
+ Mean elapsed time per time step in seconds =   0.1552301    
+ Max norm displacement vector U in all slices (m) =   7.2019152E-02
+ Time steps done =        50000  out of        50000
+ Time steps remaining =            0
+ Estimated remaining time in seconds =   0.0000000E+00
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 00 s
+ Estimated total run time in seconds =    7761.506    
+ Estimated total run time in hh:mm:ss =      2 h 09 m 21 s
+ We have done    100.0000     % of that
+ 
+ Writing the seismograms
+ Total number of time steps written:        50000
+ Writing the seismograms in parallel took    4.396343      seconds
+ 
+ Time loop finished. Timing info:
+ Total elapsed time in seconds =    7766.04870390892     
+ Total elapsed time in hh:mm:ss =      2 h 09 m 26 s
+ 
+ finalizing simulation
+ 
+ 
+ End of the simulation
+ 
