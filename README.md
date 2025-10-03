@@ -2,9 +2,9 @@
 ##### This repository collects all material related to my Master's thesis work for the Ionian basin region. If you have problems executing the code and reproducing the outputs check inside the folder specs/ about the flags/options used. If you still have issues contact me. The goal is always to start from the end point at which I stopped. derose.fr@gmail.com
 ##### The aim is to maintain a reproducible and transparent archive of the numerical tests conducted for regional waveform modeling studies in this area. I hope whichever user interested in these kind of simulations will find this repository useful for its studies.
 ***
-#### Important lookup table for ionianbasin repository -  main sources consulted for Master's thesis work. Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
+### Uploaded September 2025. Francesco De Rose. Cosenza, Calabria.
 * Everything in this page is free to produce, share and build for one's needs.
-* * Time and Location - Cosenza, Calabria 22092025.
+* Time and Location - Cosenza, Calabria 22092025.
 ***
 ---------------------
 #### Closeup view of the interested region: the southern part of Italy, Calabria and most of the Ellenic arc.
