@@ -16,22 +16,22 @@ This main branch includes:
     have that extension installed otherwise some figures won't render; work in progress...)
 
     Description of all PCs used throughout the thesis work (configuration flags selected 
-    during the software setup, CPU, RAM usage, time for each run etc.): #check folder specs/#
+    during the software setup, CPU, RAM usage, time for each run etc.): #check specs/#
 
     Complete simulation setup parameter files related to SPECFEM3D Cartesian
-    (Par_file, CMTSOLUTION, STATIONS, STFext etc.); #check folder parameters/#
+    (Par_file, CMTSOLUTION, STATIONS, STFext etc.); #check parameters/#
 
     Meshing and model-building utilities (many thanks to Dr. Rafael Abreu for 
-    the help in the mesh modelling); #check folder meshing/# 
+    the help in the mesh modelling); #check meshing/# 
 
     3D and tomographic velocity model scripts 
-    (mostly GMT related codes); #check the folder models/#
+    (mostly GMT related codes); #check models/#
 
     Post-processing and plotting scripts (mostly JupyterNotebook, gnuplot and python);
-    #check the folder pstprcss/ and for the output check fgs/#
+    #check the folder pstprcss/ and fgs/#
 
     Documentation and notes on simulation parameters and workflow
-    (all the articles that have been read during the thesis writing). #check the folder refs/# 
+    (all the articles that have been read during the thesis writing). #check refs/# 
 
 ##### The aim is to maintain a reproducible and transparent archive of the numerical tests conducted for regional waveform modeling studies in the area that has been studied. I hope whichever user interested in these kind of simulations will find this repository useful for its studies.
 
