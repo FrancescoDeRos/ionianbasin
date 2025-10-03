@@ -1,0 +1,386 @@
+ 
+ *****************************************
+ *** Specfem3D MPI database generation ***
+ *****************************************
+ 
+ Running Git package version of the code: v4.1.1-201-g9774906
+ which is Git 97749062df8580b2da227f7660079220a20539cd
+ dating 2025-05-13 20:17:44 +0200
+ 
+ This is process            0
+ There are           80  MPI processes
+ Processes are numbered from 0 to           79
+ 
+ There is a total of           80  slices
+ 
+ NGLLX =            5
+ NGLLY =            5
+ NGLLZ =            5
+ 
+ Shape functions defined by NGNOD =            8  control nodes
+ Surface shape functions defined by NGNOD2D =            4  control nodes
+ Beware! Curvature (i.e. HEX27 elements) is not handled by our internal mesher
+ 
+ velocity model:   tomo
+ 
+ 
+ suppressing UTM projection
+ 
+ no attenuation
+ 
+ no anisotropy
+ 
+ no oceans
+ 
+ incorporating Stacey absorbing conditions
+ 
+ using a CMTSOLUTION source
+   with a Gaussian source time function
+ 
+ 
+ ************************************
+ reading partition files in the model
+ ************************************
+ 
+ external mesh points :      6630165
+ defined materials    :            0
+ undefined materials  :            1
+ total number of spectral elements:      6105660
+ absorbing boundaries: 
+   xmin,xmax :        21054       21054
+   ymin,ymax :        25230       25230
+   bottom,top:        70180       70180
+ 
+   total number of C-PML elements in the global mesh:            0
+ 
+ number of MPI partition interfaces:          708
+ 
+   minimum memory used so far     :    265.6730     MB per process
+   minimum total memory requested :    1204.489     MB per process
+ 
+ create regions:
+ 
+   ...allocating arrays 
+     NGLLX   =            5
+     NGLLY   =            5
+     NGLLZ   =            5
+     NGNOD   =            8
+     NGNOD2D =            4
+ 
+     main process setup: 
+     nspec           =        74860
+ 
+     required minimum memory per process for model setup =    856.9903     MB
+                                                         =   0.8369046     GB
+ 
+     separating regular/irregular element shapes
+     nspec regular   =            0
+     nspec irregular =        74860
+ 
+     absorbing boundary faces:
+       num_abs_boundary_faces =         3479
+ 
+     free surface faces:
+       num_free_surface_faces =            0
+ 
+ 
+ File DATA/Par_file_faults not found: assuming that there are no faults
+ 
+ 
+   ...setting up jacobian 
+      mesh jacobian: min/max =   1.3541E+09 /   1.6411E+09
+ 
+ 
+   ...indexing global points
+      creating ibool indexing     : x min/max =   -298332.5     /   388678.1    
+      creating indirect addressing: nglob =      4884153
+      creating unique point locations
+ 
+   ...preparing MPI interfaces 
+      number of interfaces        :            6
+      creating MPI indexing       : x min/max =   -298332.5     /   388678.1    
+                                    tolerance =   6.870106400000001E-005
+ 
+      total MPI interface points:     12865356
+      total assembled MPI interface points:    12706334
+ 
+   ...setting up absorbing boundaries
+      boundary xmin   :       21054
+      boundary xmax   :       21054
+      boundary ymin   :       25230
+      boundary ymax   :       25230
+      boundary bottom :       70180
+      boundary top    :       70180
+      absorbing boundary:
+      total number of free faces =        70180
+      total number of faces      =       162748
+ 
+   ...setting up mesh surface
+ 
+   ...determining velocity model
+ 
+      number of tomographic models       =            1
+      maximum number of data records     =     10606950
+      size of required tomography arrays =    161.8492     MB per process
+ 
+      material id:           -1
+      file       : DATA/291_243_150_IONIO2025.xyz
+      domain     : elastic
+      data format: #x #y #z #vp #vs #density #Q_p #Q_s
+      number of grid points = NX*NY*NZ:    10606950
+ 
+               10  % - elapsed time:  0.6406789     s
+               20  % - elapsed time:   1.292986     s
+               30  % - elapsed time:   1.942016     s
+               40  % - elapsed time:   2.598955     s
+               50  % - elapsed time:   3.249292     s
+               60  % - elapsed time:   3.899290     s
+               70  % - elapsed time:   4.553722     s
+               80  % - elapsed time:   5.204758     s
+               90  % - elapsed time:   5.845960     s
+              100  % - elapsed time:   6.483439     s
+ 
+   ...detecting acoustic-elastic-poroelastic surfaces 
+      total acoustic elements   :           0
+      total elastic elements    :     6105660
+      total poroelastic elements:           0
+ 
+      acoustic - elastic     coupling : total number of faces =            0
+      acoustic - poroelastic coupling : total number of faces =            0
+       elastic - poroelastic coupling : total number of faces =            0
+ 
+ 
+   ...element inner/outer separation 
+      for overlapping of communications with calculations:
+      percentage of   edge elements    10.47021     %
+      percentage of volume elements    89.52979     %
+ 
+ 
+   ...element mesh coloring 
+      use coloring =  F
+ 
+   ...external binary models 
+      no external binary model used 
+ 
+   ...creating mass matrix 
+ 
+   ...setting up mesh adjacency 
+ 
+      mesh adjacency:
+      total number of elements in this slice          =        74860
+ 
+      maximum number of neighbors allowed             =          300
+      minimum array memory required per slice         =    85.95604     (MB)
+ 
+      maximum number of elements per shared node      =            8
+      node-to-element array memory required per slice =    149.0525     (MB)
+ 
+               10  % - elapsed time:   1.692235     s
+               20  % - elapsed time:   1.938841     s
+               30  % - elapsed time:   2.183386     s
+               40  % - elapsed time:   2.426006     s
+               50  % - elapsed time:   2.667096     s
+               60  % - elapsed time:   2.907886     s
+               70  % - elapsed time:   3.148302     s
+               80  % - elapsed time:   3.389103     s
+               90  % - elapsed time:   3.629827     s
+              100  % - elapsed time:   3.830179     s
+ 
+      maximum neighbors found per element =           26
+          (maximum neighbor of neighbors) =           98
+      total number of neighbors           =      8494698
+ 
+      Elapsed time for detection of neighbors in seconds =    4.348115    
+ 
+ 
+   ...saving mesh databases
+      using binary file format
+      database file (for rank 0): 
+ OUTPUT_FILES/DATABASES_MPI/proc000000_external_mesh.bin
+ 
+ 
+   ...checking mesh resolution
+ Mesh resolution:
+ 
+ ********
+ minimum and maximum number of elements
+ and points in the CUBIT + SCOTCH mesh:
+ 
+ NSPEC_global_min =        72508
+ NSPEC_global_max =        79264
+ NSPEC_global_max / NSPEC_global_min imbalance =    1.093176      = 
+   9.317593      %
+ NSPEC_global_sum =      6105660
+ 
+ NGLOB_global_min =      4746969
+ NGLOB_global_max =      5186165
+ NGLOB_global_max / NGLOB_global_min imbalance =    1.092521      = 
+   9.252135      %
+ NGLOB_global_sum =    399007584
+ 
+ If you have elements of a single type (all acoustic, all elastic, all poroelast
+ ic, and without CPML)
+ in the whole mesh, then there should be no significant imbalance in the above n
+ umbers.
+ Otherwise, it is normal to have imbalance in elements and points because the do
+ main decomposer
+ compensates for the different cost of different elements by partitioning them u
+ nevenly among processes.
+ ********
+ 
+ 
+ ********
+ Model: P   velocity min,max =    4147.000       8400.000    
+ Model: S   velocity min,max =    2370.000       4665.000    
+ 
+ Model: Poisson's ratio min,max =   0.2435901      0.2813841    
+ ********
+ 
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+ 
+ *** Xmin and Xmax of the model =   -298332.5       388678.1    
+ *** Ymin and Ymax of the model =   -254405.9       317886.4    
+ *** Zmin and Zmax of the model =   -200000.0       1407.300    
+ 
+ *** Max GLL point distance =    1669.480    
+ *** Min GLL point distance =    333.8750    
+ *** Max/min ratio =    5.000316    
+ 
+ *** Max element size =    5105.091    
+ *** Min element size =    1933.570    
+ *** Max/min ratio =    2.640241    
+ 
+ *** Minimum period resolved =    2.602657    
+ *** Maximum suggested time step =   2.0500001E-02
+ 
+ Elapsed time for checking mesh resolution in seconds =   0.126785039901733     
+ 
+ mesh regions done
+ 
+ min and max of elevation (i.e. height of the upper surface of the mesh) include
+ d in mesh in m is   -4330.07000000000          1407.30000000000     
+ 
+ 
+ done mesh setup
+ 
+ 
+ Repartition of elements:
+ -----------------------
+ 
+ load distribution:
+   element loads: min/max =      2972828     3249824
+ 
+   partition            0        has      3069260  load units
+   partition            1        has      3069260  load units
+   partition            2        has      3159091  load units
+   partition            3        has      3149743  load units
+   partition            4        has      3151137  load units
+   partition            5        has      3115057  load units
+   partition            6        has      3126906  load units
+   partition            7        has      3078936  load units
+   partition            8        has      3156180  load units
+   partition            9        has      3100912  load units
+   partition           10        has      2972828  load units
+   partition           11        has      3069342  load units
+   partition           12        has      3177336  load units
+   partition           13        has      3208578  load units
+   partition           14        has      3219279  load units
+   partition           15        has      2999191  load units
+   partition           16        has      3171350  load units
+   partition           17        has      3140067  load units
+   partition           18        has      3239533  load units
+   partition           19        has      3214195  load units
+   partition           20        has      3012639  load units
+   partition           21        has      2990007  load units
+   partition           22        has      3133302  load units
+   partition           23        has      3141215  load units
+   partition           24        has      3241091  load units
+   partition           25        has      3053229  load units
+   partition           26        has      3103946  load units
+   partition           27        has      3093819  load units
+   partition           28        has      3231374  load units
+   partition           29        has      3234654  load units
+   partition           30        has      3089391  load units
+   partition           31        has      3130227  load units
+   partition           32        has      3141420  load units
+   partition           33        has      3103618  load units
+   partition           34        has      3245478  load units
+   partition           35        has      3026251  load units
+   partition           36        has      3027358  load units
+   partition           37        has      3167127  load units
+   partition           38        has      3241091  load units
+   partition           39        has      3226577  load units
+   partition           40        has      3104028  load units
+   partition           41        has      3104028  load units
+   partition           42        has      3049744  load units
+   partition           43        has      3121166  load units
+   partition           44        has      3249701  load units
+   partition           45        has      3158640  load units
+   partition           46        has      3172703  load units
+   partition           47        has      3045521  load units
+   partition           48        has      3207471  load units
+   partition           49        has      3150030  load units
+   partition           50        has      3076927  load units
+   partition           51        has      3092425  load units
+   partition           52        has      3110465  load units
+   partition           53        has      3192629  load units
+   partition           54        has      3135352  load units
+   partition           55        has      3042692  load units
+   partition           56        has      3039494  load units
+   partition           57        has      3063479  load units
+   partition           58        has      3240025  load units
+   partition           59        has      3220099  load units
+   partition           60        has      3143675  load units
+   partition           61        has      3032155  load units
+   partition           62        has      2980618  load units
+   partition           63        has      3196360  load units
+   partition           64        has      3196360  load units
+   partition           65        has      3104397  load units
+   partition           66        has      3107841  load units
+   partition           67        has      3177951  load units
+   partition           68        has      3120141  load units
+   partition           69        has      3195540  load units
+   partition           70        has      3047325  load units
+   partition           71        has      3044004  load units
+   partition           72        has      3145807  load units
+   partition           73        has      3113089  load units
+   partition           74        has      3249824  load units
+   partition           75        has      3127808  load units
+   partition           76        has      3097017  load units
+   partition           77        has      3075656  load units
+   partition           78        has      3242649  load units
+   partition           79        has      3135229  load units
+ 
+   load per partition: min/max   =      2972828     3249824
+   load per partition: imbalance =    8.523416     %
+                       (0% being totally balanced, 100% being unbalanced)
+ 
+ total number of elements in mesh slice 0:        74860
+ total number of   regular elements in mesh slice 0:            0
+ total number of irregular elements in mesh slice 0:        74860
+ total number of points in mesh slice 0:      4884153
+ 
+ total number of elements in entire mesh:      6105660
+ approximate total number of points in entire mesh (with duplicates on MPI edges
+ ):              399007584
+ approximate total number of DOFs   in entire mesh (with duplicates on MPI edges
+ ):             1197022752
+ 
+ total number of time steps in the solver will be:       120000
+ 
+ using single precision for the calculations
+ 
+ smallest and largest possible floating-point numbers are:   1.1754944E-38
+  3.4028235E+38
+ 
+ 
+ Elapsed time for mesh generation and buffer creation in seconds = 
+   592.9390    
+ Elapsed time for mesh generation and buffer creation in hh:mm:ss =    0 h 09 m 52 s
+ 
+ End of mesh generation
+ 
+ done
+ 
