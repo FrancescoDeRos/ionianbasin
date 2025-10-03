@@ -46,7 +46,8 @@ Simulations were run with the aid of Newton cluster, Rende(CS) (http://newton-1.
 SPECFEM3D Cartesian has been used ( Komatitsch and Tromp, 2002; Komatitsch and Tromp, 2002) published under the GPL 2 license.
 Dr. Rafael Abreu's help (IPGP, https://rafaelabreuseis.github.io/)  with the meshing modeling python code and relative notebook is greatly appreciated. All figures have been made using SAC and GMT.
 * GMT - The Generic Mapping Tools, Version 6.5.0 [64-bit] [12 cores] (c) 1991-2024 The GMT Team (https://www.generic-mapping-tools.org/team.html).
-* SEISMIC ANALYSIS CODE [11/11/2013 (Version 101.6a)]  Copyright 1995 Regents of the University of California
+* SEISMIC ANALYSIS CODE [11/11/2013 (Version 101.6a)]  Copyright 1995 Regents of the University of California (http://ds.iris.edu/ds/nodes/dmc/forms/sac/)
+  
 Uploaded in September 2025.
 
 * Komatitsch, D.; Tromp, J. (2002a), Spectral-element simulations of global seismic wave propagation-I. Validation, Geophysical Journal International, 149 (2) , 390-412, doi: 10.1046/j.1365-246X.2002.01653.x, url: http://doi.wiley.com/10.1046/j.1365-246X.2002.01653.x
